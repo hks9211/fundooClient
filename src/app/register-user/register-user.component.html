@@ -1,0 +1,68 @@
+<div fxFlex="100"  fxLayoutAlign="center center" class="form">
+  <mat-card class="register-form" fxFlex="40"  >
+    <mat-card-header>
+
+      <mat-card-title>
+          <span class="f">F</span>
+                <span class="u">u</span>
+                <span class="n">n</span>
+                <span class="d">d</span>
+                <span class="o">o</span>
+                <span class="oo">o</span>
+                <span class="N">N</span>
+                <span class="oo">o</span>
+                <span class="t">t</span>
+                <span class="e">e</span>
+                <span class="s">s</span>
+      </mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-header>
+
+      <mat-card-title>Create your fundoo account here</mat-card-title>
+    </mat-card-header>
+
+ <div class ="initials" fxLayout="row" fxLayoutAlign="space-between center" >
+      <mat-form-field  class = "firstName"  appearance="outline">
+        <mat-label>First name</mat-label>
+        <input matInput class = "firstname" placeholder="First name" [formControl]="firstName">
+        <mat-error *ngIf="firstName.invalid">  {{errorMessageForFirstName()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+          <mat-label>Last name</mat-label>
+          <input matInput placeholder="Last name" [formControl]="lastName">
+        <mat-error *ngIf="lastName.invalid">  {{errorMessageForLastName()}}</mat-error>
+        </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" fxLayout="column" >
+        <mat-label>Your email address</mat-label>
+        <input matInput placeholder="Your email address" [formControl]="email">
+        <mat-error *ngIf="email.invalid">  {{errorMessageForEmail()}}</mat-error>
+         <mat-hint>You'll need to confirm this email belongs to you</mat-hint> 
+      </mat-form-field>
+
+      <div class ="password" fxLayout="row"  fxLayoutAlign="space-between center" >
+      <mat-form-field appearance="outline" >
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" [formControl]="password">
+        <mat-error *ngIf="password.invalid">  {{errorMessageForPassword()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" >
+            <mat-label>Confirm</mat-label>
+            <input matInput placeholder="Confirm" >
+          </mat-form-field>
+        </div>
+
+        
+        <div class="signIn"  fxLayoutAlign="start center" >
+            <a mat-button fxLayoutAlign="start center"  routerLink=".">Sign in instead</a>
+          </div>
+        <div class="signUpButton"  fxLayoutAlign="end center" >
+            <button mat-raised-button color="primary" (click)="registerNewUser()">Next</button>
+          </div>
+     
+  </mat-card>
+</div>
