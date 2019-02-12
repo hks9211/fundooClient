@@ -13,7 +13,7 @@ export class LoginUserComponent implements OnInit {
 
   constructor
   (  
-     private HttpService: HttpService,
+    private HttpService: HttpService,
     private router: Router,
     private snackBar: MatSnackBar
     ) {}

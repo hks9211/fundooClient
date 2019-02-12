@@ -26,4 +26,12 @@ export class HttpService {
     });
     return this.http.post(this.url + purpose, data, { headers: headers })
   }
+
+  postResetPassword(data , purpose : string){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'token': localStorage.getItem('authPassword')
+    });
+    return this.http.post(this.url + purpose, data, { headers: headers })
+  }
 }

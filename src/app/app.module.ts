@@ -15,6 +15,8 @@ import { HttpService } from './services/http.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 
@@ -23,7 +25,9 @@ import { LoginUserComponent } from './components/login-user/login-user.component
     AppComponent,
     RegisterUserComponent,
     VerifyEmailComponent,
-    LoginUserComponent
+    LoginUserComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
