@@ -1,68 +1,83 @@
-<div fxFlex="100"  fxLayoutAlign="center center" class="form">
-  <mat-card class="register-form" fxFlex="40"  >
-    <mat-card-header>
+<div fxFlex="100" fxLayoutAlign="center center" class="form">
+  <div fxFlex="60" fxFlex.xs='100'>
+    <mat-card class="register-form" fxFlex="100">
+      <div fxFlex="60" fxFlex.xs='100' class="register-header">
+        <mat-card-header>
+          <mat-card-title class="register-header">
+            <span class="f">F</span>
+            <span class="u">u</span>
+            <span class="n">n</span>
+            <span class="d">d</span>
+            <span class="o">o</span>
+            <span class="oo">o</span>
+            <span class="N">N</span>
+            <span class="oo">o</span>
+            <span class="t">t</span>
+            <span class="e">e</span>
+            <span class="s">s</span>
+          </mat-card-title>
+        </mat-card-header>
 
-      <mat-card-title>
-          <span class="f">F</span>
-                <span class="u">u</span>
-                <span class="n">n</span>
-                <span class="d">d</span>
-                <span class="o">o</span>
-                <span class="oo">o</span>
-                <span class="N">N</span>
-                <span class="oo">o</span>
-                <span class="t">t</span>
-                <span class="e">e</span>
-                <span class="s">s</span>
-      </mat-card-title>
-    </mat-card-header>
-    
-    <mat-card-header>
+        <mat-card-header>
 
-      <mat-card-title>Create your fundoo account here</mat-card-title>
-    </mat-card-header>
+          <mat-card-title>
+            <h1>Create your Fundoo Account</h1>
+          </mat-card-title>
+        </mat-card-header>
 
- <div class ="initials" fxLayout="row" fxLayoutAlign="space-between center" >
-      <mat-form-field  class = "firstName"  appearance="outline">
-        <mat-label>First name</mat-label>
-        <input matInput class = "firstname" placeholder="First name" [formControl]="firstName">
-        <mat-error *ngIf="firstName.invalid">  {{errorMessageForFirstName()}}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-          <mat-label>Last name</mat-label>
-          <input matInput placeholder="Last name" [formControl]="lastName">
-        <mat-error *ngIf="lastName.invalid">  {{errorMessageForLastName()}}</mat-error>
-        </mat-form-field>
-    </div>
-
-    <mat-form-field appearance="outline" fxLayout="column" >
-        <mat-label>Your email address</mat-label>
-        <input matInput placeholder="Your email address" [formControl]="email">
-        <mat-error *ngIf="email.invalid">  {{errorMessageForEmail()}}</mat-error>
-         <mat-hint>You'll need to confirm this email belongs to you</mat-hint> 
-      </mat-form-field>
-
-      <div class ="password" fxLayout="row"  fxLayoutAlign="space-between center" >
-      <mat-form-field appearance="outline" >
-          <mat-label>Password</mat-label>
-          <input matInput placeholder="Password" [formControl]="password">
-        <mat-error *ngIf="password.invalid">  {{errorMessageForPassword()}}</mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" >
-            <mat-label>Confirm</mat-label>
-            <input matInput placeholder="Confirm" >
+        <div class="initials" fxLayoutAlign.md='stretch' fxLayoutAlign.sm='stretch' fxLayoutAlign.xs='stretch'
+          fxLayoutAlign.xl='stretch' fxLayout.xl='column' fxLayout="row" fxLayout.md='column' fxLayout.xs='column'
+          fxLayout.sm='column' fxLayoutAlign="space-between center" fxflex="60">
+          <mat-form-field class="firstName" appearance="outline">
+            <mat-label>First name</mat-label>
+            <input matInput class="firstname" placeholder="First name" [formControl]="firstName">
+            <mat-error *ngIf="firstName.invalid"> {{errorMessageForFirstName()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Last name</mat-label>
+            <input matInput placeholder="Last name" [formControl]="lastName">
+            <mat-error *ngIf="lastName.invalid"> {{errorMessageForLastName()}}</mat-error>
           </mat-form-field>
         </div>
 
-        
-        <div class="signIn"  fxLayoutAlign="start center" >
-            <a mat-button fxLayoutAlign="start center"  routerLink=".">Sign in instead</a>
-          </div>
-        <div class="signUpButton"  fxLayoutAlign="end center" >
-            <button mat-raised-button color="primary" (click)="registerNewUser()">Next</button>
-          </div>
-     
-  </mat-card>
+        <mat-form-field appearance="outline" fxLayout="column">
+          <mat-label>Your email address</mat-label>
+          <input matInput placeholder="Your email address" [formControl]="email">
+          <mat-error *ngIf="email.invalid"> {{errorMessageForEmail()}}</mat-error>
+          <mat-hint>You'll need to confirm this email belongs to you</mat-hint>
+        </mat-form-field>
+
+        <div class="password" fxLayoutAlign.md='stretch' fxLayoutAlign.xs='stretch' fxLayoutAlign.sm='stretch'
+          fxLayout="row" fxLayout.xs='column' fxLayoutAlign.xl='stretch' fxLayout.xl='column' fxLayout.sm='column'
+          fxLayout.md="column" fxLayoutAlign="space-between center">
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" [formControl]="password" [type]=" hide ? 'password' : 'password'">
+            <mat-error *ngIf="password.invalid"> {{errorMessageForPassword()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm</mat-label>
+            <input matInput placeholder="Confirm">
+          </mat-form-field>
+        </div>
+
+        <div class="signIn" fxLayoutAlign="start center">
+          <a mat-button routerLink="/login" fxLayoutAlign="start center">Sign in instead</a>
+        </div>
+        <div class="signUpButton" fxLayoutAlign="end center">
+          <button mat-raised-button color="primary" (click)="registerNewUser()">Next</button>
+        </div>
+
+      </div>
+      <div class='img' fxFlex="40" fxShow.lg='true' fxShow.xl='true' fxHide='true' fxLayoutAlign="center center">
+        <div>
+          <img class="fundoo-img" src="../../assets/fundoo.png">
+        </div>
+        <div> <label>Organize and Save Your Thoughts</label></div>
+
+
+      </div>
+    </mat-card>
+  </div>
 </div>

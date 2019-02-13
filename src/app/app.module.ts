@@ -17,6 +17,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { InvalidUrlComponent } from './components/invalid-url/invalid-url.component';
 
 
 
@@ -27,7 +28,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     VerifyEmailComponent,
     LoginUserComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    InvalidUrlComponent
   ],
   imports: [
     BrowserModule,

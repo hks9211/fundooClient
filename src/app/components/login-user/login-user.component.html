@@ -44,11 +44,11 @@
       </div>
 
       <div class="forgot-password" fxLayout="row">
-        <button mat-button><span class="forgot">Forgot password?</span></button>
+        <button mat-button routerLink="/forgotpassword"><span class="forgot">Forgot password?</span></button>
         <button mat-raised-button class="submit" (click) = "loginUser()"><span class="next">Next</span></button>
       </div>
 
-      <button mat-button><span class="forgot">Sign Up here</span></button>
+      <button mat-button routerLink="/register"><span class="forgot">Sign Up here</span></button>
     </div>
   </mat-card>
 </div>

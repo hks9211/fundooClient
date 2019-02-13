@@ -5,8 +5,14 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { InvalidUrlComponent } from './components/invalid-url/invalid-url.component';
 
-const routes: Routes = [
+const routes: Routes = [  
+{
+  path:'',
+  redirectTo : '/login',
+  pathMatch : 'full'
+}, 
 {
   path:'register',
   component:RegisterUserComponent
@@ -27,7 +33,12 @@ const routes: Routes = [
 {
   path:'resetPassword/:token',
   component:ResetPasswordComponent
-}
+},
+{
+  path:'**',
+  component:InvalidUrlComponent
+},
+
 
 ];
 

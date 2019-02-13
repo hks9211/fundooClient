@@ -13,47 +13,38 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
 export class ResetPasswordComponent implements OnInit {
 
   constructor
-  (
-    private route: ActivatedRoute,
-    private HttpService: HttpService,
-    private snackBar: MatSnackBar
-  ) { }
+    (
+      private route: ActivatedRoute,
+      private HttpService: HttpService,
+      private snackBar: MatSnackBar
+    ) { }
 
   newPassword = new FormControl('',
-  [Validators.required,
-  Validators.minLength(8),
-  Validators.maxLength(25)
-  ]);
+    [Validators.required,
+    Validators.minLength(8),
+    Validators.maxLength(25)
+    ]);
 
   ngOnInit() {
     let tokens = this.route.snapshot.params['token'];
     console.log(tokens);
-    
-    localStorage.setItem('authPassword',tokens);
-
-    
+    localStorage.setItem('authPassword', tokens);
   }
 
-   resetPassword(){
-       
+  resetPassword() {
     var resetPasswordData = {
-      'password': this.newPassword.value
+      'newPassword': this.newPassword.value
     }
-    this.HttpService.postVerifyMail(resetPasswordData, "verifyEmail" ).subscribe(
+    this.HttpService.postResetPassword(resetPasswordData, "resetPassword").subscribe(
       data => {
-        this.snackBar.open("reset password successfully. Please proceed Sign In" , "",{duration : 5000});
-        console.log(" response: ",data);
-  
+        this.snackBar.open("reset password successfully. Please proceed Sign In", "", { duration: 5000 });
+        console.log(" response: ", data);
       },
       error => {
-        this.snackBar.open("reset password failed" , "",{duration : 5000});
-        console.log("error response: ",error);
-        
-  })
-
-
+        this.snackBar.open("reset password failed", "", { duration: 5000 });
+        console.log("error response: ", error);
+      })
   }
-
   errorMessageForPassword() {
     return this.newPassword.hasError('required') ? 'You must enter a password' :
       this.newPassword.hasError('pattern') ? 'Your first name should only have alphabets' :
@@ -61,7 +52,4 @@ export class ResetPasswordComponent implements OnInit {
           this.newPassword.hasError('maxlength') ? 'Your password should be between 4-25 characters' :
             '';
   }
-
-  
-
 }

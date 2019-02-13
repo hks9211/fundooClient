@@ -21,32 +21,17 @@ export class VerifyEmailComponent implements OnInit {
   ngOnInit() {
     let tokens = this.route.snapshot.params['token'];
     console.log(tokens);
-    
-    localStorage.setItem('auth',tokens);
-    
+    localStorage.setItem('auth', tokens);
     var obj = {};
     // const token = localStorage.getItem('auth');
-    this.HttpService.postVerifyMail(obj, "verifyEmail" ).subscribe(
+    this.HttpService.postVerifyMail(obj, "verifyEmail").subscribe(
       data => {
-        this.snackBar.open("Sign up completed successfully. Please proceed Sign In" , "",{duration : 5000});
-        console.log(" response: ",data);
-  
+        this.snackBar.open("Sign up completed successfully. Please proceed Sign In", "", { duration: 5000 });
+        console.log(" response: ", data);
       },
       error => {
-        this.snackBar.open("email verification failed" , "",{duration : 5000});
-        console.log("error response: ",error);
-        
-  })
-    
- 
-    
-    // let userToken: string;
-    // this.sub = this.router
-    //   .routerState
-    //   .queryParams
-    //     userToken = params['token'];
-    //     params['token'].remove();
-      
-
-}
+        this.snackBar.open("email verification failed", "", { duration: 5000 });
+        console.log("error response: ", error);
+      })
+  }
 }

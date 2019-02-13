@@ -4,7 +4,7 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
 import { error } from '@angular/compiler/src/util';
-import { SimpleSnackBar, MatSnackBar , ErrorStateMatcher } from '@angular/material';
+import { SimpleSnackBar, MatSnackBar, ErrorStateMatcher } from '@angular/material';
 
 
 @Component({
@@ -14,8 +14,7 @@ import { SimpleSnackBar, MatSnackBar , ErrorStateMatcher } from '@angular/materi
 })
 export class RegisterUserComponent implements OnInit {
 
-
-
+  errorMessageForEmptyField: string = "";
   ngOnInit() {
   }
 
@@ -49,66 +48,71 @@ export class RegisterUserComponent implements OnInit {
     Validators.maxLength(25)
     ]);
 
-  confirmPassowrd = new FormControl('',
+  confirmPassword = new FormControl('',
     [Validators.required,
     Validators.minLength(8),
     Validators.maxLength(25)
     ]);
 
   errorMessageForFirstName() {
-    console.log(this.firstName.errors);
-    
-    return this.firstName.hasError('required') ? 'You must enter a First Name' :
-      this.firstName.hasError('pattern') ? 'Your first name should only have alphabets' :
-        this.firstName.hasError('minlength') ? 'Your first name should be between 4-25 characters' :
-          this.firstName.hasError('maxlength') ? 'Your first name should be between 4-25 characters' :
+    //console.log(this.firstName.errors);
+    return this.firstName.hasError('required') ? 'Enter first Name' :
+      this.firstName.hasError('pattern') ? 'First name should only have alphabets' :
+        this.firstName.hasError('minlength') ? 'First name should be between 4-25 characters' :
+          this.firstName.hasError('maxlength') ? 'First name should be between 4-25 characters' :
             '';
   }
 
   errorMessageForLastName() {
-    return this.lastName.hasError('required') ? 'You must enter a last Name' :
+    return this.lastName.hasError('required') ? 'Enter last Name' :
       //  this.firstName.hasError('pattern') ? 'Your first name should only have alphabets' :
       this.lastName.hasError('minlength') ? 'Your first name should be between 4-25 characters' :
         this.lastName.hasError('maxlength') ? 'Your first name should be between 4-25 characters' :
           '';
   }
   errorMessageForEmail() {
-    return this.email.hasError('required') ? 'You must enter an email' :
-      this.email.hasError('email') ? 'invalid email' :
+    return this.email.hasError('required') ? 'Enter an email' :
+      this.email.hasError('email') ? 'Invalid email' :
         // this.email.hasError('minlength') ? 'Your email name should be between 4-25 characters' :
         // this.email.hasError('maxlength') ? 'Your email should be between 4-25 characters' : 
         '';
   }
   errorMessageForPassword() {
-    return this.password.hasError('required') ? 'You must enter a password' :
-      this.firstName.hasError('pattern') ? 'Your first name should only have alphabets' :
+    return this.password.hasError('required') ? 'Enter a password' :
+      this.firstName.hasError('pattern') ? 'first name should only have alphabets' :
         this.password.hasError('minlength') ? 'Your password should be between 4-25 characters' :
           this.password.hasError('maxlength') ? 'Your password should be between 4-25 characters' :
             '';
   }
 
   registerNewUser() {
-    var newUser = {
-      'firstName': this.firstName.value,
-      'lastName': this.lastName.value,
-      'email': this.email.value,
-      'password': this.password.value
-    }
-    console.log("userdata = ", newUser)
 
-    this.HttpService.post(newUser, "register").subscribe(
-      data => {
-        this.snackBar.open("Sign up completed successfully. Now verify your Email to Sign In" , "",{duration : 5000});
-        console.log(" response: ",data);
+    try {
+      if (this.firstName.value == "" || this.lastName.value == "" || this.password.value == "" || this.email.value == "") throw "Any field cant be left empty"
+      if (this.confirmPassword.value != this.password.value) throw "Password and Confirm Password do not match"
 
-      },
-      error => {
-        this.snackBar.open("Sign up failed. check your inputs please" , "",{duration : 5000});
-        console.log("error response: ",error);
-        
+
+      var newUser = {
+        'firstName': this.firstName.value,
+        'lastName': this.lastName.value,
+        'email': this.email.value,
+        'password': this.password.value
       }
+      console.log("userdata = ", newUser)
 
-    )
+      this.HttpService.post(newUser, "register").subscribe(
+        data => {
+          this.snackBar.open("Sign up completed successfully. Now verify your Email to Sign In", "", { duration: 5000 });
+          console.log(" response: ", data);
+        },
+        error => {
+          this.snackBar.open("Sign up failed. check your inputs please", "", { duration: 5000 });
+          console.log("error response: ", error);
+        }
+      )
+    } catch (err) {
+      this.snackBar.open(err, "", { duration: 5000 });
+    }
   }
 
 
