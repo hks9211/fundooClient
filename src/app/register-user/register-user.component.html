@@ -1,3 +1,5 @@
+<ng4-loading-spinner [threshold]="0000" [timeout]="4000" [loadingText]="'Please wait...'" [zIndex]="9999">
+</ng4-loading-spinner>
 <div fxFlex="100" fxLayoutAlign="center center" class="form">
   <div fxFlex="60" fxFlex.xs='100'>
     <mat-card class="register-form" fxFlex="100">
@@ -30,19 +32,19 @@
           fxLayout.sm='column' fxLayoutAlign="space-between center" fxflex="60">
           <mat-form-field class="firstName" appearance="outline">
             <mat-label>First name</mat-label>
-            <input matInput class="firstname" placeholder="First name" [formControl]="firstName">
+            <input matInput class="firstname" placeholder="First name" [formControl]="firstName" autocomplete="off">
             <mat-error *ngIf="firstName.invalid"> {{errorMessageForFirstName()}}</mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Last name</mat-label>
-            <input matInput placeholder="Last name" [formControl]="lastName">
+            <input matInput placeholder="Last name" [formControl]="lastName" autocomplete="off">
             <mat-error *ngIf="lastName.invalid"> {{errorMessageForLastName()}}</mat-error>
           </mat-form-field>
         </div>
 
         <mat-form-field appearance="outline" fxLayout="column">
           <mat-label>Your email address</mat-label>
-          <input matInput placeholder="Your email address" [formControl]="email">
+          <input matInput placeholder="Your email address" [formControl]="email" autocomplete="off">
           <mat-error *ngIf="email.invalid"> {{errorMessageForEmail()}}</mat-error>
           <mat-hint>You'll need to confirm this email belongs to you</mat-hint>
         </mat-form-field>
@@ -52,29 +54,31 @@
           fxLayout.md="column" fxLayoutAlign="space-between center">
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Password" [formControl]="password" [type]=" hide ? 'password' : 'password'">
+            <input matInput placeholder="Password" [formControl]="password" [type]=" hide ? 'password' : 'password'"
+              autocomplete="off">
             <mat-error *ngIf="password.invalid"> {{errorMessageForPassword()}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Confirm</mat-label>
-            <input matInput placeholder="Confirm">
+            <input matInput placeholder="Confirm" [formControl]="confirmPassword"
+              [type]=" hide ? 'password' : 'password'" autocomplete="off">
+            <mat-error *ngIf="confirmPassword.invalid"> {{errorMessageForConfirmPassword()}}</mat-error>
+
           </mat-form-field>
         </div>
 
-        <div class="signIn" fxLayoutAlign="start center">
-          <a mat-button routerLink="/login" fxLayoutAlign="start center">Sign in instead</a>
-        </div>
-        <div class="signUpButton" fxLayoutAlign="end center">
-          <button mat-raised-button color="primary" (click)="registerNewUser()">Next</button>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <a mat-button class="btn-signIn" routerLink="/login">Sign in instead</a>
+          <button mat-raised-button class="btn-next" (click)="registerNewUser()">Next</button>
         </div>
 
       </div>
       <div class='img' fxFlex="40" fxShow.lg='true' fxShow.xl='true' fxHide='true' fxLayoutAlign="center center">
-        <div>
+        <div fxLayout="row">
           <img class="fundoo-img" src="../../assets/fundoo.png">
+          <label fxLayoutAlign="center center" class="tag-line">Organize and Save Your Thoughts</label>
         </div>
-        <div> <label>Organize and Save Your Thoughts</label></div>
 
 
       </div>

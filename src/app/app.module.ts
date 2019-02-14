@@ -18,6 +18,9 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { InvalidUrlComponent } from './components/invalid-url/invalid-url.component';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 
 
 
@@ -29,7 +32,8 @@ import { InvalidUrlComponent } from './components/invalid-url/invalid-url.compon
     LoginUserComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    InvalidUrlComponent
+    InvalidUrlComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,7 @@ import { InvalidUrlComponent } from './components/invalid-url/invalid-url.compon
     MatFormFieldModule,
     FlexLayoutModule,
     HttpClientModule,
+    Ng4LoadingSpinnerModule
    
 
   ],

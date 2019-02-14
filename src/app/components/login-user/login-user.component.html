@@ -1,5 +1,7 @@
+<ng4-loading-spinner [threshold]="0000" [timeout]="2000" [loadingText]="'Please wait...'" [zIndex]="9999"></ng4-loading-spinner>
 <div fxFlex="100" fxLayoutAlign="center center" class="login-form">
-  <mat-card class="login-card" fxFlex="30">
+  <div fxFlex="30" fxFlex.xs='100' fxFlex.sm="70">
+  <mat-card class="login-card" >
 
     <div class="login-header">
       <mat-card-header fxLayoutAlign="center">
@@ -17,20 +19,23 @@
           <span class="s">s</span>
         </mat-card-title>
       </mat-card-header>
-
+      
+      <div>
       <mat-card-header fxLayoutAlign="center">
         <mat-card-title class="login-subheader">Sign in</mat-card-title>
       </mat-card-header>
-
+    </div>
+      <div>
       <mat-card-header fxLayoutAlign="center">
         <mat-card-title class="login-subsubheader">to continue to FundooNotes</mat-card-title>
       </mat-card-header>
+    </div>
     </div>
 
     <div class="login-email">
       <mat-form-field class="login-email-input" appearance="outline" fxLayout="column">
         <mat-label>Your email address</mat-label>
-        <input class="login-email-field" matInput placeholder="Your email address" [formControl]="email">
+        <input  matInput placeholder="Your email address" [formControl]="email" autocomplete="off">
         <mat-error *ngIf="email.invalid"> {{errorMessageForEmail()}}</mat-error>
       </mat-form-field>
     </div>
@@ -38,12 +43,12 @@
       <div class="login-password" fxLayout="column">
         <mat-form-field class="login-password-input" appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput placeholder="Password" [formControl]="password">
+          <input matInput placeholder="Password" [formControl]="password" autocomplete="off"  [type]=" hide ? 'password' : 'password'">
           <mat-error *ngIf="password.invalid"> {{errorMessageForPassword()}}</mat-error>
         </mat-form-field>
       </div>
 
-      <div class="forgot-password" fxLayout="row">
+      <div class="forgot-password" fxLayout="row" fxLayoutAlign.sm = "space-between center" fxLayoutAlign.xs = "space-between center" fxLayoutAlign = "space-between center">
         <button mat-button routerLink="/forgotpassword"><span class="forgot">Forgot password?</span></button>
         <button mat-raised-button class="submit" (click) = "loginUser()"><span class="next">Next</span></button>
       </div>
@@ -51,4 +56,5 @@
       <button mat-button routerLink="/register"><span class="forgot">Sign Up here</span></button>
     </div>
   </mat-card>
+</div>
 </div>

@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material';
 import { HttpService } from 'src/app/services/http.service';
 import { ActivatedRoute } from '@angular/router';
 import { Validators, FormControl } from '@angular/forms';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-reset-password',
@@ -16,11 +16,13 @@ export class ResetPasswordComponent implements OnInit {
     (
       private route: ActivatedRoute,
       private HttpService: HttpService,
-      private snackBar: MatSnackBar
+      private snackBar: MatSnackBar,
+      private spinnerService: Ng4LoadingSpinnerService
     ) { }
 
   newPassword = new FormControl('',
     [Validators.required,
+    Validators.pattern(new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{7,}$/)),  
     Validators.minLength(8),
     Validators.maxLength(25)
     ]);
@@ -32,24 +34,35 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   resetPassword() {
-    var resetPasswordData = {
-      'newPassword': this.newPassword.value
+    this.spinnerService.show();
+    try {
+      if (this.newPassword.value == "") throw "Please , enter new password to update"
+      var resetPasswordData = {
+        'newPassword': this.newPassword.value
+      }
+      this.HttpService.postResetPassword(resetPasswordData, "resetPassword").subscribe(
+        data => {
+          this.snackBar.open("reset password successfully. Please proceed Sign In", "", { duration: 5000 });
+          console.log(" response: ", data);
+        },
+        error => {
+          this.snackBar.open("reset password failed", "", { duration: 5000 });
+          console.log("error response: ", error);
+        })
+    } catch (err) {
+      this.snackBar.open(err, "", { duration: 3000 });
     }
-    this.HttpService.postResetPassword(resetPasswordData, "resetPassword").subscribe(
-      data => {
-        this.snackBar.open("reset password successfully. Please proceed Sign In", "", { duration: 5000 });
-        console.log(" response: ", data);
-      },
-      error => {
-        this.snackBar.open("reset password failed", "", { duration: 5000 });
-        console.log("error response: ", error);
-      })
   }
+
   errorMessageForPassword() {
-    return this.newPassword.hasError('required') ? 'You must enter a password' :
-      this.newPassword.hasError('pattern') ? 'Your first name should only have alphabets' :
-        this.newPassword.hasError('minlength') ? 'Your password should be between 4-25 characters' :
-          this.newPassword.hasError('maxlength') ? 'Your password should be between 4-25 characters' :
+    return this.newPassword.hasError('required') ? 'Enter a password' :
+      this.newPassword.hasError('pattern') ? 'Password must be alphanumeric' :
+        this.newPassword.hasError('minlength') ? 'Password limit - 4-25 characters' :
+          this.newPassword.hasError('maxlength') ? 'Password limit - 4-25 characters' :
             '';
   }
 }
+
+
+
+

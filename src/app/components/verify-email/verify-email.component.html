@@ -1,6 +1,7 @@
-<div fxFlex="100" fxLayoutAlign="center center" class="reset-form">
-    <mat-card class="reset-card" fxFlex="30">
-  
+<ng4-loading-spinner [threshold]="0000" [timeout]="2000" [loadingText]="'Please wait...'" [zIndex]="9999"></ng4-loading-spinner>
+<div fxFlex="100" fxLayoutAlign="center center" class="verify-form">
+  <div fxFlex="30" fxFlex.xs = "70" fxFlex.sm="70">
+    <mat-card  class="reset-card" >
       <div class="reset-header">
         <mat-card-header fxLayoutAlign="center">
           <mat-card-title class="reset-header">
@@ -19,16 +20,17 @@
         </mat-card-header>
   
         <mat-card-header>
-          <mat-card-title class="reset-subsubheader">Email verification has been successfully done
+          <mat-card-title class="verify-subsubheader">Email verification has been successfully done
           </mat-card-title>
         </mat-card-header>
       </div>
   
    
   
-      <div class="reset-password" fxLayoutAlign="end">
-        <button mat-raised-button class="submittt" routerLink ="/login" ><span class="nexttt">Continue to Login</span></button>
+      <div class="verify-password" fxLayoutAlign="end">
+        <button mat-raised-button class="submit-btn" routerLink ="/login" ><span class="next-text">Continue to Login</span></button>
       </div>
      
     </mat-card>
+  </div>
   </div>

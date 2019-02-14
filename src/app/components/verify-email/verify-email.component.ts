@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { MatSnackBar } from '@angular/material';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+
 
 @Component({
   selector: 'app-verify-email',
@@ -13,12 +15,12 @@ export class VerifyEmailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private HttpService: HttpService,
-    private snackBar: MatSnackBar
-
-
+    private snackBar: MatSnackBar,
+    private spinnerService: Ng4LoadingSpinnerService
   ) { }
 
   ngOnInit() {
+    this.spinnerService.show();
     let tokens = this.route.snapshot.params['token'];
     console.log(tokens);
     localStorage.setItem('auth', tokens);

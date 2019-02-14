@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { Validators, FormControl } from '@angular/forms';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-forgot-password',
@@ -17,7 +18,8 @@ export class ForgotPasswordComponent implements OnInit {
   (
     private HttpService: HttpService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private spinnerService: Ng4LoadingSpinnerService
   ) { }
 
   email = new FormControl('',
@@ -35,6 +37,10 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   verifyUser(){
+    this.spinnerService.show();   
+   try{
+  if(this.email.value == "")throw "Please , enter your registered Email to proceed"
+   
     var toVerifyEmail = {
       'email': this.email.value,
     }
@@ -48,5 +54,8 @@ export class ForgotPasswordComponent implements OnInit {
         console.log("error response: ",error);
       }
     )
+  }catch(err){
+    this.snackBar.open(err,"",{duration:3000})
   }
+}
 }
