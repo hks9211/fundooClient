@@ -1,0 +1,146 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+    background-color: #fff;
+
+  }
+  
+  h1.example-app-name {
+    margin-left: 8px;
+  }
+  
+  .sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+    
+  }
+  
+  .example-is-mobile .sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+    width:1000px;
+  }
+
+  .sidenav{
+    width: 300px;
+
+  }
+
+  :host /deep/ .mat-form-field-appearance-outline .mat-form-field-outline {
+    display: flex;
+    position: absolute;
+    top: 1.8em;
+    left: 0;
+    right: 0;
+    bottom: 0.2em;
+    pointer-events: none;
+}
+
+:host /deep/ input.mat-input-element {
+    margin-top: 1.0175em;
+}
+
+:host /deep/ input, textarea, select {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    font: 400 15.3333px Arial;
+}
+
+.f{
+    font-family: 'Google Sans',arial,sans-serif;
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: .35px;
+    color: rgb(89, 245, 89)
+}
+
+.u{
+    font-family: 'Google Sans',arial,sans-serif;
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: .35px;
+    color: rgb(252, 49, 49)
+}
+
+.n{
+    font-family: 'Google Sans',arial,sans-serif;
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: .35px;
+    color: rgb(226, 226, 19);
+}
+
+.d{
+    font-family: 'Google Sans',arial,sans-serif;
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: .35px;
+    color: rgb(40, 40, 240);
+}
+
+.o{
+    font-family: 'Google Sans',arial,sans-serif;
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: .35px;
+    color:  rgb(252, 49, 49);
+}
+
+.oo{
+    font-family: 'Google Sans',arial,sans-serif;
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: .35px;
+    color:  rgb(89, 245, 89)
+}
+
+.N{
+    font-family: 'Google Sans',arial,sans-serif;
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: .35px;
+    color:  rgb(226, 226, 19);
+}
+.t{
+    font-family: 'Google Sans',arial,sans-serif;
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: .35px;
+    color: rgb(40, 40, 240);
+}
+.e{
+    font-family: 'Google Sans',arial,sans-serif;
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: .35px;
+    color:  rgb(252, 49, 49);
+}
+
+.s{
+    font-family: 'Google Sans',arial,sans-serif;
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: .35px;
+    color:  rgb(226, 226, 19);
+}
+  
