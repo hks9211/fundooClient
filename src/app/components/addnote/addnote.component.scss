@@ -1,0 +1,16 @@
+.matcard{
+    margin-top:20px
+}
+
+.text-area{
+    border-color:white;
+}
+
+[contentEditable=true]:empty:not(:focus)::before{
+    content:attr(data-text);
+    font:550 16px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+}
+
+.maincard{
+    width:60%; color:rgb(173,166,166);
+}

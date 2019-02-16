@@ -7,6 +7,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { InvalidUrlComponent } from './components/invalid-url/invalid-url.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AddnoteComponent } from './components/addnote/addnote.component';
+import { NoteComponent } from './components/note/note.component';
 
 const routes: Routes = [  
 {
@@ -37,8 +39,28 @@ const routes: Routes = [
 },
 {
   path:'dashboard',
-  component:DashboardComponent
+  component:DashboardComponent,
+  children:[
+
+  {
+    path:'note',
+    component:AddnoteComponent
+  }
+
+  ]
+
 },
+{
+
+  path:'note',
+  component:AddnoteComponent
+
+},
+{
+  path:'notes',
+  component:NoteComponent
+},
+
 {
   path:'**',
   component:InvalidUrlComponent

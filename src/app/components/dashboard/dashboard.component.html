@@ -5,8 +5,8 @@
 
   <mat-toolbar class="example-toolbar">
     <div fxFlex="100" fxLayoutAlign="space-between center">
-      <div fxFlex="15" fxLayoutAlign="space-between center">
-        <div fxFlex="30" fxLayout="row"  fxLayoutAlign="center center">
+      <div fxFlex="15"  fxLayoutAlign="space-between center">
+        <div fxFlex="30"  fxLayout="row" fxLayoutAlign.xs="start center" fxLayoutAlign="center center">
           <button mat-icon-button (click)="snav.toggle()">
             <mat-icon>menu</mat-icon>
           </button>
@@ -111,8 +111,6 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-       content goes here
-             </mat-sidenav-content>
-
+      <app-addnote></app-addnote>             </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
