@@ -1,0 +1,69 @@
+<!-- <div fxFlex="100" fxLayoutAlign="space-around start" fxFlex.xs="100"> -->
+
+<div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+
+  <button id="Remaind" matTooltip="Remind me" mat-icon-button [matMenuTriggerFor]="menu4">
+    <mat-icon>notification_important</mat-icon>
+  </button>
+  <mat-menu #menu4="matMenu" class="matmenu">
+
+
+    <mat-divider></mat-divider>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+  </mat-menu>
+
+  <button class="collaborator" matTooltip="collaborator" mat-icon-button>
+    <mat-icon>person_add</mat-icon>
+  </button>
+
+  <button [matMenuTriggerFor]="menu5" matTooltip="change color" mat-icon-button >
+    <mat-icon>color_lens</mat-icon>
+  </button>
+  <mat-menu #menu5="matMenu" class="colorsMenu" >
+    <button mat-mini-fab matTooltip="white" class="white"> </button>
+    <button mat-mini-fab matTooltip="red" class="red"></button>
+    <button mat-mini-fab matTooltip="orange" class="orange"></button>
+    <button mat-mini-fab matTooltip="yellow" class="yellow"></button><br>
+    <button mat-mini-fab matTooltip="green" class="green"></button>
+    <button mat-mini-fab matTooltip="teal" class="teal"></button>
+    <button mat-mini-fab matTooltip="Blue" class="blue"></button>
+    <button mat-mini-fab matTooltip="Dark Blue" class=darkblue></button><br>
+    <button mat-mini-fab matTooltip="purple" class="purple"></button>
+    <button mat-mini-fab matTooltip="pink" class="pink"></button>
+    <button mat-mini-fab matTooltip="Brown" class="Brown"></button>
+    <button mat-mini-fab matTooltip="Gray" class="gray"></button>
+
+  </mat-menu>
+
+  <button matTooltip="add image" mat-icon-button>
+    <mat-icon>insert_photo</mat-icon>
+  </button>
+
+
+  <button mat-icon-button [matMenuTriggerFor]="menu2" matTooltip="more">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu2="matMenu">
+    <button mat-menu-item>
+      <span>Add label</span>
+    </button>
+    <button mat-menu-item disabled>
+      <span>Add drawing</span>
+    </button>
+  
+    <button mat-menu-item>
+      <span>Show checkboxes</span>
+    </button>
+   
+  </mat-menu>
+ 
+  <!-- <button mat-button (click)="messageHit()" >close</button> -->
+</div> 
+<!-- </div> -->

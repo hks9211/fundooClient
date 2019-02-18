@@ -1,6 +1,6 @@
-<div fxFlex="100" fxLayoutAlign="space-around center" fxFlex.xs="100">
+ <div fxFlex="100" fxLayoutAlign="space-around start" fxFlex.xs="100"> 
     <mat-card fxFlex = "50" fxLayout = "column" fxLayoutAlign="space-between start" fxFlex.xs="100" fxFlex.sm="80">
-        <div fxLayout="row" fxLayoutAlign="space-between center" class="xyz">
+        <div  fxLayout="row" fxLayoutAlign="space-between center" class="xyz">
          <div fxFlex="90" class="title" flexLayoutAlign = "space-between center">
            <input matInput class="title" type = "text" placeholder="Title">
           </div>
@@ -9,7 +9,10 @@
 
           <div class="add-note" contenteditable="true" data-text="Take a note..."  fxLayout="column">
           </div>
+          <div fxFlex= "100" class="icons" fxLayoutAlign="center center">
+            <app-icon-list></app-icon-list>
+          </div>
     </mat-card>
-</div>
+ </div> 
 
 

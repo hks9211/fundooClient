@@ -9,6 +9,7 @@ import { InvalidUrlComponent } from './components/invalid-url/invalid-url.compon
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddnoteComponent } from './components/addnote/addnote.component';
 import { NoteComponent } from './components/note/note.component';
+import { IconListComponent } from './components/icon-list/icon-list.component';
 
 const routes: Routes = [  
 {
@@ -59,6 +60,10 @@ const routes: Routes = [
 {
   path:'notes',
   component:NoteComponent
+},
+{
+ path:'icons',
+ component:IconListComponent
 },
 
 {

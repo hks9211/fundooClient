@@ -14,3 +14,83 @@
 .maincard{
     width:60%; color:rgb(173,166,166);
 }
+
+.note{
+    margin-top:20px;
+}
+
+.big-note{
+    margin-top:20px;
+}
+
+.title{
+    border: none;
+    margin-bottom: 15px;
+    outline: none;
+    width:100%;
+    
+    // color:rgb(143, 142, 142);
+     font:550 16px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+     background-color: rgb(255, 255, 255);
+
+}
+.area{
+    width: 100%;
+}
+.add-note{
+    font:550 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    background-color: rgb(255, 255, 255);
+    width:100%;
+    outline:none;
+    border:none;
+    
+}
+
+.xyz{
+    position: relative;
+}
+
+.icons{
+    margin-top : 20px;
+    width: 100%;
+}
+
+.mat-card{
+    border-radius: 10px;
+    box-shadow: 1px 4px 5px rgba(0,0,0,0.20);
+    -webkit-box-shadow: 0 3px 5px rgba(0,0,0,0.20);
+    border: 1px solid #dadce0;
+
+}
+
+:host /deep/ .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+}
+
+.close{
+    box-sizing: border-box;
+    color: rgba(0,0,0,.87);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: .01785714em;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: .875rem;
+    font-weight: 550;
+    line-height: 1.25rem;
+    height: 36px;
+    padding: 8px 24px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}

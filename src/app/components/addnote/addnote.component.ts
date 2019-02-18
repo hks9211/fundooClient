@@ -16,7 +16,6 @@ export class AddnoteComponent implements OnInit {
   model : any;
   constructor(private httpService: HttpService, private router: Router) { }
 
-  colorArray = ["white", "red","orange", "yellow","green","teal","blue","darkblue","purple","pink","brown","gray"];
 
 
   ngOnInit() {

@@ -4,6 +4,7 @@
 
 .title{
     border: none;
+    margin-bottom: 15px;
     
     // color:rgb(143, 142, 142);
      font:550 16px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
@@ -15,8 +16,13 @@
     color: rgb(143, 142, 142);
     font:550 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
     background-color: rgb(255, 255, 255);
+    
 }
 
 .xyz{
     position: relative;
+}
+
+.icons{
+    margin-top : 20px;
 }

@@ -22,6 +22,7 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddnoteComponent } from './components/addnote/addnote.component';
 import { NoteComponent } from './components/note/note.component';
+import { IconListComponent } from './components/icon-list/icon-list.component';
 
 
 
@@ -37,7 +38,8 @@ import { NoteComponent } from './components/note/note.component';
     InvalidUrlComponent,
     DashboardComponent,
     AddnoteComponent,
-    NoteComponent
+    NoteComponent,
+    IconListComponent
   ],
   imports: [
     BrowserModule,
