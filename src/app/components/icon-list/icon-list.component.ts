@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { RecursiveTemplateAstVisitor } from '@angular/compiler';
 
 @Component({
@@ -9,9 +9,21 @@ import { RecursiveTemplateAstVisitor } from '@angular/compiler';
 export class IconListComponent implements OnInit {
 
   constructor() { }
-
+object={color:"#FFFFF"}
 
   ngOnInit() {
   }
+  
+  message: string = "Hola Mundo!"
 
+  @Output() messageEvent = new EventEmitter<any>();
+
+
+  sendMessage() {
+    this.messageEvent.emit(this.message)
+  }
+  color(value){
+    this.object.color=value;
+   this.messageEvent.emit(this.object)
+  }
 }

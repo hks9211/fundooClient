@@ -1,0 +1,19 @@
+<div class = "card" fxLayout = "row wrap" fxFlex="70"  fxLayoutAlign="center center">
+  <div *ngFor="let item of items">
+    <div fxLayoutGap="10px">
+      <mat-card class="card-content">
+        <div>
+          <div fxFlex="88">{{item.noteTitle}}</div>
+          <div fxFlex="9">
+            <button mat-icon-button></button>
+          </div>
+        </div> 
+      <mat-card-content fxLayout="column">
+        <div>{{item.noteContent}}</div>
+        <app-icon-list></app-icon-list>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+  </div>
+</div>

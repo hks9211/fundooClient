@@ -2,7 +2,7 @@
 
 <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
 
-  <button id="Remaind" matTooltip="Remind me" mat-icon-button [matMenuTriggerFor]="menu4">
+  <button id="Remind" matTooltip="Remind me" (click)="sendMessage()" mat-icon-button [matMenuTriggerFor]="menu4">
     <mat-icon>notification_important</mat-icon>
   </button>
   <mat-menu #menu4="matMenu" class="matmenu">
@@ -35,7 +35,7 @@
     <button mat-mini-fab matTooltip="teal" class="teal"></button>
     <button mat-mini-fab matTooltip="Blue" class="blue"></button>
     <button mat-mini-fab matTooltip="Dark Blue" class=darkblue></button><br>
-    <button mat-mini-fab matTooltip="purple" class="purple"></button>
+    <button mat-mini-fab matTooltip="purple" class="purple" (click)='color("#87ceeb")'></button>
     <button mat-mini-fab matTooltip="pink" class="pink"></button>
     <button mat-mini-fab matTooltip="Brown" class="Brown"></button>
     <button mat-mini-fab matTooltip="Gray" class="gray"></button>

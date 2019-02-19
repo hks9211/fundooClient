@@ -66,6 +66,9 @@ export class LoginUserComponent implements OnInit {
           this.snackBar.open("Signed in successfully ", "", { duration: 5000 });
           this.router.navigateByUrl('/dashboard');
           console.log(" response: ", data);
+          var response : any = {}
+          response = data;
+          localStorage.setItem('userId', response.message.userId);          
         },
         error => {
           this.snackBar.open("Sign in failed. check your credentials ", "", { duration: 5000 });

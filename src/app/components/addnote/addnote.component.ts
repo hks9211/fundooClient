@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { FormControl } from '@angular/forms';
+import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-addnote',
@@ -10,44 +13,59 @@ import { Title } from '@angular/platform-browser';
 })
 export class AddnoteComponent implements OnInit {
 
-  flag = true;
-  noteTitle: any;
-  noteContent: any;
-  model : any;
-  constructor(private httpService: HttpService, private router: Router) { }
-
-
-
   ngOnInit() {
   }
- 
+
+  constructor(private noteService:NoteServiceService ,
+     private router: Router,
+     private snackBar : MatSnackBar) { }
+
+  flag : boolean = true;
+  bgColor : string ='#FFFFF';
+  message:string;
+
+  noteTitle = new FormControl('',
+   );
+  noteContent = new FormControl('',
+  ) ;
+
+  receiveMessage($event) {
+    this.message = $event
+    this.bgColor=$event.color;
+  }
+
   reverseFlag() {
     this.flag = !this.flag;
   }
 
-
-
    addNote(){
-     this.flag = !this.flag;
-     this.noteTitle=document.getElementById('noteTitle').innerHTML;
-     this.noteContent = document.getElementById('noteContent').innerHTML;
+    this.flag = !this.flag;
 
-     //console.log()
-     if(this.noteTitle || this.noteContent)
-     {
-      this.model= {
-         title : this.noteTitle,
-         description : this.noteContent,
-         labelIdList	: '',
-         checklist   : '',
-         isPined   : false,
-         isArchived : false,
-          color  : '',
-          reminder : '',
-          collaberators : ''
-       }
+    var newNoteData = {
+      'userId': localStorage.getItem('userId'),
+      'noteTitle': this.noteTitle.value,
+      'noteContent': this.noteContent.value,
+      'reminder': '',
+      'color': '',
+      'isPined' : false,
+      'isArchived' : false,
+      'isDeleted' : false
+    }
+     this.noteService.postHttpRequest(newNoteData , "addNote").subscribe(
+      data => {
+        this.snackBar.open("Your note has been saved successfully", "", { duration: 2000 });
+
+        console.log(" response: ", data);
+      },
+      error => {
+        this.snackBar.open("Note not saved", "", { duration: 2000 });
+        console.log("error response: ", error);
+      }
+    )
+
+
      }
      
    }
 
-}
+

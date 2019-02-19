@@ -13,8 +13,7 @@ export class HttpService {
   post(data: object, purpose: string) {
     return this.http.post(this.url + purpose, data);
   }
-  
-  // headers.append("Authorization","Basic YW5ndWxhci13YXJlaG91c2Utc2VydmljZXM6MTIzNDU2");
+
   postVerifyMail(data, purpose: string) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -23,11 +22,20 @@ export class HttpService {
     return this.http.post(this.url + purpose, data, { headers: headers })
   }
 
-  postResetPassword(data , purpose : string){
+  postResetPassword(data, purpose: string) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'token': localStorage.getItem('authPassword')
     });
     return this.http.post(this.url + purpose, data, { headers: headers })
+  }
+
+  postRequest(data ,purpose){
+    
+    return this.http.post("http://localhost:3000/addnote" , data);
+  }
+
+  postRequestt(purpose , data){
+    return this.http.post(this.url + purpose , data);
   }
 }

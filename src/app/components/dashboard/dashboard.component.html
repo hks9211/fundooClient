@@ -1,17 +1,15 @@
 <!-- <ng4-loading-spinner [threshold]="0000" [timeout]="1000" [loadingText]="'Please wait... while we are loading your dashboard..'" [zIndex]="9999"></ng4-loading-spinner> -->
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" fxFlex="100" fxFlex.xs="100">
 
-
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" fxFlex="100">
-
-  <mat-toolbar class="example-toolbar">
-    <div fxFlex="100" fxLayoutAlign="space-between center">
+  <mat-toolbar class="example-toolbar" fxFlex.xs="100" >
+    <div fxFlex="100" fxLayoutAlign="space-between center" >
       <div fxFlex="15"  fxLayoutAlign="space-between center">
         <div fxFlex="30"  fxLayout="row" fxLayoutAlign.xs="start center" fxLayoutAlign="center center">
           <button mat-icon-button (click)="snav.toggle()">
             <mat-icon>menu</mat-icon>
           </button>
         </div>
-        <div fxFlex="70">
+        <div fxFlex="70" >
              <span class="f">F</span>
           <span class="u">u</span>
           <span class="n">n</span>
@@ -37,21 +35,21 @@
 
       <div fxFlex="9" fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign="space-between center">
 
-        <div fxFlex="3">
+        <!-- <div fxFlex="3">
           <button mat-icon-button>
             <mat-icon>refresh</mat-icon>
           </button>
-        </div>
+        </div> -->
         <div fxFlex="2">
           <button mat-icon-button>
             <mat-icon>border_all</mat-icon>
           </button>
         </div>
-        <div fxFlex="2">
+        <!-- <div fxFlex="2">
           <button mat-icon-button>
             <mat-icon>settings</mat-icon>
           </button>
-        </div>
+        </div> -->
       </div>
 
       <div fxFlex="10" fxLayoutAlign = "end end">
@@ -87,9 +85,12 @@
       [fixedInViewport]="mobileQuery.matches">
 
       <mat-nav-list>
-        <mat-list-item>
+        <!-- <mat-list-item>
           <mat-icon>lightbulb_outline</mat-icon>Notes
-        </mat-list-item>
+        </mat-list-item> -->
+        <mat-icon>lightbulb_outline</mat-icon>
+        <button mat-button >Notes
+          </button>
 
         <mat-list-item>
           <mat-icon>notifications_none</mat-icon>Reminders
@@ -111,6 +112,9 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <app-addnote></app-addnote>             </mat-sidenav-content>
+      <app-addnote></app-addnote>  
+
+    <app-card></app-card>      
+      </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

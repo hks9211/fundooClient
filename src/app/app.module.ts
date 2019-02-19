@@ -21,8 +21,8 @@ import { InvalidUrlComponent } from './components/invalid-url/invalid-url.compon
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddnoteComponent } from './components/addnote/addnote.component';
-import { NoteComponent } from './components/note/note.component';
 import { IconListComponent } from './components/icon-list/icon-list.component';
+import { CardComponent } from './components/card/card.component';
 
 
 
@@ -38,8 +38,8 @@ import { IconListComponent } from './components/icon-list/icon-list.component';
     InvalidUrlComponent,
     DashboardComponent,
     AddnoteComponent,
-    NoteComponent,
-    IconListComponent
+    IconListComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

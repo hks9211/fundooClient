@@ -8,8 +8,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { InvalidUrlComponent } from './components/invalid-url/invalid-url.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddnoteComponent } from './components/addnote/addnote.component';
-import { NoteComponent } from './components/note/note.component';
 import { IconListComponent } from './components/icon-list/icon-list.component';
+import { CardComponent } from './components/card/card.component';
 
 const routes: Routes = [  
 {
@@ -57,15 +57,15 @@ const routes: Routes = [
   component:AddnoteComponent
 
 },
-{
-  path:'notes',
-  component:NoteComponent
-},
+
 {
  path:'icons',
  component:IconListComponent
 },
-
+{
+  path:'card',
+  component:CardComponent
+},
 {
   path:'**',
   component:InvalidUrlComponent
