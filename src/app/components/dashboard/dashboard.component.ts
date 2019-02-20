@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class DashboardComponent implements OnInit {
   mobileQuery: MediaQueryList;
   fillerNav = Array.from({length: 5}, (_, i) => `Nav Item ${i + 1}`);
   private _mobileQueryListener: () => void;
-
+  parentSubject:Subject<any> = new Subject();
  
 
   constructor
@@ -33,7 +34,10 @@ export class DashboardComponent implements OnInit {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-
+addNote(event){
+console.log('event occur',event);
+this.parentSubject.next(event);
+}
 
 
  

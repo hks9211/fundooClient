@@ -3,24 +3,20 @@
 
   <mat-toolbar class="example-toolbar" fxFlex.xs="100" >
     <div fxFlex="100" fxLayoutAlign="space-between center" >
-      <div fxFlex="15"  fxLayoutAlign="space-between center">
-        <div fxFlex="30"  fxLayout="row" fxLayoutAlign.xs="start center" fxLayoutAlign="center center">
+      <div fxFlex="20"  fxLayoutAlign="space-between center">
+        <div fxFlex="20"  fxLayout="row" fxLayoutAlign.xs="start center" fxLayoutAlign="center center">
           <button mat-icon-button (click)="snav.toggle()">
             <mat-icon>menu</mat-icon>
           </button>
         </div>
-        <div fxFlex="70" >
-             <span class="f">F</span>
-          <span class="u">u</span>
-          <span class="n">n</span>
-          <span class="d">d</span>
-          <span class="o">o</span>
-          <span class="oo">o</span>
-          <span class="N">N</span>
-          <span class="oo">o</span>
-          <span class="t">t</span>
-          <span class="e">e</span>
-          <span class="s">s</span>
+        <div fxFlex="80" fxLayout="row" fxLayoutAlign="start center" >
+          <div class="logo" fxFlex="25">
+          <img  src="../../../assets/new.png" style="height: 37px ; margin-top: 10px">
+        </div>
+        <div fxFlex="50">
+          <span class="app-title">FundooNotes</span>
+          
+        </div>
         </div>
       </div>
       <div fxFlex="50">
@@ -91,7 +87,6 @@
         <mat-icon>lightbulb_outline</mat-icon>
         <button mat-button >Notes
           </button>
-
         <mat-list-item>
           <mat-icon>notifications_none</mat-icon>Reminders
         </mat-list-item>
@@ -112,9 +107,9 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <app-addnote></app-addnote>  
+      <app-addnote (childEvent)="addNote($event)"></app-addnote>  
 
-    <app-card></app-card>      
+    <app-card [parentSubject]="parentSubject"></app-card>      
       </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

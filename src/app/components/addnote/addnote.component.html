@@ -4,9 +4,9 @@
     <div fxFlex="65" data-text="Take a note.." class="text-area" contenteditable="true" class="maincard">
     </div>
     <div fxFlex="35" fxLayoutAlign="space-around center">
-      <mat-icon matTooltip="New List">check_box</mat-icon>
-      <mat-icon matTooltip="New note with drawing">brush</mat-icon>
-      <mat-icon matTooltip="New note with image">insert_photo</mat-icon>
+      <mat-icon class="check-box" matTooltip="New List">check_box</mat-icon>
+      <mat-icon class="brush" matTooltip="New note with drawing">brush</mat-icon>
+      <mat-icon class="photo" matTooltip="New note with image">insert_photo</mat-icon>
     </div>
   </mat-card>
 </div>
@@ -18,9 +18,11 @@
       <textarea class="add-note" matTextareaAutosize [formControl]="noteContent" placeholder="Take a note..."></textarea>
     </div>
 
-    <div  class="icons" fxLayout="row"  fxLayoutAlign="space-between center" >
-      <app-icon-list (messageEvent)="receiveMessage($event)"> </app-icon-list>
-      <button  mat-button (click)="addNote()"><span class="close">Close</span></button>
+    <div  class="icons"  >
+      <mat-card-footer fxLayout="row"  fxLayoutAlign="space-between center">
+          <app-icon-list (messageEvent)="receiveMessage($event)"> </app-icon-list>
+          <button  mat-button (click)="addNote()"><span class="close">Close</span></button>
+      </mat-card-footer>
     </div>
   </mat-card>
 

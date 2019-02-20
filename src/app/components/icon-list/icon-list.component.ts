@@ -14,6 +14,9 @@ object={color:"#FFFFF"}
   ngOnInit() {
   }
   
+  showReminder : boolean;
+  reminder : boolean = true; 
+
   message: string = "Hola Mundo!"
 
   @Output() messageEvent = new EventEmitter<any>();
@@ -25,5 +28,12 @@ object={color:"#FFFFF"}
   color(value){
     this.object.color=value;
    this.messageEvent.emit(this.object)
+  }
+
+  toShowReminder(){
+    this.showReminder = !this.showReminder;
+  }
+  toggleReminder(){
+  this.reminder = !this.reminder;
   }
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
 import { MatSnackBar } from '@angular/material';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -9,7 +10,8 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  
+  @Input()
+  parentSubject:Subject<any>;
   items : any = [];
   constructor(
     private noteServices : NoteServiceService,
@@ -17,7 +19,15 @@ export class CardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getCards()
+    this.getCards();
+    this.parentSubject.subscribe(event => {
+
+console.log('event in array');
+this.items.push(event);
+
+      // called when the notifyChildren method is
+      // called in the parent component
+    });
   }
  
   getCards(){

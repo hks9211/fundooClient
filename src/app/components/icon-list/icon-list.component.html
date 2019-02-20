@@ -2,19 +2,18 @@
 
 <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
 
-  <button id="Remind" matTooltip="Remind me" (click)="sendMessage()" mat-icon-button [matMenuTriggerFor]="menu4">
+  <button mat-icon-button matTooltip="Remind me" (click) = "toggleReminder()" (click) = "toShowReminder()" >
     <mat-icon>notification_important</mat-icon>
   </button>
+  
+
+   <div *ngIf="reminder && showReminder">
+    <div>set time</div>
+   </div> 
+
   <mat-menu #menu4="matMenu" class="matmenu">
-
-
     <mat-divider></mat-divider>
 
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
 
 
   </mat-menu>
@@ -23,10 +22,10 @@
     <mat-icon>person_add</mat-icon>
   </button>
 
-  <button [matMenuTriggerFor]="menu5" matTooltip="change color" mat-icon-button >
+  <button matTooltip="change color" mat-icon-button >
     <mat-icon>color_lens</mat-icon>
   </button>
-  <mat-menu #menu5="matMenu" class="colorsMenu" >
+  <!-- <mat-menu #menu5="matMenu" class="colorsMenu" >
     <button mat-mini-fab matTooltip="white" class="white"> </button>
     <button mat-mini-fab matTooltip="red" class="red"></button>
     <button mat-mini-fab matTooltip="orange" class="orange"></button>
@@ -40,7 +39,7 @@
     <button mat-mini-fab matTooltip="Brown" class="Brown"></button>
     <button mat-mini-fab matTooltip="Gray" class="gray"></button>
 
-  </mat-menu>
+  </mat-menu> -->
 
   <button matTooltip="add image" mat-icon-button>
     <mat-icon>insert_photo</mat-icon>
@@ -67,3 +66,30 @@
   <!-- <button mat-button (click)="messageHit()" >close</button> -->
 </div> 
 <!-- </div> -->
+<div class="reminder-menu" *ngIf="!remainder && showReminder">
+    <label>Reminder:</label>
+    <button mat-menu-item>Later Today
+    <label>8:00 PM</label>
+   </button>
+
+   <button mat-menu-item>Tomorrow
+       <label>8:00 AM</label>
+      </button>
+
+      <button mat-menu-item>Next week
+         <label>Mon, 8:00 AM</label>
+        </button>
+
+        <button mat-menu-item>Home
+           <label>Kolkata</label>
+          </button>
+          
+          <button mat-menu-item>Work
+             <label>Mumbai</label>
+            </button> 
+
+            <button mat-menu-item (click)="toggleReminder()">
+              <mat-icon>access_time</mat-icon>Pick date & time
+            </button>
+
+  </div>

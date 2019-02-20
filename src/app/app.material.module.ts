@@ -11,16 +11,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import 'hammerjs';
 import {
-  // MatIconModule,
-  // MatInputModule,
-  // MatToolbarModule,
-  // MatButtonModule,
-  // MatMenuModule,
-  // MatCardModule,
-  // MatSidenavModule,
-  // MatDialogModule,
-  // MatFormFieldModule,
-  // MatDividerModule,
   MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
