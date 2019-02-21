@@ -1,6 +1,6 @@
 <div fxFlex="100" class="note" fxLayoutAlign="space-around center" fxFlex.xs="100" *ngIf="flag==true"
   (click)="reverseFlag()">
-  <mat-card class="mat-card" fxFlex="50" fxLayout="row" fxLayoutAlign="space-between center" fxFlex.xs="100">
+  <mat-card class="mat-card" fxFlex="50" fxLayout="row" fxLayoutAlign="space-between center" fxFlex.xs="50">
     <div fxFlex="65" data-text="Take a note.." class="text-area" contenteditable="true" class="maincard">
     </div>
     <div fxFlex="35" fxLayoutAlign="space-around center">
@@ -12,7 +12,7 @@
 </div>
 
 <div fxFlex="100" class="big-note"fxLayoutAlign="space-around center" *ngIf="flag==false" fxFlex.xs="100">
-  <mat-card  [style.backgroundColor]="bgColor"  fxFlex="50" fxLayout="column" fxLayoutAlign="space-between start" fxFlex.xs="100" fxFlex.sm="80">
+  <mat-card  [style.backgroundColor]="bgColor"  fxFlex="50" fxLayout="column" fxLayoutAlign="space-between start" fxFlex.xs="50" fxFlex.sm="80">
     <input class="title" type="text" [formControl]="noteTitle" placeholder="Title" >
     <div class="area">
       <textarea class="add-note" matTextareaAutosize [formControl]="noteContent" placeholder="Take a note..."></textarea>
@@ -20,7 +20,7 @@
 
     <div  class="icons"  >
       <mat-card-footer fxLayout="row"  fxLayoutAlign="space-between center">
-          <app-icon-list (messageEvent)="receiveMessage($event)"> </app-icon-list>
+          <app-icon-list (reminderEvent)="receiveReminderEvent($event) "> </app-icon-list>
           <button  mat-button (click)="addNote()"><span class="close">Close</span></button>
       </mat-card-footer>
     </div>

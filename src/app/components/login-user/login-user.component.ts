@@ -14,15 +14,12 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 export class LoginUserComponent implements OnInit {
 
   constructor
-    (
+  (
       private HttpService: HttpService,
       private router: Router,
       private snackBar: MatSnackBar,
       private spinnerService: Ng4LoadingSpinnerService
     ) { }
-
-  ngOnInit() {
-  }
 
   email = new FormControl('',
     [Validators.required, Validators.minLength(12),
@@ -37,11 +34,14 @@ export class LoginUserComponent implements OnInit {
     Validators.maxLength(25)
     ]);
 
+  ngOnInit() {
+  }
+
   errorMessageForEmail() {
     return this.email.hasError('required') ? 'Enter an email' :
       this.email.hasError('email') ? 'Invalid email' :
         // this.email.hasError('minlength') ? 'Your email name should be between 4-25 characters' :
-        // this.email.hasError('maxlength') ? 'Your email should be between 4-25 characters' : 
+        // this.email.hasError('maxlength') ? 'Your email should be between 4-25 characters' :
         '';
   }
   errorMessageForPassword() {
@@ -55,28 +55,28 @@ export class LoginUserComponent implements OnInit {
     this.spinnerService.show();
 
     try {
-      if (this.email.value == "" || this.password.value == "") throw "Any field can't be left empty"
+      if (this.email.value == '' || this.password.value == '') { throw new Error('Any field can\'t be left empty'); }
 
-      var newLogin = {
-        'email': this.email.value,
-        'password': this.password.value
-      }
-      this.HttpService.post(newLogin, "login").subscribe(
+      const newLogin = {
+        email: this.email.value,
+        password: this.password.value
+      };
+      this.HttpService.post(newLogin, 'login').subscribe(
         data => {
-          this.snackBar.open("Signed in successfully ", "", { duration: 5000 });
+          this.snackBar.open('Signed in successfully ', '', { duration: 5000 });
           this.router.navigateByUrl('/dashboard');
-          console.log(" response: ", data);
-          var response : any = {}
+          console.log(' response: ', data);
+          let response: any = {};
           response = data;
-          localStorage.setItem('userId', response.message.userId);          
+          localStorage.setItem('userId', response.message.userId);
         },
         error => {
-          this.snackBar.open("Sign in failed. check your credentials ", "", { duration: 5000 });
-          console.log("error response: ", error);
+          this.snackBar.open('Sign in failed. check your credentials ', '', { duration: 5000 });
+          console.log('error response: ', error);
         }
-      )
+      );
     } catch (err) {
-      this.snackBar.open(err, "", { duration: 3000 })
+      this.snackBar.open(err, '', { duration: 3000 });
     }
   }
 }

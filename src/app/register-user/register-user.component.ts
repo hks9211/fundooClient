@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Register } from '../../../models/registerModel'
+import { Register } from '../../../models/registerModel';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
@@ -16,10 +16,6 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 })
 export class RegisterUserComponent implements OnInit {
 
-  errorMessageForEmptyField: string = "";
-  ngOnInit() {
-  }
-
   constructor(
     private HttpService: HttpService,
     private router: Router,
@@ -27,6 +23,8 @@ export class RegisterUserComponent implements OnInit {
     private spinnerService: Ng4LoadingSpinnerService
 
   ) { }
+
+  errorMessageForEmptyField = '';
   // newUser: Register = new Register();
 
   firstName = new FormControl('',
@@ -60,10 +58,12 @@ export class RegisterUserComponent implements OnInit {
     Validators.minLength(8),
     Validators.maxLength(25)
     ]);
+  ngOnInit() {
+  }
 
 
   errorMessageForFirstName() {
-    //console.log(this.firstName.errors);
+    // console.log(this.firstName.errors);
     return this.firstName.hasError('required') ? 'Enter first Name' :
       this.firstName.hasError('pattern') ? 'First name should only have alphabets' :
         this.firstName.hasError('minlength') ? 'First name limit is 8-25 characters' :
@@ -82,7 +82,7 @@ export class RegisterUserComponent implements OnInit {
     return this.email.hasError('required') ? 'Enter an email' :
       this.email.hasError('email') ? 'Invalid email' :
         // this.email.hasError('minlength') ? 'Your email name should be between 4-25 characters' :
-        // this.email.hasError('maxlength') ? 'Your email should be between 4-25 characters' : 
+        // this.email.hasError('maxlength') ? 'Your email should be between 4-25 characters' :
         '';
   }
   errorMessageForPassword() {
@@ -104,31 +104,31 @@ export class RegisterUserComponent implements OnInit {
   registerNewUser() {
     this.spinnerService.show();
     try {
-      if (this.firstName.value == "" || this.lastName.value == "" || this.password.value == "" || this.email.value == "") throw "Any field cant be left empty"
-      if (this.confirmPassword.value != this.password.value) throw "Password and Confirm Password do not match"
+      if (this.firstName.value == '' || this.lastName.value == '' || this.password.value == '' || this.email.value == '') { throw new Error('Any field cant be left empty'); }
+      if (this.confirmPassword.value != this.password.value) { throw new Error('Password and Confirm Password do not match'); }
 
 
-      var newUser = {
-        'firstName': this.firstName.value,
-        'lastName': this.lastName.value,
-        'email': this.email.value,
-        'password': this.password.value
-      }
-      console.log("userdata = ", newUser)
+      const newUser = {
+        firstName: this.firstName.value,
+        lastName: this.lastName.value,
+        email: this.email.value,
+        password: this.password.value
+      };
+      console.log('userdata = ', newUser);
 
-      this.HttpService.post(newUser, "register").subscribe(
+      this.HttpService.post(newUser, 'register').subscribe(
         data => {
-          this.snackBar.open("Sign up completed successfully. Now verify your Email to Sign In", "", { duration: 5000 });
+          this.snackBar.open('Sign up completed successfully. Now verify your Email to Sign In', '', { duration: 5000 });
 
-          console.log(" response: ", data);
+          console.log(' response: ', data);
         },
         error => {
-          this.snackBar.open("Sign up failed. check your inputs please", "", { duration: 5000 });
-          console.log("error response: ", error);
+          this.snackBar.open('Sign up failed. check your inputs please', '', { duration: 5000 });
+          console.log('error response: ', error);
         }
-      )
+      );
     } catch (err) {
-      this.snackBar.open(err, "", { duration: 5000 });
+      this.snackBar.open(err, '', { duration: 5000 });
     }
   }
 

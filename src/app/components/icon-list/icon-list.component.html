@@ -1,28 +1,89 @@
 <!-- <div fxFlex="100" fxLayoutAlign="space-around start" fxFlex.xs="100"> -->
 
-<div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+<div fxLayout="row" fxLayoutAlign="space-between center" >
 
-  <button mat-icon-button matTooltip="Remind me" (click) = "toggleReminder()" (click) = "toShowReminder()" >
+  <!-- <button mat-icon-button matTooltip="Remind me" (click) = "toggleReminder()" (click) = "toShowReminder()" >
     <mat-icon>notification_important</mat-icon>
+  </button> --> 
+   <button mat-button [matMenuTriggerFor]="menu" >
+    <mat-icon>notifications</mat-icon>
   </button>
-  
+  <mat-menu #menu="matMenu">
+    <label>Reminder:</label>
+    <button mat-menu-item>Later Today
+      <label>8:00 PM</label>
+    </button>
 
-   <div *ngIf="reminder && showReminder">
+    <button mat-menu-item>Tomorrow
+      <label>8:00 AM</label>
+    </button>
+
+    <button mat-menu-item>Next week
+      <label>Mon, 8:00 AM</label>
+    </button>
+
+    <button mat-menu-item>Home
+      <label>Kolkata</label>
+    </button>
+
+    <button mat-menu-item>Work
+      <label>Mumbai</label>
+    </button>
+
+    <button mat-menu-item [matMenuTriggerFor]="invertebrates">
+      <mat-icon>access_time</mat-icon>Pick date & time
+    </button>
+  </mat-menu>
+
+  <mat-menu #invertebrates="matMenu">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker"  placeholder="Choose a date" [formControl]="time">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> 
+
+    <mat-form-field >
+      <input matInput [ngxTimepicker]="picker2" (click) = "addReminder()">
+      <ngx-material-timepicker #picker2></ngx-material-timepicker>
+    </mat-form-field>
+    <button mat-raised-button (click) = "addReminder()">Save</button>
+
+  </mat-menu>
+  
+  <!-- <button cdk-overlay-origin #trigger="cdkOverlayOrigin" (click)="isMenuOpen = !isMenuOpen">
+      Open menu
+    </button> -->
+    
+    <!-- <ng-template cdk-connected-overlay [origin]="trigger" [width]="500" hasBackdrop [open]="isMenuOpen"
+      (backdropClick)="isMenuOpen=false">
+      <div style="background-color: mediumpurple" >
+        This is the menu panel.
+      </div>
+    </ng-template> -->
+
+  <!-- <div *ngIf="reminder && showReminder">
     <div>set time</div>
    </div> 
 
-  <mat-menu #menu4="matMenu" class="matmenu">
-    <mat-divider></mat-divider>
+  <mat-menu #menu4="matMenu" class="matmenu"> -->
+<!-- 
+<button mat-button fxFlex="15">
+    <mat-icon>person_add</mat-icon>
+</button>
 
+<button mat-button fxFlex="15">
+    <mat-icon>color_lens</mat-icon>
+</button>
 
-
-  </mat-menu>
+<button mat-button fxFlex="15">
+    <mat-icon>insert_photo</mat-icon>
+</button> -->
 
   <button class="collaborator" matTooltip="collaborator" mat-icon-button>
     <mat-icon>person_add</mat-icon>
-  </button>
+  </button> 
 
-  <button matTooltip="change color" mat-icon-button >
+   <button matTooltip="change color" mat-icon-button>
     <mat-icon>color_lens</mat-icon>
   </button>
   <!-- <mat-menu #menu5="matMenu" class="colorsMenu" >
@@ -41,12 +102,12 @@
 
   </mat-menu> -->
 
-  <button matTooltip="add image" mat-icon-button>
+   <button matTooltip="add image" mat-icon-button>
     <mat-icon>insert_photo</mat-icon>
-  </button>
+  </button> 
 
 
-  <button mat-icon-button [matMenuTriggerFor]="menu2" matTooltip="more">
+  <button mat-icon-button [matMenuTriggerFor]="menu2" matTooltip="more" fxFlex="15">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu2="matMenu">
@@ -56,17 +117,17 @@
     <button mat-menu-item disabled>
       <span>Add drawing</span>
     </button>
-  
+
     <button mat-menu-item>
       <span>Show checkboxes</span>
     </button>
-   
+
   </mat-menu>
- 
+
   <!-- <button mat-button (click)="messageHit()" >close</button> -->
-</div> 
+</div>
 <!-- </div> -->
-<div class="reminder-menu" *ngIf="!remainder && showReminder">
+<!-- <div class="reminder-menu">
     <label>Reminder:</label>
     <button mat-menu-item>Later Today
     <label>8:00 PM</label>
@@ -92,4 +153,4 @@
               <mat-icon>access_time</mat-icon>Pick date & time
             </button>
 
-  </div>
+  </div> -->

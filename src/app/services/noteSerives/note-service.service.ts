@@ -6,13 +6,13 @@ import { HttpService } from '../http.service';
 })
 export class NoteServiceService {
 
-  constructor(private http : HttpService) { }
+  constructor(private http: HttpService) { }
 
-  postHttpRequest(data , purpose){
+  postHttpRequest(data , purpose) {
     return this.http.postRequest(data , purpose);
   }
 
-  getCards(data){
-    return this.http.postRequestt('getNotes',data);
+  getCards(data) {
+    return this.http.postRequestt('getNotes', data);
   }
 }

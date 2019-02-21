@@ -23,6 +23,17 @@
     margin-top:20px;
 }
 
+
+@media only screen and (max-width: 600px){
+
+.note{
+    margin-top:60px;
+}
+
+.big-note{
+    margin-top:60px;
+}
+}
 .title{
     border: none;
     margin-bottom: 15px;

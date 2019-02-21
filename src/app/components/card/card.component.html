@@ -1,7 +1,7 @@
-<div class = "card" fxLayout = "row wrap" fxFlex="70"  fxLayoutAlign="center center">
+<div class = "card" fxLayout = "row wrap" fxFlex="90"  fxLayoutAlign="center center">
   <div *ngFor="let item of items">
     <div fxLayoutGap="10px">
-      <mat-card class="card-content">
+      <mat-card class="card-content" >
         <div>
           <div fxFlex="88">{{item.noteTitle}}</div>
           <div fxFlex="9">
@@ -9,7 +9,7 @@
           </div>
         </div> 
       <mat-card-content fxLayout="column">
-        <div>{{item.noteContent}}</div>
+        <div class="description">{{item.noteContent}}</div>
         <mat-card-footer>
           <app-icon-list></app-icon-list>
         </mat-card-footer>

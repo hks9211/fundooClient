@@ -1,5 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { RecursiveTemplateAstVisitor } from '@angular/compiler';
+import { FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-icon-list',
@@ -9,31 +11,32 @@ import { RecursiveTemplateAstVisitor } from '@angular/compiler';
 export class IconListComponent implements OnInit {
 
   constructor() { }
-object={color:"#FFFFF"}
+  object = { color: '#FFFFF' };
 
-  ngOnInit() {
-  }
-  
-  showReminder : boolean;
-  reminder : boolean = true; 
+  message = 'Hola Mundo!';
+  isMenuOpen = false;
 
-  message: string = "Hola Mundo!"
+
+  time = new FormControl('');
+
 
   @Output() messageEvent = new EventEmitter<any>();
-
-
-  sendMessage() {
-    this.messageEvent.emit(this.message)
-  }
-  color(value){
-    this.object.color=value;
-   this.messageEvent.emit(this.object)
+  @Output() reminderEvent = new EventEmitter<any>();
+  ngOnInit() {
   }
 
-  toShowReminder(){
-    this.showReminder = !this.showReminder;
-  }
-  toggleReminder(){
-  this.reminder = !this.reminder;
+  // sendMessage() {
+  //   this.messageEvent.emit(this.message);
+  // }
+  // color(value) {
+  //   this.object.color = value;
+  //   this.messageEvent.emit(this.object);
+  // }
+
+  addReminder() {
+    const reminderData = {
+      'time': this.time
+    }
+    this.reminderEvent.emit(reminderData);
   }
 }

@@ -11,41 +11,36 @@ import { Subject } from 'rxjs';
 })
 export class CardComponent implements OnInit {
   @Input()
-  parentSubject:Subject<any>;
-  items : any = [];
+  parentSubject: Subject<any>;
+  items: any = [];
   constructor(
-    private noteServices : NoteServiceService,
-    private snackBar : MatSnackBar
+    private noteServices: NoteServiceService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
     this.getCards();
+
     this.parentSubject.subscribe(event => {
-
-console.log('event in array');
-this.items.push(event);
-
-      // called when the notifyChildren method is
-      // called in the parent component
+      this.items.push(event);
     });
   }
- 
-  getCards(){
-    var reqData = {
-      'userId': localStorage.getItem('userId')
-    }
+
+  getCards() {
+    const reqData = {
+      userId: localStorage.getItem('userId')
+    };
     this.noteServices.getCards(reqData).subscribe(
       data => {
-        this.snackBar.open("All your notes are displayed here", "", { duration: 2000 });
-        console.log(" response: ", data);
-        
+        this.snackBar.open('All your notes are displayed here', '', { duration: 2000 });
+        console.log(' response: ', data);
         this.items = data['response'];
         console.log(this.items);
       },
       error => {
-        this.snackBar.open("Unable to display notes", "", { duration: 2000 });
-        console.log("error response: ", error);
+        this.snackBar.open('Unable to display notes', '', { duration: 2000 });
+        console.log('error response: ', error);
       }
-    )
+    );
   }
 }

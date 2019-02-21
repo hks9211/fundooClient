@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {RegisterUserComponent  } from "./register-user/register-user.component";
+import {RegisterUserComponent  } from './register-user/register-user.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
@@ -11,41 +11,41 @@ import { AddnoteComponent } from './components/addnote/addnote.component';
 import { IconListComponent } from './components/icon-list/icon-list.component';
 import { CardComponent } from './components/card/card.component';
 
-const routes: Routes = [  
+const routes: Routes = [
 {
-  path:'',
+  path: '',
   redirectTo : '/login',
   pathMatch : 'full'
-}, 
+},
 {
-  path:'register',
-  component:RegisterUserComponent
+  path: 'register',
+  component: RegisterUserComponent
 },
 
 {
-  path:'emailVerificaton/:token' ,
-  component:VerifyEmailComponent
+  path: 'emailVerificaton/:token' ,
+  component: VerifyEmailComponent
 },
 {
-  path:'login',
-  component:LoginUserComponent
+  path: 'login',
+  component: LoginUserComponent
 },
 {
-  path:'forgotpassword',
-  component:ForgotPasswordComponent
+  path: 'forgotpassword',
+  component: ForgotPasswordComponent
 },
 {
-  path:'resetPassword/:token',
-  component:ResetPasswordComponent
+  path: 'resetPassword/:token',
+  component: ResetPasswordComponent
 },
 {
-  path:'dashboard',
-  component:DashboardComponent,
-  children:[
+  path: 'dashboard',
+  component: DashboardComponent,
+  children: [
 
   {
-    path:'note',
-    component:AddnoteComponent
+    path: 'note',
+    component: AddnoteComponent
   }
 
   ]
@@ -53,22 +53,22 @@ const routes: Routes = [
 },
 {
 
-  path:'note',
-  component:AddnoteComponent
+  path: 'note',
+  component: AddnoteComponent
 
 },
 
 {
- path:'icons',
- component:IconListComponent
+ path: 'icons',
+ component: IconListComponent
 },
 {
-  path:'card',
-  component:CardComponent
+  path: 'card',
+  component: CardComponent
 },
 {
-  path:'**',
-  component:InvalidUrlComponent
+  path: '**',
+  component: InvalidUrlComponent
 },
 
 

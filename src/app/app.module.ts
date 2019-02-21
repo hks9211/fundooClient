@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgModule } from '@angular/core';
 // import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -23,6 +23,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddnoteComponent } from './components/addnote/addnote.component';
 import { IconListComponent } from './components/icon-list/icon-list.component';
 import { CardComponent } from './components/card/card.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+
+
 
 
 
@@ -39,7 +42,10 @@ import { CardComponent } from './components/card/card.component';
     DashboardComponent,
     AddnoteComponent,
     IconListComponent,
-    CardComponent
+    CardComponent,
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -50,8 +56,10 @@ import { CardComponent } from './components/card/card.component';
     MatFormFieldModule,
     FlexLayoutModule,
     HttpClientModule,
-    Ng4LoadingSpinnerModule
-   
+    Ng4LoadingSpinnerModule,
+    NgxMaterialTimepickerModule.forRoot(),
+
+
 
   ],
   providers: [

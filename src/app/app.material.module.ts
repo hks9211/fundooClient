@@ -5,6 +5,8 @@ import { CdkTreeModule } from '@angular/cdk/tree';
 import { A11yModule } from '@angular/cdk/a11y';
 import { NgModule } from '@angular/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {OverlayModule} from '@angular/cdk/overlay';
+
 
 
 
@@ -49,7 +51,7 @@ import {
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout'
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   imports: [
     MatInputModule,
@@ -73,7 +75,7 @@ import { FlexLayoutModule } from '@angular/flex-layout'
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
-  
+
     MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
@@ -106,6 +108,7 @@ import { FlexLayoutModule } from '@angular/flex-layout'
     MatTooltipModule,
     MatTreeModule,
     ScrollingModule,
+    OverlayModule
 
   ],
   exports: [
@@ -162,7 +165,7 @@ import { FlexLayoutModule } from '@angular/flex-layout'
     MatTooltipModule,
     MatTreeModule,
     ScrollingModule,
-
+    OverlayModule
 
   ]
 })

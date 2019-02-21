@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HttpService {
-  private url = "http://localhost:3000/"
+  private url = 'http://localhost:3000/';
   constructor(
     private http: HttpClient
   ) { }
@@ -15,27 +15,27 @@ export class HttpService {
   }
 
   postVerifyMail(data, purpose: string) {
-    let headers = new HttpHeaders({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'token': localStorage.getItem('auth')
+      token: localStorage.getItem('auth')
     });
-    return this.http.post(this.url + purpose, data, { headers: headers })
+    return this.http.post(this.url + purpose, data, { headers });
   }
 
   postResetPassword(data, purpose: string) {
-    let headers = new HttpHeaders({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'token': localStorage.getItem('authPassword')
+      token: localStorage.getItem('authPassword')
     });
-    return this.http.post(this.url + purpose, data, { headers: headers })
+    return this.http.post(this.url + purpose, data, { headers });
   }
 
-  postRequest(data ,purpose){
-    
-    return this.http.post("http://localhost:3000/addnote" , data);
+  postRequest(data , purpose) {
+
+    return this.http.post('http://localhost:3000/addnote' , data);
   }
 
-  postRequestt(purpose , data){
+  postRequestt(purpose , data) {
     return this.http.post(this.url + purpose , data);
   }
 }
