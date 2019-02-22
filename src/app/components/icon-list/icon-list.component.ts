@@ -1,6 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { RecursiveTemplateAstVisitor } from '@angular/compiler';
 import { FormControl, Validators } from '@angular/forms';
+import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -10,8 +12,12 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class IconListComponent implements OnInit {
 
-  constructor() { }
-  object = { color: '#FFFFF' };
+  constructor(
+    private noteServices: NoteServiceService,
+    private snackBar: MatSnackBar
+
+  ) { }
+  // object = { color: '#FFFFF' };
 
   message = 'Hola Mundo!';
   isMenuOpen = false;
@@ -19,10 +25,14 @@ export class IconListComponent implements OnInit {
 
   time = new FormControl('');
 
+  @Input() childMessage: any;
 
   @Output() messageEvent = new EventEmitter<any>();
   @Output() reminderEvent = new EventEmitter<any>();
+  @Output() setColorEvent = new EventEmitter<any>();
+  @Output() updateColorEvent = new EventEmitter<any>();
   ngOnInit() {
+   
   }
 
   // sendMessage() {
@@ -32,11 +42,57 @@ export class IconListComponent implements OnInit {
   //   this.object.color = value;
   //   this.messageEvent.emit(this.object);
   // }
+  colorArray = [[
+  { 'color': 'rgb(255, 255, 255)', 'name': 'White' },
+  { 'color': 'rgb(242, 139, 130)', 'name': 'Red' },
+  { 'color': 'rgb(251, 188, 4)', 'name': 'Orange' },
+  { 'color': 'rgb(255, 244, 117)', 'name': 'Yellow' }],
+
+  [{ 'color': 'rgb(204, 255, 144)', 'name': 'Green' },
+  { 'color': 'rgb(167, 255, 235)', 'name': 'Teal' },
+  { 'color': 'rgb(203, 240, 248)', 'name': 'Blue' },
+  { 'color': 'rgb(174, 203, 250)', 'name': 'Darkblue' }],
+
+  [{ 'color': 'rgb(215, 174, 251)', 'name': 'Purple' },
+  { 'color': 'rgb(253, 207, 232)', 'name': 'Pink' },
+  { 'color': 'rgb(230, 201, 168)', 'name': 'Brown' },
+  { 'color': 'rgb(232, 234, 237)', 'name': 'Gray' }
+
+  ]]
+
 
   addReminder() {
     const reminderData = {
       'time': this.time
     }
     this.reminderEvent.emit(reminderData);
+  }
+
+  setColor(colorId) {
+    this.setColorEvent.emit(colorId);
+    console.log("set color", colorId)
+    this.updateColorEvent.emit(colorId);
+    
+    // const updateColorData = {
+    //   'noteId': this.childMessage,
+    //   'color':colorId
+    // }
+    // console.log(updateColorData);
+    // this.noteServices.updateColor(updateColorData ).subscribe(
+    //   data => {
+    //     this.snackBar.open('data updated', '', { duration: 2000 });
+    //     console.log(' response: ', data);
+    //   },
+    //   error => {
+    //     this.snackBar.open('Unable to display notes', '', { duration: 2000 });
+    //     console.log('error response: ', error);
+    //   }
+    // );
+  }
+
+  
+  printId(){
+    console.log(this.childMessage);
+    
   }
 }

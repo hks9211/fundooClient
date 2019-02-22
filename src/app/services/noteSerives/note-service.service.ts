@@ -15,4 +15,8 @@ export class NoteServiceService {
   getCards(data) {
     return this.http.postRequestt('getNotes', data);
   }
+
+  updateColor(data){
+    return this.http.postRequestt('updateColor',data);
+  }
 }

@@ -12,11 +12,13 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./addnote.component.scss']
 })
 export class AddnoteComponent implements OnInit {
-  reminderData: any;
+  reminderData: any = "";
+  setColor: '#FFFFF';
 
   constructor(private noteService: NoteServiceService ,
               private router: Router,
               private snackBar: MatSnackBar) { }
+              
   @Output() childEvent = new EventEmitter<any>();
 
   flag = true;
@@ -37,8 +39,14 @@ export class AddnoteComponent implements OnInit {
 
   receiveReminderEvent($event){
     console.log("event received")
-    this.reminderData = $event
+    this.reminderData = $event;
     console.log(this.reminderData.time)
+  }
+
+  receiveSetColorEvent($event){
+    console.log("change color event received");
+    this.setColor = $event;
+    console.log(this.setColor);
   }
 
   reverseFlag() {
@@ -55,8 +63,8 @@ export class AddnoteComponent implements OnInit {
       userId: localStorage.getItem('userId'),
       noteTitle: this.noteTitle.value,
       noteContent: this.noteContent.value,
-      reminder: '',
-      color: '',
+      reminder: this.reminderData.time,
+      color: this.setColor,
       isPined : false,
       isArchived : false,
       isDeleted : false

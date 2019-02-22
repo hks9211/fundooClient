@@ -1,20 +1,20 @@
 <div class = "card" fxLayout = "row wrap" fxFlex="90"  fxLayoutAlign="center center">
   <div *ngFor="let item of items">
-    <div fxLayoutGap="10px">
-      <mat-card class="card-content" >
+    <div >
+      <mat-card fxFlex="100" class="card-content"  [style.backgroundColor]="item.color">
         <div>
-          <div fxFlex="88">{{item.noteTitle}}</div>
-          <div fxFlex="9">
+          <div fxFlex="88" class="item-title" >{{item.noteTitle}}</div>
+          <div fxFlex="4">
             <button mat-icon-button></button>
           </div>
         </div> 
       <mat-card-content fxLayout="column">
         <div class="description">{{item.noteContent}}</div>
+      
         <mat-card-footer>
-          <app-icon-list></app-icon-list>
+          <app-icon-list (click)="openUpdatePopup(item)" (updateColorEvent)="receiveUpdateColorEvent($event)"  ></app-icon-list>
         </mat-card-footer>
         </mat-card-content>
-
       </mat-card>
     </div>
   </div>

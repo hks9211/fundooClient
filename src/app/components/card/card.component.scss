@@ -4,8 +4,9 @@
     justify-content: center;
     max-width: 250px;
     max-height: 400px;
-    box-shadow: 1px 4px 5px rgba(0,0,0,0.20);
-    border: 1px solid #dadce0;
+    border-radius: 10px;
+   
+
 
 }
 
@@ -15,4 +16,13 @@
 
 .description{
     overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.item-title{
+    letter-spacing: .00625em;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 550;
+    line-height: 1.5rem;
 }
