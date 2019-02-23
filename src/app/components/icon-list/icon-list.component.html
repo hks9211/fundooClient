@@ -103,6 +103,10 @@
     <mat-icon>insert_photo</mat-icon>
   </button> 
 
+  <button matTooltip="Archive" mat-icon-button (click)="archiveNewNote()">
+    <mat-icon>archive</mat-icon>
+  </button>
+
 
   <button mat-icon-button [matMenuTriggerFor]="menu2" matTooltip="more" fxFlex="15">
     <mat-icon>more_vert</mat-icon>
@@ -114,7 +118,8 @@
     <button mat-menu-item disabled>
       <span>Add drawing</span>
     </button>
-
+  
+    
     <button mat-menu-item>
       <span>Show checkboxes</span>
     </button>

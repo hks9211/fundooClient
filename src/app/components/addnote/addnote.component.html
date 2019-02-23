@@ -20,7 +20,7 @@
 
     <div  class="icons">
       <mat-card-footer fxLayout="row"  fxLayoutAlign="space-between center">
-          <app-icon-list (reminderEvent)="receiveReminderEvent($event)" (setColorEvent)="receiveSetColorEvent($event)"> </app-icon-list>
+          <app-icon-list (reminderEvent)="receiveReminderEvent($event)" (setColorEvent)="receiveSetColorEvent($event)" (archiveEvent)="receiveArchiveEvent($event)"> </app-icon-list>
           <button  mat-button (click)="addNote()"><span class="close">Close</span></button>
       </mat-card-footer>
     </div>

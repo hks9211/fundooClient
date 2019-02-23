@@ -13,7 +13,8 @@ import { MatSnackBar } from '@angular/material';
 })
 export class AddnoteComponent implements OnInit {
   reminderData: any = "";
-  setColor: '#FFFFF';
+  setColor = '#FFFFF';
+  isArchive: any = false;
 
   constructor(private noteService: NoteServiceService ,
               private router: Router,
@@ -49,6 +50,13 @@ export class AddnoteComponent implements OnInit {
     console.log(this.setColor);
   }
 
+  receiveArchiveEvent($event){
+    this.isArchive = $event;
+    this.snackBar.open("archived","",{duration:1000})
+
+    
+    
+  }
   reverseFlag() {
     this.flag = !this.flag;
   }
@@ -66,7 +74,7 @@ export class AddnoteComponent implements OnInit {
       reminder: this.reminderData.time,
       color: this.setColor,
       isPined : false,
-      isArchived : false,
+      isArchived : this.isArchive.isArchived,
       isDeleted : false
     };
       this.childEvent.emit(newNoteData);

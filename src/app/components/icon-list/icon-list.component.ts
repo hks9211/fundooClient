@@ -25,14 +25,15 @@ export class IconListComponent implements OnInit {
 
   time = new FormControl('');
 
-  @Input() childMessage: any;
+  @Input() childMessage: any = "";
 
   @Output() messageEvent = new EventEmitter<any>();
   @Output() reminderEvent = new EventEmitter<any>();
   @Output() setColorEvent = new EventEmitter<any>();
   @Output() updateColorEvent = new EventEmitter<any>();
+  @Output() archiveEvent = new EventEmitter<any>();
   ngOnInit() {
-   
+
   }
 
   // sendMessage() {
@@ -43,10 +44,10 @@ export class IconListComponent implements OnInit {
   //   this.messageEvent.emit(this.object);
   // }
   colorArray = [[
-  { 'color': 'rgb(255, 255, 255)', 'name': 'White' },
-  { 'color': 'rgb(242, 139, 130)', 'name': 'Red' },
-  { 'color': 'rgb(251, 188, 4)', 'name': 'Orange' },
-  { 'color': 'rgb(255, 244, 117)', 'name': 'Yellow' }],
+    { 'color': 'rgb(255, 255, 255)', 'name': 'White' },
+    { 'color': 'rgb(242, 139, 130)', 'name': 'Red' },
+    { 'color': 'rgb(251, 188, 4)', 'name': 'Orange' },
+    { 'color': 'rgb(255, 244, 117)', 'name': 'Yellow' }],
 
   [{ 'color': 'rgb(204, 255, 144)', 'name': 'Green' },
   { 'color': 'rgb(167, 255, 235)', 'name': 'Teal' },
@@ -68,31 +69,41 @@ export class IconListComponent implements OnInit {
     this.reminderEvent.emit(reminderData);
   }
 
+  archiveNewNote() {
+    const archiveData = {
+      'isArchived': true
+    }
+    this.archiveEvent.emit(archiveData);
+  }
+
   setColor(colorId) {
     this.setColorEvent.emit(colorId);
     console.log("set color", colorId)
-    this.updateColorEvent.emit(colorId);
-    
-    // const updateColorData = {
-    //   'noteId': this.childMessage,
-    //   'color':colorId
-    // }
-    // console.log(updateColorData);
-    // this.noteServices.updateColor(updateColorData ).subscribe(
-    //   data => {
-    //     this.snackBar.open('data updated', '', { duration: 2000 });
-    //     console.log(' response: ', data);
-    //   },
-    //   error => {
-    //     this.snackBar.open('Unable to display notes', '', { duration: 2000 });
-    //     console.log('error response: ', error);
-    //   }
-    // );
+
+    if (this.childMessage != "") {
+      const updateColorData = {
+        'noteId': this.childMessage,
+        'color': colorId
+      }
+      console.log(updateColorData);
+      this.noteServices.updateColor(updateColorData).subscribe(
+        data => {
+          console.log(' response: ', data);
+          this.updateColorEvent.emit(colorId);
+        },
+        error => {
+          console.log('error response: ', error);
+        }
+      );
+    } else {
+      console.log("not an update request");
+
+    }
   }
 
-  
-  printId(){
+
+  printId() {
     console.log(this.childMessage);
-    
+
   }
 }
