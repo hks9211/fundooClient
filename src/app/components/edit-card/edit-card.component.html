@@ -1,0 +1,14 @@
+<div class ="edit-card" [style.backgroundColor]="data.color" fxFlex="100"  fxLayout="column"  >
+  <div class="note-title" fxFlex="90"  >
+     <textarea class="note-title-area" spellcheck="false" placeholder="Title" matTextareaAutosize [formControl]="noteTitle"></textarea>
+  </div>
+  <div class="area" fxFlex="90">
+    <textarea class="note-content-area" spellcheck="false" matTextareaAutosize [formControl]="noteContent" placeholder="Take a note..."></textarea>
+  </div>
+  <div fxFlex="50" fxLayout="row" fxLayoutAlign="space-between center">
+        <app-icon-list (changeColorForEditCard)="receiveChangeColorEvent($event)"></app-icon-list>
+      <button  mat-button  mat-dialog-close (click)="save()"><span class="close-button">Close</span></button>
+
+  </div>
+
+</div>

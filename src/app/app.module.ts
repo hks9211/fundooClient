@@ -24,6 +24,8 @@ import { AddnoteComponent } from './components/addnote/addnote.component';
 import { IconListComponent } from './components/icon-list/icon-list.component';
 import { CardComponent } from './components/card/card.component';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { EditCardComponent } from './components/edit-card/edit-card.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 
 
 
@@ -43,6 +45,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     AddnoteComponent,
     IconListComponent,
     CardComponent,
+    EditCardComponent,
 
 
 
@@ -64,6 +67,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
   ],
   providers: [
     HttpService,
+
   ],
   bootstrap: [AppComponent]
 })

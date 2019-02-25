@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { Subject } from 'rxjs';
+import { EditCardComponent } from '../edit-card/edit-card.component';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -17,7 +19,8 @@ export class CardComponent implements OnInit {
   updateColor: any;
   constructor(
     private noteServices: NoteServiceService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -27,14 +30,14 @@ export class CardComponent implements OnInit {
     });
   }
 
-  receiveUpdateColorEvent($event){
+  receiveUpdateColorEvent($event) {
     this.updateColor = $event;
-    console.log("update color on card",this.updateColor);
+    console.log("update color on card", this.updateColor);
     this.getCards();
-  } 
-  openUpdatePopup(item){
+  }
+  openUpdatePopup(item) {
     this.noteId = item._id;
-    console.log("note Id",this.noteId)
+    console.log("note Id", this.noteId)
   }
 
   // updateNoteColor(){
@@ -43,7 +46,7 @@ export class CardComponent implements OnInit {
   //     'color':this.updateColor
   //   }
 
-  
+
   //   console.log(updateColorData);
   //   this.noteServices.updateColor(updateColorData ).subscribe(
   //     data => {
@@ -58,8 +61,8 @@ export class CardComponent implements OnInit {
   //   );
   // }
   getCards() {
-    console.log("note id:",this.noteId);
-      
+    console.log("note id:", this.noteId);
+
     const reqData = {
       userId: localStorage.getItem('userId')
     };
@@ -72,5 +75,28 @@ export class CardComponent implements OnInit {
         console.log('error response: ', error);
       }
     );
-    }
+  }
+
+  editCard(item) {
+    const dialogRef = this.dialog.open(EditCardComponent, {
+      data: item
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('dialog updated content :', result, '\n updated data', item);
+      this.noteServices.postUpdateNote(item).subscribe(
+        data => {
+        this.snackBar.open('Your note has been update successfully', '', { duration: 2000 });
+
+        console.log(' response: ', data);
+      },
+      error => {
+        this.snackBar.open('Note not updated', '', { duration: 2000 });
+        console.log('error response: ', error);
+      }
+      )
+    })
+
+  }
+
+
 }

@@ -1,7 +1,6 @@
 .example-container {
     display: flex;
     flex-direction: column;
-    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
@@ -16,28 +15,28 @@
 
   }
   
-  h1.example-app-name {
-    margin-left: 8px;
-  }
+  // h1.example-app-name {
+  //   margin-left: 8px;
+  // }
   
-  .sidenav-container {
-    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
-    flex: 1;
+  // .sidenav-container {
+  //   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+  //      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  //   flex: 1;
     
-  }
+  // }
   
-  .example-is-mobile .sidenav-container {
-    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-       `<body>` to be our scrolling element for mobile layouts. */
-    flex: 1 0 auto;
-    width:1000px;
-  }
+  // .example-is-mobile .sidenav-container {
+  //   /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+  //      `<body>` to be our scrolling element for mobile layouts. */
+  //   flex: 1 0 auto;
+  //   width:1000px;
+  // }
 
-  .sidenav{
-    width: 300px;
+  // .sidenav{
+  //   width: 300px;
 
-  }
+  // }
 
 
   :host /deep/ .mat-form-field-appearance-outline .mat-form-field-outline {
@@ -78,3 +77,65 @@
     vertical-align: middle;
     opacity: .54;
 }
+
+
+
+.sideNavList {
+  width: 270px;
+  height: 98.6%;
+  background-color: #ffffff;
+  }
+  
+  .sideNavListItems,
+  .sideNavlistItemsColored {
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;  
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  width: 270px;
+  font-size: .875rem;
+  padding: 8px;
+  background-color: #ffffff;
+  align-items: baseline;
+  text-align: left;
+  font-weight: 550;
+  letter-spacing: .01785714em;
+
+  }
+  
+  .sideNavlistItemsColored {
+  background-color: #feefc3 !important;
+  color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .sideNavListItems .mat-icon,
+  .sideNavlistItemsColored .mat-icon {
+  padding-left: 10px;
+  padding-right: 30px;
+  }
+  
+  .sideNavListItems:hover {
+  background-color: #e6e6e6;
+  }
+  
+  .sidenavContent {
+  background-color: rgb(255, 255, 255); // max-width: 600px;
+  max-width: -webkit-fill-available;
+  margin-left: 200px;
+  }
+  
+  .label-name{
+    color: #5f6368;
+    cursor: default;
+    letter-spacing: .07272727em;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: .6875rem;
+    font-weight: 550;
+    line-height: 1rem;
+    text-transform: uppercase;
+    padding: 15px 24px 99px;
+    margin-top: 20px;
+  }
+
+  .label-example{
+    margin-top: 10px;
+  }

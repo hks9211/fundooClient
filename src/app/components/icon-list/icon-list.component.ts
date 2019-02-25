@@ -32,6 +32,7 @@ export class IconListComponent implements OnInit {
   @Output() setColorEvent = new EventEmitter<any>();
   @Output() updateColorEvent = new EventEmitter<any>();
   @Output() archiveEvent = new EventEmitter<any>();
+  @Output() changeColorForEditCard = new EventEmitter<any>();
   ngOnInit() {
 
   }
@@ -78,7 +79,7 @@ export class IconListComponent implements OnInit {
 
   setColor(colorId) {
     this.setColorEvent.emit(colorId);
-    console.log("set color", colorId)
+    this.changeColorForEditCard.emit(colorId);
 
     if (this.childMessage != "") {
       const updateColorData = {

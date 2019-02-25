@@ -1,5 +1,5 @@
 <!-- <ng4-loading-spinner [threshold]="0000" [timeout]="1000" -->
-  <!-- [loadingText]="'Please wait... while we are loading your dashboard..'" [zIndex]="9999"></ng4-loading-spinner> -->
+<!-- [loadingText]="'Please wait... while we are loading your dashboard..'" [zIndex]="9999"></ng4-loading-spinner> -->
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" fxFlex="100" fxFlex.xs="100">
 
   <mat-toolbar class="example-toolbar" fxFlex.xs="100">
@@ -59,13 +59,80 @@
     </div>
   </mat-toolbar>
   <mat-divider></mat-divider>
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav class="sidenav" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+
+  <mat-sidenav-container class="sidenavBar">
+    <mat-sidenav #snav mode="side"  class="sideNav" >
+      <mat-nav-list class="sideNavList">
+        <div>
+          <button mat-button  (click)="headerName='Fundoo Notes'"
+            [ngClass]="{'sideNavListItems': headerName!='Fundoo Notes', 'sideNavlistItemsColored': headerName=='Fundoo Notes'}">
+            <mat-icon>lightbulb_outline</mat-icon> Notes
+          </button>
+        </div>
+
+        <div>
+          <button mat-button (click)="headerName='Reminders'"
+            [ngClass]="{'sideNavListItems': headerName!='Reminders', 'sideNavlistItemsColored': headerName=='Reminders'}">
+            <mat-icon>notifications_none</mat-icon> Reminders
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+        <div>
+          <label class="label-example"><span class="label-name">LABELS</span></label>
+
+          <button class="sideNavListItems" mat-button (click)="openModal(mytemplate)">
+            <mat-icon>edit</mat-icon>Edit Labels
+          </button>
+
+          <ng-template #mytemplate>
+            <div>
+
+              <h3>Edit Label</h3>
+              <div>
+
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <input matInput type="text" placeholder="add label" [(ngModel)]="value">
+                  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                    <mat-icon [style.fontSize.px]=15> close</mat-icon>
+                  </button>
+                </div>
+                <div fxLayoutAlign="end">
+                  <button mat-button>close</button></div>
+              </div>
+
+
+            </div>
+          </ng-template>
+        </div>
+        <mat-divider></mat-divider>
+        <div>
+          <button mat-button (click)="headerName='Archive'"
+            [ngClass]="{'sideNavListItems': headerName!='Archive', 'sideNavlistItemsColored': headerName=='Archive'}">
+            <mat-icon>archive</mat-icon> Archive
+          </button>
+        </div>
+
+        <div>
+          <button mat-button (click)="headerName='Trash'"
+            [ngClass]="{'sideNavListItems': headerName!='Trash', 'sideNavlistItemsColored': headerName=='Trash'}">
+            <mat-icon>delete</mat-icon> Trash
+          </button>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="sideNavContent">
+
+      <app-addnote (childEvent)="addNote($event)"></app-addnote>
+
+      <app-card [parentSubject]="parentSubject"></app-card>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!-- <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sideNavList" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches">
-      <mat-nav-list>
-        <!-- <mat-list-item>
-          <mat-icon>lightbulb_outline</mat-icon>Notes
-        </mat-list-item> -->
+      <mat-nav-list  class="sideNavList">
+      
         <div>
           <button mat-button fxLayout="column" fxLayoutAlign="start stretch">
             <mat-icon>lightbulb_outline</mat-icon>
@@ -78,9 +145,7 @@
             Reminders
           </button>
         </div>
-        <!-- <mat-list-item>
-          <mat-icon>notifications_none</mat-icon>Reminders
-        </mat-list-item> -->
+   
         <mat-divider></mat-divider>
         <span>LABELS</span>
         <div>
@@ -89,9 +154,7 @@
             Edit labels
           </button>
         </div>
-        <!-- <mat-list-item>
-          <mat-icon>create</mat-icon>Edit labels
-        </mat-list-item> -->
+
         <mat-divider></mat-divider>
         <div>
           <button mat-button>
@@ -99,24 +162,201 @@
             Archive
           </button>
         </div>
-        <!-- <mat-list-item>
-          <mat-icon>archive</mat-icon>Archive
-        </mat-list-item> -->
+  
         <div>
           <button mat-button>
             <mat-icon>delete_outline</mat-icon>
             Trash
           </button>
         </div>
-        <!-- <mat-list-item>
-          <mat-icon>delete_outline</mat-icon>Trash
-        </mat-list-item> -->
+     
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="sideNavContent">
       <app-addnote (childEvent)="addNote($event)"></app-addnote>
 
       <app-card [parentSubject]="parentSubject"></app-card>
     </mat-sidenav-content>
-  </mat-sidenav-container>
-</div>
+  </mat-sidenav-container> -->
+
+
+
+
+
+  <!-- <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sideNavList" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches">
+      <mat-nav-list  class="sideNavList">
+      
+        <div>
+          <button mat-button fxLayout="column" fxLayoutAlign="start stretch">
+            <mat-icon>lightbulb_outline</mat-icon>
+            Notes
+          </button>
+        </div>
+        <div>
+          <button mat-button>
+            <mat-icon>notifications_none</mat-icon>
+            Reminders
+          </button>
+        </div>
+   
+        <mat-divider></mat-divider>
+        <span>LABELS</span>
+        <div>
+          <button mat-button>
+            <mat-icon>create</mat-icon>
+            Edit labels
+          </button>
+        </div>
+
+        <mat-divider></mat-divider>
+        <div>
+          <button mat-button>
+            <mat-icon>archive</mat-icon>
+            Archive
+          </button>
+        </div>
+  
+        <div>
+          <button mat-button>
+            <mat-icon>delete_outline</mat-icon>
+            Trash
+          </button>
+        </div>
+     
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="sideNavContent">
+      <app-addnote (childEvent)="addNote($event)"></app-addnote>
+
+      <app-card [parentSubject]="parentSubject"></app-card>
+    </mat-sidenav-content>
+  </mat-sidenav-container> -->
+
+
+  <!-- <mat-sidenav-container class="sidenavBar">
+          <mat-sidenav #sidenav mode="side" opened="true" style="min-width:50px;" class="sideNav">
+            <mat-nav-list class="sideNavList">       
+              <div>
+                <button mat-button  [routerLink]="['addNote']" (click)="headerName='Fundoo Notes'" [ngClass]="{'sideNavListItems': headerName!='Fundoo Notes', 'sideNavlistItemsColored': headerName=='Fundoo Notes'}">
+                  <mat-icon>lightbulb_outline</mat-icon> Notes
+                </button>
+              </div>
+        
+              <div>
+                <button mat-button  (click)="headerName='Reminders'" [ngClass]="{'sideNavListItems': headerName!='Reminders', 'sideNavlistItemsColored': headerName=='Reminders'}">
+                  <mat-icon>notifications_none</mat-icon> Reminders
+                </button>
+              </div>
+              <mat-divider></mat-divider>
+              <div>
+                <mat-label class="label-example" [style.fontSize.px]=16>Labels</mat-label>
+             
+                <button class="sideNavListItems" mat-button (click)="openModal(mytemplate)"> <mat-icon>edit</mat-icon>Edit Labels</button>
+
+    <ng-template #mytemplate>
+        <div>
+
+            <h3>Edit Label</h3>
+          <div>
+            
+              <div fxLayout="row" fxLayoutAlign="space-between center" >
+              <input matInput type="text" placeholder="add label" [(ngModel)]="value">
+              <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon [style.fontSize.px]=15> close</mat-icon>
+              </button>
+          </div>
+          <div fxLayoutAlign="end" >
+          <button mat-button>close</button></div>
+          </div>
+          
+          
+          </div>
+    </ng-template>
+              </div>
+              <mat-divider></mat-divider>
+              <div>
+                <button mat-button  (click)="headerName='Archive'" [ngClass]="{'sideNavListItems': headerName!='Archive', 'sideNavlistItemsColored': headerName=='Archive'}">
+                  <mat-icon>archive</mat-icon> Archive
+                </button>
+              </div>
+        
+              <div>
+                <button mat-button  (click)="headerName='Trash'" [ngClass]="{'sideNavListItems': headerName!='Trash', 'sideNavlistItemsColored': headerName=='Trash'}">
+                  <mat-icon>delete</mat-icon> Trash
+                </button>
+              </div>     
+            </mat-nav-list>  
+          </mat-sidenav> 
+          <mat-sidenav-content class="sideNavContent">
+          
+            <router-outlet></router-outlet>
+            
+        </mat-sidenav-content> 
+        </mat-sidenav-container> -->
+
+
+
+  <!-- <mat-sidenav-container class="sidenavBar">
+            <mat-sidenav #sidenav mode="side" opened="true" style="min-width:50px;" class="sideNav">
+              <mat-nav-list class="sideNavList">       
+                <div>
+                  <button mat-button  [routerLink]="['addNote']" (click)="headerName='Fundoo Notes'" [ngClass]="{'sideNavListItems': headerName!='Fundoo Notes', 'sideNavlistItemsColored': headerName=='Fundoo Notes'}">
+                    <mat-icon>lightbulb_outline</mat-icon> Notes
+                  </button>
+                </div>
+          
+                <div>
+                  <button mat-button  (click)="headerName='Reminders'" [ngClass]="{'sideNavListItems': headerName!='Reminders', 'sideNavlistItemsColored': headerName=='Reminders'}">
+                    <mat-icon>notifications_none</mat-icon> Reminders
+                  </button>
+                </div>
+                <mat-divider></mat-divider>
+                <div>
+                  <mat-label class="label-example" [style.fontSize.px]=16>Labels</mat-label>
+                  
+                  <button class="sideNavListItems" mat-button (click)="openModal(mytemplate)"> <mat-icon>edit</mat-icon>Edit Labels</button>
+  
+      <ng-template #mytemplate>
+          <div>
+  
+              <h3>Edit Label</h3>
+            <div>
+              
+                <div fxLayout="row" fxLayoutAlign="space-between center" >
+                <input matInput type="text" placeholder="add label" [(ngModel)]="value">
+                <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                  <mat-icon [style.fontSize.px]=15> close</mat-icon>
+                </button>
+            </div>
+            <div fxLayoutAlign="end" >
+            <button mat-button>close</button></div>
+            </div>
+            
+            
+            </div>
+      </ng-template>
+                </div>
+                <mat-divider></mat-divider>
+                <div>
+                  <button mat-button  (click)="headerName='Archive'" [ngClass]="{'sideNavListItems': headerName!='Archive', 'sideNavlistItemsColored': headerName=='Archive'}">
+                    <mat-icon>archive</mat-icon> Archive
+                  </button>
+                </div>
+          
+                <div>
+                  <button mat-button  (click)="headerName='Trash'" [ngClass]="{'sideNavListItems': headerName!='Trash', 'sideNavlistItemsColored': headerName=='Trash'}">
+                    <mat-icon>delete</mat-icon> Trash
+                  </button>
+                </div>     
+              </mat-nav-list>  
+            </mat-sidenav> 
+            <mat-sidenav-content class="sideNavContent">
+            
+<app-addnote (childEvent)="addNote($event)"></app-addnote>
+
+      <app-card [parentSubject]="parentSubject"></app-card>              
+          </mat-sidenav-content> 
+          </mat-sidenav-container>
+          -->

@@ -10,6 +10,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddnoteComponent } from './components/addnote/addnote.component';
 import { IconListComponent } from './components/icon-list/icon-list.component';
 import { CardComponent } from './components/card/card.component';
+import { EditCardComponent } from './components/edit-card/edit-card.component';
 
 const routes: Routes = [
 {
@@ -52,19 +53,8 @@ const routes: Routes = [
 
 },
 {
-
-  path: 'note',
-  component: AddnoteComponent
-
-},
-
-{
- path: 'icons',
- component: IconListComponent
-},
-{
-  path: 'card',
-  component: CardComponent
+  path:'edit',
+  component:EditCardComponent
 },
 {
   path: '**',
