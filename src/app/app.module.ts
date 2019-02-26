@@ -26,6 +26,7 @@ import { CardComponent } from './components/card/card.component';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { EditCardComponent } from './components/edit-card/edit-card.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
+import { TrashComponent } from './components/trash/trash.component';
 
 
 
@@ -46,6 +47,7 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
     IconListComponent,
     CardComponent,
     EditCardComponent,
+    TrashComponent,
 
 
 

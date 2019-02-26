@@ -15,7 +15,8 @@
             <img src="../../../assets/new.png" style="height: 37px ; margin-top: 10px">
           </div>
           <div fxFlex="50" fxHide.sm='true' fxFlex.xs='true'>
-            <span class="app-title">FundooNotes</span>
+              <span class="app-title" *ngIf="headerName == null">fundooNotes</span>
+            <span class="app-title">{{headerName}}</span>
 
           </div>
         </div>
@@ -63,9 +64,10 @@
   <mat-sidenav-container class="sidenavBar">
     <mat-sidenav #snav mode="side"  class="sideNav" >
       <mat-nav-list class="sideNavList">
+        <div class="top-sidenav-content">
         <div>
-          <button mat-button  (click)="headerName='Fundoo Notes'"
-            [ngClass]="{'sideNavListItems': headerName!='Fundoo Notes', 'sideNavlistItemsColored': headerName=='Fundoo Notes'}">
+          <button mat-button  (click)="headerName='fundooNotes'"
+            [ngClass]="{'sideNavListItems': headerName!='fundooNotes', 'sideNavlistItemsColored': headerName=='fundooNotes'}">
             <mat-icon>lightbulb_outline</mat-icon> Notes
           </button>
         </div>
@@ -76,17 +78,18 @@
             <mat-icon>notifications_none</mat-icon> Reminders
           </button>
         </div>
+      </div>
         <mat-divider></mat-divider>
-        <div>
-          <label class="label-example"><span class="label-name">LABELS</span></label>
-
+        <div class="label-content">
+          <div class="label-example"> 
+          <label ><span class="label-name">LABELS</span></label>
+        </div> 
           <button class="sideNavListItems" mat-button (click)="openModal(mytemplate)">
             <mat-icon>edit</mat-icon>Edit Labels
           </button>
 
           <ng-template #mytemplate>
             <div>
-
               <h3>Edit Label</h3>
               <div>
 

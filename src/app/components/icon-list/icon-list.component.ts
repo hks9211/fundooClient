@@ -21,11 +21,13 @@ export class IconListComponent implements OnInit {
 
   message = 'Hola Mundo!';
   isMenuOpen = false;
+  open = false;
 
 
   time = new FormControl('');
 
   @Input() childMessage: any = "";
+  @Input() noteIdForChild: any = "";
 
   @Output() messageEvent = new EventEmitter<any>();
   @Output() reminderEvent = new EventEmitter<any>();
@@ -33,6 +35,10 @@ export class IconListComponent implements OnInit {
   @Output() updateColorEvent = new EventEmitter<any>();
   @Output() archiveEvent = new EventEmitter<any>();
   @Output() changeColorForEditCard = new EventEmitter<any>();
+  @Output() sendDeletedNoteToTrashEvent = new EventEmitter<any>();
+  @Output() sendDeletedNoteInfoEvent = new EventEmitter<any>();
+  @Output() archiveFromCardEvent = new EventEmitter<any>();
+  @Output() archiveFromCard = new EventEmitter<any>();
   ngOnInit() {
 
   }
@@ -75,6 +81,9 @@ export class IconListComponent implements OnInit {
       'isArchived': true
     }
     this.archiveEvent.emit(archiveData);
+     this.archiveFromCardEvent.emit(archiveData);
+     this.archiveFromCard.emit(archiveData);
+     
   }
 
   setColor(colorId) {
@@ -102,9 +111,33 @@ export class IconListComponent implements OnInit {
     }
   }
 
+  deleteNote(){
+   var updateTrash = {};
 
-  printId() {
-    console.log(this.childMessage);
-
+    if(this.childMessage == ""){
+      console.log("inside")
+       updateTrash = {
+        '_id': this.noteIdForChild,
+        'isDeleted':true
+      }
+    }else{
+     updateTrash = {
+      '_id': this.childMessage,
+      'isDeleted':true
+    }
+  }
+    
+    this.noteServices.postUpdateNote(updateTrash).subscribe(
+      data => {
+        console.log(' response: ', data);
+        this.snackBar.open("Note Deleted","",{duration:1000});
+        this.sendDeletedNoteToTrashEvent.emit("done");
+        this.sendDeletedNoteInfoEvent.emit("done");
+      },
+      error => {
+        console.log('error response: ', error);
+        this.snackBar.open("Note not Deleted","",{duration:1000})
+      }
+    );
   }
 }

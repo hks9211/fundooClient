@@ -1,9 +1,9 @@
-<div fxFlex="100" class="note" fxLayoutAlign="space-around center" fxFlex.xs="100" *ngIf="flag==true"
+<div fxFlex="100" class="note" fxLayoutAlign="space-around start" fxFlex.xs="100" *ngIf="flag==true"
   (click)="reverseFlag()">
-  <mat-card class="mat-card" fxFlex="50" fxLayout="row" fxLayoutAlign="space-between center" fxFlex.xs="50">
+  <mat-card class="mat-card" fxFlex="50" fxLayout="row" fxLayoutAlign="space-between start" fxFlex.xs="50">
     <div fxFlex="65" data-text="Take a note.." class="text-area" contenteditable="true" class="maincard">
     </div>
-    <div fxFlex="35" fxLayoutAlign="space-around center">
+    <div fxFlex="35" fxLayoutAlign="space-around start">
       <mat-icon class="check-box" matTooltip="New List">check_box</mat-icon>
       <mat-icon class="brush" matTooltip="New note with drawing">brush</mat-icon>
       <mat-icon class="photo" matTooltip="New note with image">insert_photo</mat-icon>
@@ -11,7 +11,7 @@
   </mat-card>
 </div>
 
-<div fxFlex="100" class="big-note"fxLayoutAlign="space-around center" *ngIf="flag==false" fxFlex.xs="100">
+<div fxFlex="100" class="big-note"fxLayoutAlign="space-around start" *ngIf="flag==false" fxFlex.xs="100">
   <mat-card  [style.backgroundColor]="setColor"  fxFlex="50" fxLayout="column" fxLayoutAlign="space-between start" fxFlex.xs="50" fxFlex.sm="80">
     <input class="title" type="text" [formControl]="noteTitle" placeholder="Title" >
     <div class="area">
@@ -25,7 +25,6 @@
       </mat-card-footer>
     </div>
   </mat-card>
-
 </div>
 
 

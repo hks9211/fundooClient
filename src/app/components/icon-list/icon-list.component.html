@@ -1,6 +1,6 @@
 <!-- <div fxFlex="100" fxLayoutAlign="space-around start" fxFlex.xs="100"> -->
 
-<div fxLayout="row" fxLayoutAlign="space-between center" >
+<div class="icon-list" fxLayout="row" fxLayoutAlign="space-between center">
 
   <!-- <button mat-icon-button matTooltip="Remind me" (click) = "toggleReminder()" (click) = "toShowReminder()" >
     <mat-icon>notification_important</mat-icon>
@@ -90,8 +90,8 @@
      <ng-template matMenuContent>
        <div class="buttons">
          <div fxLayout="row" fxLayoutGap="10px" *ngFor="let colors of colorArray">
-           <div *ngFor="let color of colors">
-            <button class="colors" [ngStyle]="{'background-color': color.color}" matTooltip="{{color.name}}" (click)="setColor(color.color)"  mat-mini-fab>
+           <div *ngFor="let color of colors" class="color-buttons">
+            <button class="colors" [ngStyle]="{'background-color': color.color}" matTooltip="{{color.name}}" (click)="setColor(color.color)" >
             </button>
            </div>
          </div>
@@ -112,6 +112,9 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu2="matMenu">
+      <button mat-menu-item  (click)="deleteNote()">
+          <span>Delete note</span>
+        </button>
     <button mat-menu-item>
       <span>Add label</span>
     </button>

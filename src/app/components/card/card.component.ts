@@ -3,7 +3,6 @@ import { NoteServiceService } from 'src/app/services/noteSerives/note-service.se
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { Subject } from 'rxjs';
 import { EditCardComponent } from '../edit-card/edit-card.component';
-import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -40,6 +39,14 @@ export class CardComponent implements OnInit {
     console.log("note Id", this.noteId)
   }
 
+  receiveDeletedNoteToTrashEvent($event) {
+    console.log("delete note event received", $event);
+    this.getCards();
+  }
+
+  receiveArchiveFromCard($event) {
+
+  }
   // updateNoteColor(){
   //     const updateColorData = {
   //     'noteId': this.noteId,
@@ -61,18 +68,16 @@ export class CardComponent implements OnInit {
   //   );
   // }
   getCards() {
-    console.log("note id:", this.noteId);
-
     const reqData = {
       userId: localStorage.getItem('userId')
     };
     this.noteServices.getCards(reqData).subscribe(
       data => {
         this.items = data['response'];
-        console.log(this.items);
       },
       error => {
-        console.log('error response: ', error);
+        this.snackBar.open("error occured while loading cards","",{duration:2000});
+        console.log("error while loading cards",error);
       }
     );
   }
@@ -85,18 +90,13 @@ export class CardComponent implements OnInit {
       console.log('dialog updated content :', result, '\n updated data', item);
       this.noteServices.postUpdateNote(item).subscribe(
         data => {
-        this.snackBar.open('Your note has been update successfully', '', { duration: 2000 });
-
-        console.log(' response: ', data);
-      },
-      error => {
-        this.snackBar.open('Note not updated', '', { duration: 2000 });
-        console.log('error response: ', error);
-      }
+          this.getCards();
+        },
+        error => {
+          this.snackBar.open('Note not updated', '', { duration: 2000 });
+          console.log('error response: ', error);
+        }
       )
     })
-
   }
-
-
 }

@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
 import { MatSnackBar } from '@angular/material';
-
+import { CardComponent } from '../card/card.component'
 @Component({
   selector: 'app-addnote',
   templateUrl: './addnote.component.html',
@@ -18,7 +18,8 @@ export class AddnoteComponent implements OnInit {
 
   constructor(private noteService: NoteServiceService ,
               private router: Router,
-              private snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar,
+              ) { }
               
   @Output() childEvent = new EventEmitter<any>();
 
@@ -81,8 +82,6 @@ export class AddnoteComponent implements OnInit {
       this.noteService.postHttpRequest(newNoteData , 'addNote').subscribe(
       data => {
         this.snackBar.open('Your note has been saved successfully', '', { duration: 2000 });
-
-        console.log(' response: ', data);
       },
       error => {
         this.snackBar.open('Note not saved', '', { duration: 2000 });

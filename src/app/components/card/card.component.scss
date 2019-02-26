@@ -24,3 +24,14 @@
     line-height: 1.5rem;
 }
 
+.matCardFooterIcons{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.2s linear;
+}
+
+.card-content:hover .matCardFooterIcons {
+    visibility: visible;
+    opacity: 1;
+    // background-color: black;
+}

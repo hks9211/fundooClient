@@ -35,3 +35,30 @@
 .reminder-menu{
   position: relative;
 }
+
+:host /deep/ .mat-tooltip {
+    /* your own custom styles here */ 
+    /* e.g. */
+    color: yellow;
+}
+
+.colors{
+    border-radius: 50px;
+    height: 28px;
+    width: 28px;
+    border: lightgrey solid 1px;
+}
+
+.color-buttons{
+    padding: 2px;
+}
+
+// .icon-list {
+//     visibility: hidden;
+//     opacity: 0;
+// }
+
+// .icon-list:hover {
+//     visibility: visible;
+//         opacity: 1;
+// }
