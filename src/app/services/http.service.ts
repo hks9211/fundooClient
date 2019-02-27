@@ -31,11 +31,15 @@ export class HttpService {
   }
 
   postRequest(data , purpose) {
-
     return this.http.post('http://localhost:3000/addnote' , data);
   }
 
   postRequestt(purpose , data) {
     return this.http.post(this.url + purpose , data);
+  }
+
+  get(purpose){
+    var userId = localStorage.getItem('userId');
+    return this.http.get(this.url + purpose+ "/" + userId);
   }
 }

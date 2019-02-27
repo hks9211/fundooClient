@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
 import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
 import { MatSnackBar } from '@angular/material';
 import { CardComponent } from '../card/card.component'
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-addnote',
   templateUrl: './addnote.component.html',
@@ -22,6 +23,8 @@ export class AddnoteComponent implements OnInit {
               ) { }
               
   @Output() childEvent = new EventEmitter<any>();
+  parentSubject: Subject<any> = new Subject();
+
 
   flag = true;
   bgColor = '#FFFFF';
@@ -78,7 +81,9 @@ export class AddnoteComponent implements OnInit {
       isArchived : this.isArchive.isArchived,
       isDeleted : false
     };
-      this.childEvent.emit(newNoteData);
+      // this.childEvent.emit(newNoteData);
+      this.parentSubject.next(newNoteData);
+
       this.noteService.postHttpRequest(newNoteData , 'addNote').subscribe(
       data => {
         this.snackBar.open('Your note has been saved successfully', '', { duration: 2000 });

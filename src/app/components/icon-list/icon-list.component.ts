@@ -95,7 +95,6 @@ export class IconListComponent implements OnInit {
         'noteId': this.childMessage,
         'color': colorId
       }
-      console.log(updateColorData);
       this.noteServices.updateColor(updateColorData).subscribe(
         data => {
           console.log(' response: ', data);

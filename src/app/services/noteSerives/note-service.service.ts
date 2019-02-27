@@ -23,4 +23,12 @@ export class NoteServiceService {
   postUpdateNote(data){
     return this.http.postRequestt('updateNote',data);
   }
+
+  getArchives(){
+    return this.http.get('getArchives');
+  }
+
+  getTrash(){
+    return this.http.get('getTrash');
+  }
 }

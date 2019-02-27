@@ -66,7 +66,7 @@
       <mat-nav-list class="sideNavList">
         <div class="top-sidenav-content">
         <div>
-          <button mat-button  (click)="headerName='fundooNotes'"
+          <button mat-button [routerLink]="['notes']" routerLinkActive="router-link-active"  (click)="headerName='fundooNotes'"
             [ngClass]="{'sideNavListItems': headerName!='fundooNotes', 'sideNavlistItemsColored': headerName=='fundooNotes'}">
             <mat-icon>lightbulb_outline</mat-icon> Notes
           </button>
@@ -109,14 +109,14 @@
         </div>
         <mat-divider></mat-divider>
         <div>
-          <button mat-button (click)="headerName='Archive'"
+          <button mat-button [routerLink]="['archives']" (click)="headerName='Archive'"
             [ngClass]="{'sideNavListItems': headerName!='Archive', 'sideNavlistItemsColored': headerName=='Archive'}">
             <mat-icon>archive</mat-icon> Archive
           </button>
         </div>
 
         <div>
-          <button mat-button (click)="headerName='Trash'"
+          <button mat-button [routerLink]="['trash']" (click)="headerName='Trash'"
             [ngClass]="{'sideNavListItems': headerName!='Trash', 'sideNavlistItemsColored': headerName=='Trash'}">
             <mat-icon>delete</mat-icon> Trash
           </button>
@@ -125,9 +125,11 @@
     </mat-sidenav>
     <mat-sidenav-content class="sideNavContent">
 
-      <app-addnote (childEvent)="addNote($event)"></app-addnote>
+      <!-- <app-addnote (childEvent)="addNote($event)"></app-addnote> -->
 
-      <app-card [parentSubject]="parentSubject"></app-card>
+      <!-- <app-card [parentSubject]="parentSubject"></app-card> -->
+      <router-outlet></router-outlet>
+      
     </mat-sidenav-content>
   </mat-sidenav-container>
 

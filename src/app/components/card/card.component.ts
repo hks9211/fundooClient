@@ -16,6 +16,7 @@ export class CardComponent implements OnInit {
   items: any = [];
   noteId: any;
   updateColor: any;
+  isArchived: boolean = false;
   constructor(
     private noteServices: NoteServiceService,
     private snackBar: MatSnackBar,
@@ -45,7 +46,28 @@ export class CardComponent implements OnInit {
   }
 
   receiveArchiveFromCard($event) {
+    console.log("event at card for archive",$event);
+    this.isArchived = true;
+    this.updateArchive();
+  }
 
+  updateArchive(){
+    const updateArchiveData = {
+      '_id' : this.noteId,
+      'isArchived':this.isArchived
+    }
+
+    this.noteServices.postUpdateNote(updateArchiveData).subscribe(
+      data => {
+        this.snackBar.open("Archived","",{duration:1000})
+        console.log("data after archive at card component",data);
+        this.getCards();
+      },
+      error => {
+        this.snackBar.open("Archived failed","",{duration:1000})
+        console.log("Error after archive at card component",error);
+      }
+    )
   }
   // updateNoteColor(){
   //     const updateColorData = {

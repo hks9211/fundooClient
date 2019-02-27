@@ -11,6 +11,8 @@ import { AddnoteComponent } from './components/addnote/addnote.component';
 import { IconListComponent } from './components/icon-list/icon-list.component';
 import { CardComponent } from './components/card/card.component';
 import { EditCardComponent } from './components/edit-card/edit-card.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { TrashComponent } from './components/trash/trash.component';
 
 const routes: Routes = [
 {
@@ -45,8 +47,21 @@ const routes: Routes = [
   children: [
 
   {
-    path: 'note',
+    path:'',
+    component:AddnoteComponent
+  } , 
+
+  {
+    path: 'notes',
     component: AddnoteComponent
+  },
+  {
+    path:'archives',
+    component:ArchiveComponent
+  },
+  {
+    path:'trash',
+    component:TrashComponent
   }
 
   ]
@@ -56,6 +71,7 @@ const routes: Routes = [
   path:'edit',
   component:EditCardComponent
 },
+
 {
   path: '**',
   component: InvalidUrlComponent

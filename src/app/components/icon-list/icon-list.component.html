@@ -6,7 +6,8 @@
     <mat-icon>notification_important</mat-icon>
   </button> --> 
    <button mat-button [matMenuTriggerFor]="menu" >
-    <mat-icon>notifications</mat-icon>
+    <!-- <mat-icon>notifications</mat-icon> -->
+    <img src="../../../assets//reminder.svg">
   </button>
   <mat-menu #menu="matMenu">
     <label>Reminder:</label>
@@ -80,11 +81,13 @@
 </button> -->
 
   <button class="collaborator" matTooltip="collaborator" mat-icon-button>
-    <mat-icon>person_add</mat-icon>
+    <!-- <mat-icon>person_add</mat-icon> -->
+    <img src="../../../assets/collaborator.svg">
   </button> 
 
    <button [matMenuTriggerFor]="colorMenu" matTooltip="change color" mat-icon-button>
-    <mat-icon>palette</mat-icon>
+    <!-- <mat-icon>palette</mat-icon> -->
+    <img src="../../../assets/color.svg">
   </button>
    <mat-menu #colorMenu="matMenu" [overlapTrigger]="false">
      <ng-template matMenuContent>
@@ -100,11 +103,13 @@
    </mat-menu>
 
    <button matTooltip="add image" mat-icon-button>
-    <mat-icon>insert_photo</mat-icon>
+    <!-- <mat-icon>insert_photo</mat-icon> -->
+    <img src="../../../assets//photoadd.svg">
   </button> 
 
   <button matTooltip="Archive" mat-icon-button (click)="archiveNewNote()">
-    <mat-icon>archive</mat-icon>
+    <!-- <mat-icon>archive</mat-icon> -->
+    <img src="../../../assets//archive.svg">
   </button>
 
 
