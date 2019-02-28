@@ -64,11 +64,13 @@ export class LoginUserComponent implements OnInit {
       this.HttpService.post(newLogin, 'login').subscribe(
         data => {
           this.snackBar.open('Signed in successfully ', '', { duration: 5000 });
-          this.router.navigateByUrl('/dashboard');
           console.log(' response: ', data);
           let response: any = {};
           response = data;
           localStorage.setItem('userId', response.message.userId);
+          localStorage.setItem('token',response.tokens);
+          this.router.navigateByUrl('dashboard');
+
         },
         error => {
           this.snackBar.open('Sign in failed. check your credentials ', '', { duration: 5000 });

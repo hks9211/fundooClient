@@ -28,6 +28,7 @@ import { EditCardComponent } from './components/edit-card/edit-card.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { TrashComponent } from './components/trash/trash.component';
 import { ArchiveComponent } from './components/archive/archive.component';
+import { AuthGuard } from './services/auth.guard';
 
 
 
@@ -71,7 +72,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
   ],
   providers: [
     HttpService,
-
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

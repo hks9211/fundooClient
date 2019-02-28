@@ -69,26 +69,7 @@ export class CardComponent implements OnInit {
       }
     )
   }
-  // updateNoteColor(){
-  //     const updateColorData = {
-  //     'noteId': this.noteId,
-  //     'color':this.updateColor
-  //   }
 
-
-  //   console.log(updateColorData);
-  //   this.noteServices.updateColor(updateColorData ).subscribe(
-  //     data => {
-  //       this.snackBar.open('data updated', '', { duration: 2000 });
-  //       console.log(' response: ', data);
-  //       this.getCards();
-  //     },
-  //     error => {
-  //       this.snackBar.open('data updation failed', '', { duration: 2000 });
-  //       console.log('error response: ', error);
-  //     }
-  //   );
-  // }
   getCards() {
     const reqData = {
       userId: localStorage.getItem('userId')

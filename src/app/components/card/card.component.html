@@ -1,7 +1,7 @@
-<div class="card" fxLayout="row wrap" fxFlex="92" fxLayoutAlign="center center">
+<div class="card" fxLayout="row wrap" fxFlex="92" fxFlex.xs="100" fxLayoutAlign="center center">
   <div *ngFor="let item of items">
     <div>
-      <mat-card fxFlex="100" class="card-content" [style.backgroundColor]="item.color">
+      <mat-card fxFlex="100" class="card-content" fxFlex.xs="100" [style.backgroundColor]="item.color">
         <div>
           <div fxFlex="88" class="item-title" (click)="editCard(item)">{{item.noteTitle}}</div>
           <div fxFlex="4">

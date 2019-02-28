@@ -14,8 +14,8 @@
           <div class="logo" fxFlex="25">
             <img src="../../../assets/new.png" style="height: 37px ; margin-top: 10px">
           </div>
-          <div fxFlex="50" fxHide.sm='true' fxFlex.xs='true'>
-              <span class="app-title" *ngIf="headerName == null">fundooNotes</span>
+          <div fxFlex="50" fxHide.sm='true' fxHide.xs='true'>
+            <span class="app-title" *ngIf="headerName == null">fundooNotes</span>
             <span class="app-title">{{headerName}}</span>
 
           </div>
@@ -62,63 +62,51 @@
   <mat-divider></mat-divider>
 
   <mat-sidenav-container class="sidenavBar">
-    <mat-sidenav #snav mode="side"  class="sideNav" >
+    <mat-sidenav #snav mode="side" class="sideNav">
       <mat-nav-list class="sideNavList">
         <div class="top-sidenav-content">
-        <div>
-          <button mat-button [routerLink]="['notes']" routerLinkActive="router-link-active"  (click)="headerName='fundooNotes'"
-            [ngClass]="{'sideNavListItems': headerName!='fundooNotes', 'sideNavlistItemsColored': headerName=='fundooNotes'}">
-            <mat-icon>lightbulb_outline</mat-icon> Notes
-          </button>
-        </div>
+          <div>
+            <button mat-button [routerLink]="['notes']" routerLinkActive="router-link-active"
+              (click)="headerName='fundooNotes'"
+              [ngClass]="{'sideNavListItems': headerName!='fundooNotes', 'sideNavlistItemsColored': headerName=='fundooNotes'}">
+              <mat-icon>lightbulb_outline</mat-icon> Notes
+            </button>
+          </div>
 
-        <div>
-          <button mat-button (click)="headerName='Reminders'"
-            [ngClass]="{'sideNavListItems': headerName!='Reminders', 'sideNavlistItemsColored': headerName=='Reminders'}">
-            <mat-icon>notifications_none</mat-icon> Reminders
-          </button>
+          <div>
+            <button mat-button (click)="headerName='Reminders'"
+              [ngClass]="{'sideNavListItems': headerName!='Reminders', 'sideNavlistItemsColored': headerName=='Reminders'}">
+              <mat-icon>notifications_none</mat-icon> Reminders
+            </button>
+          </div>
         </div>
-      </div>
         <mat-divider></mat-divider>
         <div class="label-content">
-          <div class="label-example"> 
-          <label ><span class="label-name">LABELS</span></label>
-        </div> 
-          <button class="sideNavListItems" mat-button (click)="openModal(mytemplate)">
-            <mat-icon>edit</mat-icon>Edit Labels
+          <div class="label-example">
+            <label><span class="label-name">LABELS</span></label>
+          </div>
+          <button class="sideNavListItems" mat-button>
+            <!-- <mat-icon>edit</mat-icon> -->
+            <img src="../../../assets//editlabel.svg">
+            <span>Edit Labels</span>
           </button>
-
-          <ng-template #mytemplate>
-            <div>
-              <h3>Edit Label</h3>
-              <div>
-
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <input matInput type="text" placeholder="add label" [(ngModel)]="value">
-                  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                    <mat-icon [style.fontSize.px]=15> close</mat-icon>
-                  </button>
-                </div>
-                <div fxLayoutAlign="end">
-                  <button mat-button>close</button></div>
-              </div>
-
-
-            </div>
-          </ng-template>
         </div>
         <mat-divider></mat-divider>
         <div>
           <button mat-button [routerLink]="['archives']" (click)="headerName='Archive'"
             [ngClass]="{'sideNavListItems': headerName!='Archive', 'sideNavlistItemsColored': headerName=='Archive'}">
-            <mat-icon>archive</mat-icon> Archive
+            <!-- <mat-icon>archive</mat-icon>  -->
+            <img src="../../../assets/archive2.svg">
+            <span>Archive</span>
           </button>
         </div>
 
         <div>
           <button mat-button [routerLink]="['trash']" (click)="headerName='Trash'"
             [ngClass]="{'sideNavListItems': headerName!='Trash', 'sideNavlistItemsColored': headerName=='Trash'}">
-            <mat-icon>delete</mat-icon> Trash
+            <!-- <mat-icon>delete</mat-icon>  -->
+            <img src="../../../assets/trash2.svg">
+            <span class="trash-option">Trash</span>
           </button>
         </div>
       </mat-nav-list>
@@ -129,7 +117,7 @@
 
       <!-- <app-card [parentSubject]="parentSubject"></app-card> -->
       <router-outlet></router-outlet>
-      
+
     </mat-sidenav-content>
   </mat-sidenav-container>
 

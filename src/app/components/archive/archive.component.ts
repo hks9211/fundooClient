@@ -7,6 +7,7 @@ import { NoteServiceService } from 'src/app/services/noteSerives/note-service.se
   styleUrls: ['./archive.component.scss']
 })
 export class ArchiveComponent implements OnInit {
+  items: any = [];
 
   constructor(
     private noteServices : NoteServiceService
@@ -20,6 +21,8 @@ export class ArchiveComponent implements OnInit {
     this.noteServices.getArchives().subscribe(
       data => {
        console.log("data at archive component",data);
+       this.items = data['result'];
+
       },
       error => {
        console.log("error at archive component",error);   

@@ -15,15 +15,10 @@ export class IconListComponent implements OnInit {
   constructor(
     private noteServices: NoteServiceService,
     private snackBar: MatSnackBar
-
   ) { }
-  // object = { color: '#FFFFF' };
 
-  message = 'Hola Mundo!';
   isMenuOpen = false;
   open = false;
-
-
   time = new FormControl('');
 
   @Input() childMessage: any = "";
@@ -39,17 +34,9 @@ export class IconListComponent implements OnInit {
   @Output() sendDeletedNoteInfoEvent = new EventEmitter<any>();
   @Output() archiveFromCardEvent = new EventEmitter<any>();
   @Output() archiveFromCard = new EventEmitter<any>();
-  ngOnInit() {
 
-  }
+  ngOnInit() { }
 
-  // sendMessage() {
-  //   this.messageEvent.emit(this.message);
-  // }
-  // color(value) {
-  //   this.object.color = value;
-  //   this.messageEvent.emit(this.object);
-  // }
   colorArray = [[
     { 'color': 'rgb(255, 255, 255)', 'name': 'White' },
     { 'color': 'rgb(242, 139, 130)', 'name': 'Red' },
@@ -65,7 +52,6 @@ export class IconListComponent implements OnInit {
   { 'color': 'rgb(253, 207, 232)', 'name': 'Pink' },
   { 'color': 'rgb(230, 201, 168)', 'name': 'Brown' },
   { 'color': 'rgb(232, 234, 237)', 'name': 'Gray' }
-
   ]]
 
 
@@ -81,9 +67,8 @@ export class IconListComponent implements OnInit {
       'isArchived': true
     }
     this.archiveEvent.emit(archiveData);
-     this.archiveFromCardEvent.emit(archiveData);
-     this.archiveFromCard.emit(archiveData);
-     
+    this.archiveFromCardEvent.emit(archiveData);
+    this.archiveFromCard.emit(archiveData);
   }
 
   setColor(colorId) {
@@ -110,32 +95,29 @@ export class IconListComponent implements OnInit {
     }
   }
 
-  deleteNote(){
-   var updateTrash = {};
-
-    if(this.childMessage == ""){
-      console.log("inside")
-       updateTrash = {
+  deleteNote() {
+    var updateTrash = {};
+    if (this.childMessage == "") {
+      updateTrash = {
         '_id': this.noteIdForChild,
-        'isDeleted':true
+        'isDeleted': true
       }
-    }else{
-     updateTrash = {
-      '_id': this.childMessage,
-      'isDeleted':true
+    } else {
+      updateTrash = {
+        '_id': this.childMessage,
+        'isDeleted': true
+      }
     }
-  }
-    
     this.noteServices.postUpdateNote(updateTrash).subscribe(
       data => {
         console.log(' response: ', data);
-        this.snackBar.open("Note Deleted","",{duration:1000});
+        this.snackBar.open("Note Deleted", "", { duration: 1000 });
         this.sendDeletedNoteToTrashEvent.emit("done");
         this.sendDeletedNoteInfoEvent.emit("done");
       },
       error => {
         console.log('error response: ', error);
-        this.snackBar.open("Note not Deleted","",{duration:1000})
+        this.snackBar.open("Note not Deleted", "", { duration: 1000 })
       }
     );
   }

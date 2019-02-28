@@ -13,6 +13,7 @@ import { CardComponent } from './components/card/card.component';
 import { EditCardComponent } from './components/edit-card/edit-card.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
 {
@@ -44,6 +45,7 @@ const routes: Routes = [
 {
   path: 'dashboard',
   component: DashboardComponent,
+  canActivate: [AuthGuard],
   children: [
 
   {

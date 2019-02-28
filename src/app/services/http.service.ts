@@ -30,16 +30,20 @@ export class HttpService {
     return this.http.post(this.url + purpose, data, { headers });
   }
 
-  postRequest(data , purpose) {
-    return this.http.post('http://localhost:3000/addnote' , data);
+  postRequest(data, purpose) {
+    return this.http.post('http://localhost:3000/addnote', data);
   }
 
-  postRequestt(purpose , data) {
-    return this.http.post(this.url + purpose , data);
+  postRequestt(purpose, data) {
+    return this.http.post(this.url + purpose, data);
   }
 
-  get(purpose){
+  get(purpose) {
     var userId = localStorage.getItem('userId');
-    return this.http.get(this.url + purpose+ "/" + userId);
+    return this.http.get(this.url + purpose + "/" + userId);
+  }
+
+  loggedIn() {
+    return !!localStorage.getItem('token');
   }
 }
