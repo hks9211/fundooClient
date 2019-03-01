@@ -63,7 +63,6 @@ export class RegisterUserComponent implements OnInit {
 
 
   errorMessageForFirstName() {
-    // console.log(this.firstName.errors);
     return this.firstName.hasError('required') ? 'Enter first Name' :
       this.firstName.hasError('pattern') ? 'First name should only have alphabets' :
         this.firstName.hasError('minlength') ? 'First name limit is 8-25 characters' :

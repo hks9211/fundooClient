@@ -1,0 +1,19 @@
+<div>
+<div class="label-top" >Edit labels</div>
+<div >
+    <button mat-button *ngIf="true" matSuffix (click)="value=''">
+     <img src="../../../assets/close.svg">
+      </button>
+  
+<mat-form-field class="example-form-field" placeholder="Create new label">
+<input matInput type="text" [(ngModel)]="value">
+  </mat-form-field>
+  <button mat-button (click)="value=''">
+      <img src="../../../assets/save.svg">
+    </button>   
+  </div>
+</div>
+<mat-divider></mat-divider>
+<div fxLayoutAlign="end end">
+    <button mat-button mat-dialog-close><span class="done">Done</span></button>
+</div>

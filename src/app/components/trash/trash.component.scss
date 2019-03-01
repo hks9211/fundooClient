@@ -9,6 +9,7 @@
 
 .card{
    justify-content: center; 
+   margin-top: 20px;
 }
 
 .description{
@@ -34,4 +35,9 @@
     visibility: visible;
     opacity: 1;
     // background-color: black;
+}
+
+mat-card{
+    width:250px;
+    height: 100px;
 }

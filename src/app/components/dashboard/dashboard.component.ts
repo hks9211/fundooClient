@@ -2,8 +2,9 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { EditLabelComponent } from '../edit-label/edit-label.component';
 
 
 @Component({
@@ -24,7 +25,9 @@ export class DashboardComponent implements OnInit {
       private spinnerService: Ng4LoadingSpinnerService,
       changeDetectorRef: ChangeDetectorRef,
       media: MediaMatcher,
-      private router: Router
+      private router: Router,
+      public dialog: MatDialog
+
     ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -46,5 +49,10 @@ export class DashboardComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.router.navigateByUrl('/login')
+  }
+  
+  openEditLabelDialog(){
+    const dialogRef = this.dialog.open(EditLabelComponent, {
+    }); 
   }
 }

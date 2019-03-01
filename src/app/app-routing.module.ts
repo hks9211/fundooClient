@@ -14,6 +14,7 @@ import { EditCardComponent } from './components/edit-card/edit-card.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { AuthGuard } from './services/auth.guard';
+import { EditLabelComponent } from './components/edit-label/edit-label.component';
 
 const routes: Routes = [
 {
@@ -72,6 +73,10 @@ const routes: Routes = [
 {
   path:'edit',
   component:EditCardComponent
+},
+{
+    path:'editt',
+    component:EditLabelComponent
 },
 
 {
