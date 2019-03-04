@@ -51,10 +51,34 @@
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>account_circle</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="logout()">
-            <span>Logout</span>
-          </button>
+        <mat-menu class="logoutMenu" #menu="matMenu">
+          <div>
+            <label>
+              <!-- <span>Change Profile Pic</span> -->
+              <div fxLayout="row" fxLayoutAlign="space-between start">
+                <div>
+                  <input #inputImage type="file" class="input-img" (change)="uploadImage(inputImage)">
+                  <div *ngIf="picLink !=''">
+                    <img [src]="picLink" class="profilePic">
+                  </div>
+                </div>
+                <div>
+                  <span class="userName">{{userData.firstName}} {{userData.lastName}}</span>
+                  <div class="userMail">{{userData.email}}</div>
+                </div>
+
+              </div>
+            </label>
+            <mat-divider></mat-divider>
+
+
+            <div fxLayout="row">
+              <button mat-button (click)="logout()"><span class="logout">Add Account</span>
+              </button>
+              <button mat-button (click)="logout()"><span class="logout">Sign out</span>
+              </button>
+            </div>
+          </div>
         </mat-menu>
       </div>
     </div>

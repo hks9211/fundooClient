@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,28 @@ export class HttpService {
 
   loggedIn() {
     return !!localStorage.getItem('token');
+  }
+  uploadImage(image : File , purpose)  {
+    const formData = new FormData();
+    formData.append('image',image);
+  
+    return this.http.post(this.url + purpose  , formData);
+  }
+
+  updateProfilePic(imageUrl){
+    var userId = localStorage.getItem('userId');
+    
+    var updateData = {
+      'userId' : userId,
+      'imgUrl' : imageUrl
+    }
+   return this.http.post(this.url + "updateImage" ,updateData)
+  }
+
+  getProfilePic(){
+    var userId = localStorage.getItem('userId');
+
+    return this.http.get(this.url + 'getProfilePic' + "/" + userId);
+
   }
 }

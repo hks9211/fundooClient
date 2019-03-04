@@ -1,3 +1,4 @@
+$main-color: #F44336;
 .example-container {
     display: flex;
     flex-direction: column;
@@ -159,3 +160,104 @@
   span{
     margin-left:35px;
   }
+
+  // .btn-bwn{
+  //   background-color: $main-color;
+  //   border-color : $main-color;
+  //   color:white;
+  //   padding: 15px 32px;
+  //   font-size : 20px;
+
+  //   &:hover , &focus , &active {
+  //     border-color : $main-color !important;
+  //     background-color: $main-color !important;
+  //   }
+  // }
+
+
+
+  .image-upload-container{
+    cursor: pointer;
+  }
+
+  .img-preview-container{
+    background-color: #f7f7f7;
+    position: relative;
+  }
+
+  .img-preivew {
+    background : center center no-repeat;
+    background-size: contain;
+    height: 116px;
+    width: 116px;
+  }
+
+  .profilePic{
+    height: 96px;
+    width : 96px;
+    border-radius: 50px;
+  }
+
+  .input-img{
+    display: none
+  }
+
+ /deep/ .mat-menu-content:not(:empty) {
+  padding-top: 18px;
+  padding-bottom: 8px;
+  width: 260px;
+  overflow: hidden;
+  padding-left: 10px;
+  padding-right : 10px;
+}
+
+.userName{
+  font-weight: bold;
+  margin: -4px 0 1px 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #000;
+  font-family: Roboto,Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.userMail{
+  color: #666;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-family: Roboto,Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+
+  .logout{
+    box-sizing: border-box;
+    color: rgba(0,0,0,.87);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: .01785714em;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: .875rem;
+    font-weight: 550;
+    line-height: 1.25rem;
+    height: 3px;
+    // padding: 8px 24px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+
+}
+
+::ng-deep .mat-menu-panel {
+  max-width: 1000px !important;
+}
+
+.logoutMenu {
+ width: 500px;
+}
+
+::ng-deep .logoutMenu .mat-menu-content:not(:empty) {
+  width: 303px !important;
+}
