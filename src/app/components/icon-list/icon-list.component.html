@@ -5,7 +5,7 @@
   <!-- <button mat-icon-button matTooltip="Remind me" (click) = "toggleReminder()" (click) = "toShowReminder()" >
     <mat-icon>notification_important</mat-icon>
   </button> --> 
-   <button mat-button [matMenuTriggerFor]="menu" >
+   <button mat-button [matMenuTriggerFor]="menu"  >
     <!-- <mat-icon>notifications</mat-icon> -->
     <img src="../../../assets//reminder.svg">
   </button>
@@ -36,7 +36,7 @@
     </button>
   </mat-menu>
 
-  <mat-menu #invertebrates="matMenu">
+  <mat-menu #invertebrates="matMenu"  >
     <mat-form-field>
       <input matInput [matDatepicker]="picker"  placeholder="Choose a date" [formControl]="time">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

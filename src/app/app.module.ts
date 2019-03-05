@@ -30,6 +30,7 @@ import { TrashComponent } from './components/trash/trash.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { AuthGuard } from './services/auth.guard';
 import { EditLabelComponent } from './components/edit-label/edit-label.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 
@@ -68,6 +69,7 @@ import { EditLabelComponent } from './components/edit-label/edit-label.component
     HttpClientModule,
     Ng4LoadingSpinnerModule,
     NgxMaterialTimepickerModule.forRoot(),
+    ImageCropperModule
 
 
 

@@ -38,7 +38,7 @@
         </div> -->
         <div fxFlex="2">
           <button mat-icon-button>
-            <mat-icon>border_all</mat-icon>
+            <mat-icon (click)="setGridOrListView()">{{icon}}</mat-icon>
           </button>
         </div>
         <!-- <div fxFlex="2">
@@ -49,20 +49,35 @@
       </div>
       <div fxFlex="10" fxLayoutAlign="end end">
         <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>account_circle</mat-icon>
+          <!-- <mat-icon>account_circle</mat-icon> -->
+          <div *ngIf="picLink !=''">
+            <img [src]="picLink"  class="account-icon" >
+            </div>
         </button>
         <mat-menu class="logoutMenu" #menu="matMenu">
           <div>
             <label>
               <!-- <span>Change Profile Pic</span> -->
-              <div fxLayout="row" fxLayoutAlign="space-between start">
-                <div>
+              <div  fxLayout="row" fxLayoutAlign="space-between start">
+                <div class="user-details">
                   <input #inputImage type="file" class="input-img" (change)="uploadImage(inputImage)">
+                  <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 3"
+    [resizeToWidth]="128"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+
                   <div *ngIf="picLink !=''">
-                    <img [src]="picLink" class="profilePic">
+                    <img [src]="picLink"  class="profilePic" >
+
                   </div>
                 </div>
-                <div>
+                <div class="user-info">
                   <span class="userName">{{userData.firstName}} {{userData.lastName}}</span>
                   <div class="userMail">{{userData.email}}</div>
                 </div>
@@ -70,15 +85,15 @@
               </div>
             </label>
             <mat-divider></mat-divider>
-
-
-            <div fxLayout="row">
+            <div class="options-signout" fxLayout="row">
               <button mat-button (click)="logout()"><span class="logout">Add Account</span>
               </button>
               <button mat-button (click)="logout()"><span class="logout">Sign out</span>
               </button>
             </div>
+
           </div>
+         
         </mat-menu>
       </div>
     </div>

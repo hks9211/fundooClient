@@ -209,6 +209,7 @@ $main-color: #F44336;
   overflow: hidden;
   padding-left: 10px;
   padding-right : 10px;
+  
 }
 
 .userName{
@@ -259,5 +260,31 @@ $main-color: #F44336;
 }
 
 ::ng-deep .logoutMenu .mat-menu-content:not(:empty) {
-  width: 303px !important;
+  width: 313px !important;
+  height: 183px !important;
+  padding-top: 20px;
+
+}
+
+.user-details{
+  margin-bottom: 18px;
+  margin-left: 10px;
+}
+
+.user-info{
+  margin-right : 20px;
+}
+
+
+.options-signout{
+  margin-top:10px;
+}
+
+.account-icon{
+  position : relative;
+  height: 36px;
+  width : 36px;
+  border-radius: 50px;
+  margin-left: 3px;
+  margin-top: 3px;
 }

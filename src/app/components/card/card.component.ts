@@ -3,6 +3,7 @@ import { NoteServiceService } from 'src/app/services/noteSerives/note-service.se
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { Subject } from 'rxjs';
 import { EditCardComponent } from '../edit-card/edit-card.component';
+import { ListGridViewService } from 'src/app/services/list-grid-view.service';
 
 
 @Component({
@@ -17,10 +18,14 @@ export class CardComponent implements OnInit {
   noteId: any;
   updateColor: any;
   isArchived: boolean = false;
+  chooseView : String = "row wrap";
+  flag: string;
   constructor(
     private noteServices: NoteServiceService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private changeViewData : ListGridViewService
+
   ) { }
 
   ngOnInit() {
@@ -28,6 +33,11 @@ export class CardComponent implements OnInit {
     this.parentSubject.subscribe(event => {
       this.items.push(event);
     });
+    this.changeViewData.currentMessage.subscribe(message =>   this.chooseView = message);
+    console.log("flag value: ", this.flag);
+    // this.chooseView = !!this.flag
+    console.log("chooseview: ",this.chooseView);
+    
   }
 
   receiveUpdateColorEvent($event) {
