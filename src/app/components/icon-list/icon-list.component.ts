@@ -19,6 +19,7 @@ export class IconListComponent implements OnInit {
 
   isMenuOpen = false;
   open = false;
+  date = new FormControl('');
   time = new FormControl('');
 
   @Input() childMessage: any = "";
@@ -57,9 +58,11 @@ export class IconListComponent implements OnInit {
 
   addReminder() {
     const reminderData = {
-      'time': this.time
+      'date': this.date.value,
+      'time': this.time.value
     }
-    this.reminderEvent.emit(reminderData);
+    console.log("reminder: ", reminderData)
+    // this.reminderEvent.emit(reminderData);
   }
 
   archiveNewNote() {

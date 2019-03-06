@@ -10,25 +10,30 @@
     <img src="../../../assets//reminder.svg">
   </button>
   <mat-menu #menu="matMenu">
-    <label>Reminder:</label>
-    <button mat-menu-item>Later Today
-      <label>8:00 PM</label>
+    <span class="texts">Reminder:</span>
+    <button mat-menu-item>
+      <span class="fake-text-show">Later Today</span>
+      <span class="fake-time-show">8:00 PM</span>
     </button>
 
-    <button mat-menu-item>Tomorrow
-      <label>8:00 AM</label>
+    <button mat-menu-item>
+      <span class="fake-text-show">Tomorrow</span>
+      <span class="fake-time-show-2">8:00 PM</span>
     </button>
 
-    <button mat-menu-item>Next week
-      <label>Mon, 8:00 AM</label>
+    <button mat-menu-item>
+        <span class="fake-text-show">Next week</span>
+        <span class="fake-time-show-3">Mon, 8:00 PM</span>
     </button>
 
-    <button mat-menu-item>Home
-      <label>Kolkata</label>
+    <button mat-menu-item>
+        <span class="fake-text-show">Home</span>
+        <span class="fake-time-show-4">Kolkata</span>  
     </button>
 
-    <button mat-menu-item>Work
-      <label>Mumbai</label>
+    <button mat-menu-item>
+        <span class="fake-text-show">Work</span> 
+        <span class="fake-time-show-5">Mumbai</span>   
     </button>
 
     <button mat-menu-item [matMenuTriggerFor]="invertebrates">
@@ -38,14 +43,14 @@
 
   <mat-menu #invertebrates="matMenu"  >
     <mat-form-field>
-      <input matInput [matDatepicker]="picker"  placeholder="Choose a date" [formControl]="time">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <input matInput [matDatepicker]="picker"  placeholder="Choose a date" [formControl]="date">
+      <mat-datepicker-toggle matSuffix [for]="picker" (click)="$event.stopPropagation();"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field> 
 
     <mat-form-field >
-      <input matInput [ngxTimepicker]="picker2" (click) = "addReminder()">
-      <ngx-material-timepicker #picker2></ngx-material-timepicker>
+      <input matInput [ngxTimepicker]="picker2"  [formControl]="time">
+      <ngx-material-timepicker #picker2 (click)="$event.stopPropagation();"></ngx-material-timepicker>
     </mat-form-field>
     <button mat-raised-button (click) = "addReminder()">Save</button>
 

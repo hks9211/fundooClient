@@ -61,17 +61,6 @@
               <div  fxLayout="row" fxLayoutAlign="space-between start">
                 <div class="user-details">
                   <input #inputImage type="file" class="input-img" (change)="uploadImage(inputImage)">
-                  <image-cropper
-    [imageChangedEvent]="imageChangedEvent"
-    [maintainAspectRatio]="true"
-    [aspectRatio]="4 / 3"
-    [resizeToWidth]="128"
-    format="png"
-    (imageCropped)="imageCropped($event)"
-    (imageLoaded)="imageLoaded()"
-    (loadImageFailed)="loadImageFailed()"
-></image-cropper>
-
                   <div *ngIf="picLink !=''">
                     <img [src]="picLink"  class="profilePic" >
 
