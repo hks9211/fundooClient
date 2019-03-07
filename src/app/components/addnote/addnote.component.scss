@@ -17,6 +17,7 @@
 
 .note{
     margin-top:20px;
+   
 }
 
 .big-note{
@@ -25,7 +26,6 @@
 
 
 @media only screen and (max-width: 600px){
-
 .note{
     margin-top:60px;
 }
@@ -73,9 +73,9 @@
     box-shadow: 0px 3px 5px rgba(0,0,0,0.20);
     -webkit-box-shadow: 0 3px 5px rgba(0,0,0,0.20);
     border: 1px solid #dadce0;
-    margin-bottom: 40px
-
+    margin-bottom: 40px;
 }
+
 .logo{
     height: 39px;
     width:10px;

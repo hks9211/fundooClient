@@ -1,13 +1,14 @@
-<div class="card" fxLayout="row wrap" fxFlex="" fxLayoutAlign="center center">
+<div class="card" fxLayout="{{chooseView}}" fxFlex="" fxLayoutAlign="center center">
   <div *ngFor="let item of items">
-    <div class="trash-card">
-      <mat-card fxFlex="100" class="card-content" [style.backgroundColor]="item.color">
-        <div>
+    <div class="trash-card" >
+      <mat-card fxFlex="100" class="card-content" fxLayout="column"
+      [ngClass]="{'cardGridView': chooseView == 'row wrap','cardListView': chooseView == 'column wrap'}"
+      fxFlex.xs="100" [style.backgroundColor]="item.color"> 
           <div fxFlex="88" class="item-title" >{{item.noteTitle}}</div>
           <div fxFlex="4">
             <button mat-icon-button></button>
           </div>
-        </div>
+    
         <mat-card-content fxLayout="column">
           <div class="description">{{item.noteContent}}</div>
 
@@ -17,6 +18,7 @@
           </mat-card-footer>
         </mat-card-content>
       </mat-card>
+      </div>
     </div>
   </div>
-</div>
+

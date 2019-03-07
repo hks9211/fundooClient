@@ -288,3 +288,45 @@ $main-color: #F44336;
   margin-left: 3px;
   margin-top: 3px;
 }
+
+.search{
+ 
+ height: 40px;
+ background: rgba(0, 0, 0, 0.1);
+ outline: none;
+ border: none;
+ margin-bottom: 12px;
+}
+
+.search-icon{
+  margin-top: 17px;
+}
+
+.clear-btn{
+  margin-top: 37px; 
+}
+
+.close-button{
+  border-right : 8px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.1);
+  outline: none;
+  border: none;
+  margin-top: 16px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+}
+
+ .search-button{
+  border-right : 8px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.1);
+  outline: none;
+  border: none;
+  margin-top: 16px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+
+}
+

@@ -41,3 +41,17 @@ mat-card{
     width:250px;
     height: 100px;
 }
+
+@media screen and (min-width: 700px){
+    .cardListView{
+        width:650px;
+    
+    }
+    }
+    
+    @media screen and (max-width: 700px){
+        .cardListView{
+            width:350px;
+        }
+        }
+        

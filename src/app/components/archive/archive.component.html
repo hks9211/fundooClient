@@ -1,7 +1,9 @@
-<div class="card" fxLayout="row wrap" fxFlex="92" fxLayoutAlign="center center">
+<div class="card" fxLayout="{{chooseView}}" fxFlex="92" fxLayoutAlign="center center">
   <div *ngFor="let item of items">
     <div>
-      <mat-card fxFlex="100" class="card-content" [style.backgroundColor]="item.color">
+      <mat-card fxFlex="100" class="card-content" 
+      [ngClass]="{'cardGridView': chooseView == 'row wrap','cardListView': chooseView == 'column wrap'}"
+      fxFlex.xs="100" [style.backgroundColor]="item.color"> 
         <div>
           <div fxFlex="88" class="item-title" >{{item.noteTitle}}</div>
           <div fxFlex="4">

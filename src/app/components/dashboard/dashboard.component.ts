@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
@@ -12,7 +12,7 @@ import { ListGridViewService } from '../../services/list-grid-view.service'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
 
@@ -26,6 +26,8 @@ export class DashboardComponent implements OnInit {
   icon: String = 'dashboard';
   viewToolTip: string;
   croppedImage: any = '';
+  value = ' ';
+
 
 
 

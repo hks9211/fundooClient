@@ -1,12 +1,5 @@
-<!-- <div fxFlex="100" fxLayoutAlign="space-around start" fxFlex.xs="100"> -->
-
-<div class="icon-list" fxLayout="row" fxLayoutAlign="space-between center">
-
-  <!-- <button mat-icon-button matTooltip="Remind me" (click) = "toggleReminder()" (click) = "toShowReminder()" >
-    <mat-icon>notification_important</mat-icon>
-  </button> --> 
-   <button mat-button [matMenuTriggerFor]="menu"  >
-    <!-- <mat-icon>notifications</mat-icon> -->
+<div class="icon-list" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutAlign.xs="start start">
+  <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation();">
     <img src="../../../assets//reminder.svg">
   </button>
   <mat-menu #menu="matMenu">
@@ -15,157 +8,81 @@
       <span class="fake-text-show">Later Today</span>
       <span class="fake-time-show">8:00 PM</span>
     </button>
-
     <button mat-menu-item>
       <span class="fake-text-show">Tomorrow</span>
       <span class="fake-time-show-2">8:00 PM</span>
     </button>
-
     <button mat-menu-item>
-        <span class="fake-text-show">Next week</span>
-        <span class="fake-time-show-3">Mon, 8:00 PM</span>
+      <span class="fake-text-show">Next week</span>
+      <span class="fake-time-show-3">Mon, 8:00 PM</span>
     </button>
-
     <button mat-menu-item>
-        <span class="fake-text-show">Home</span>
-        <span class="fake-time-show-4">Kolkata</span>  
+      <span class="fake-text-show">Home</span>
+      <span class="fake-time-show-4">Kolkata</span>
     </button>
-
     <button mat-menu-item>
-        <span class="fake-text-show">Work</span> 
-        <span class="fake-time-show-5">Mumbai</span>   
+      <span class="fake-text-show">Work</span>
+      <span class="fake-time-show-5">Mumbai</span>
     </button>
-
     <button mat-menu-item [matMenuTriggerFor]="invertebrates">
-      <mat-icon>access_time</mat-icon>Pick date & time
+      <mat-icon>access_time</mat-icon>
+      <span class="fake-text-show">Pick date & time</span>
     </button>
   </mat-menu>
-
-  <mat-menu #invertebrates="matMenu"  >
+  <mat-menu #invertebrates="matMenu">
     <mat-form-field>
-      <input matInput [matDatepicker]="picker"  placeholder="Choose a date" [formControl]="date">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]="date">
       <mat-datepicker-toggle matSuffix [for]="picker" (click)="$event.stopPropagation();"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field> 
+    </mat-form-field>
 
-    <mat-form-field >
-      <input matInput [ngxTimepicker]="picker2"  [formControl]="time">
+    <mat-form-field>
+      <input matInput [ngxTimepicker]="picker2" [formControl]="time">
       <ngx-material-timepicker #picker2 (click)="$event.stopPropagation();"></ngx-material-timepicker>
     </mat-form-field>
-    <button mat-raised-button (click) = "addReminder()">Save</button>
-
+    <button mat-raised-button (click)="addReminder()">Save</button>
   </mat-menu>
-  
-  <!-- <button cdk-overlay-origin #trigger="cdkOverlayOrigin" (click)="isMenuOpen = !isMenuOpen">
-      Open menu
-    </button> -->
-    
-    <!-- <ng-template cdk-connected-overlay [origin]="trigger" [width]="500" hasBackdrop [open]="isMenuOpen"
-      (backdropClick)="isMenuOpen=false">
-      <div style="background-color: mediumpurple" >
-        This is the menu panel.
-      </div>
-    </ng-template> -->
-
-  <!-- <div *ngIf="reminder && showReminder">
-    <div>set time</div>
-   </div> 
-
-  <mat-menu #menu4="matMenu" class="matmenu"> -->
-<!-- 
-<button mat-button fxFlex="15">
-    <mat-icon>person_add</mat-icon>
-</button>
-
-<button mat-button fxFlex="15">
-    <mat-icon>color_lens</mat-icon>
-</button>
-
-<button mat-button fxFlex="15">
-    <mat-icon>insert_photo</mat-icon>
-</button> -->
 
   <button class="collaborator" matTooltip="collaborator" mat-icon-button>
-    <!-- <mat-icon>person_add</mat-icon> -->
     <img src="../../../assets/collaborator.svg">
-  </button> 
-
-   <button [matMenuTriggerFor]="colorMenu" matTooltip="change color" mat-icon-button>
-    <!-- <mat-icon>palette</mat-icon> -->
+  </button>
+  <button [matMenuTriggerFor]="colorMenu" matTooltip="change color" mat-icon-button>
     <img src="../../../assets/color.svg">
   </button>
-   <mat-menu #colorMenu="matMenu" [overlapTrigger]="false">
-     <ng-template matMenuContent>
-       <div class="buttons">
-         <div fxLayout="row" fxLayoutGap="10px" *ngFor="let colors of colorArray">
-           <div *ngFor="let color of colors" class="color-buttons">
-            <button class="colors" [ngStyle]="{'background-color': color.color}" matTooltip="{{color.name}}" (click)="setColor(color.color)" >
+  <mat-menu #colorMenu="matMenu" [overlapTrigger]="false">
+    <ng-template matMenuContent>
+      <div class="buttons">
+        <div fxLayout="row" fxLayoutGap="10px" *ngFor="let colors of colorArray">
+          <div *ngFor="let color of colors" class="color-buttons">
+            <button class="colors" [ngStyle]="{'background-color': color.color}" matTooltip="{{color.name}}"
+              (click)="setColor(color.color)">
             </button>
-           </div>
-         </div>
-       </div>
-     </ng-template>
-   </mat-menu>
-
-   <button matTooltip="add image" mat-icon-button>
-    <!-- <mat-icon>insert_photo</mat-icon> -->
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mat-menu>
+  <button matTooltip="add image" mat-icon-button>
     <img src="../../../assets//photoadd.svg">
-  </button> 
-
+  </button>
   <button matTooltip="Archive" mat-icon-button (click)="archiveNewNote()">
-    <!-- <mat-icon>archive</mat-icon> -->
     <img src="../../../assets//archive.svg">
   </button>
-
-
   <button mat-icon-button [matMenuTriggerFor]="menu2" matTooltip="more" fxFlex="15">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu2="matMenu">
-      <button mat-menu-item  (click)="deleteNote()">
-          <span>Delete note</span>
-        </button>
+    <button mat-menu-item (click)="deleteNote()">
+      <span>Delete note</span>
+    </button>
     <button mat-menu-item>
       <span>Add label</span>
     </button>
     <button mat-menu-item disabled>
       <span>Add drawing</span>
     </button>
-  
-    
     <button mat-menu-item>
       <span>Show checkboxes</span>
     </button>
-
   </mat-menu>
-
-  <!-- <button mat-button (click)="messageHit()" >close</button> -->
 </div>
-<!-- </div> -->
-<!-- <div class="reminder-menu">
-    <label>Reminder:</label>
-    <button mat-menu-item>Later Today
-    <label>8:00 PM</label>
-   </button>
-
-   <button mat-menu-item>Tomorrow
-       <label>8:00 AM</label>
-      </button>
-
-      <button mat-menu-item>Next week
-         <label>Mon, 8:00 AM</label>
-        </button>
-
-        <button mat-menu-item>Home
-           <label>Kolkata</label>
-          </button>
-          
-          <button mat-menu-item>Work
-             <label>Mumbai</label>
-            </button> 
-
-            <button mat-menu-item (click)="toggleReminder()">
-              <mat-icon>access_time</mat-icon>Pick date & time
-            </button>
-
-  </div> -->

@@ -15,7 +15,7 @@
   </mat-card>
 </div>
 
-<div fxFlex="100" class="big-note"fxLayoutAlign="space-around start" *ngIf="flag==false" fxFlex.xs="100">
+<div fxFlex="100" class="big-note" fxLayoutAlign="space-around start" *ngIf="flag==false" fxFlex.xs="100">
   <mat-card  [style.backgroundColor]="setColor"  fxFlex="50" fxLayout="column" fxLayoutAlign="space-between start" fxFlex.xs="100" fxFlex.sm="80">
     <input class="title" type="text" [formControl]="noteTitle" placeholder="Title" >
     <div class="area">
@@ -31,8 +31,8 @@
   </mat-card>
 </div>
 
-<div>
-        <app-card [parentSubject]="parentSubject"></app-card>
+<div >
+        <app-card fxFlex="90" fxLayoutAlign="space-around" [parentSubject]="parentSubject"></app-card>
 
 </div>
 </div>

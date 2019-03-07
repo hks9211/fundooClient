@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
+import { ListGridViewService } from 'src/app/services/list-grid-view.service';
 
 @Component({
   selector: 'app-trash',
@@ -8,13 +9,18 @@ import { NoteServiceService } from 'src/app/services/noteSerives/note-service.se
 })
 export class TrashComponent implements OnInit {
   items: any = [];
+  chooseView : String = "row wrap";
 
   constructor(
-    private noteServices: NoteServiceService
+    private noteServices: NoteServiceService,
+    private changeViewData : ListGridViewService
+
   ) { }
 
   ngOnInit() {
     this.getTrash();
+    this.changeViewData.currentMessage.subscribe(message =>   this.chooseView = message);
+
   }
  
   getTrash(){

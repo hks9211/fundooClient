@@ -5,32 +5,37 @@
   <mat-toolbar class="example-toolbar" fxFlex.xs="100">
     <div fxFlex="100" fxLayoutAlign="space-between center">
       <div fxFlex="20" fxLayoutAlign="space-between center">
-        <div fxFlex="20" fxLayout="row" fxLayoutAlign.xs="start center" fxLayoutAlign="center center">
+        <div fxFlex="20" fxFlex.xs="5" fxLayout="row" fxLayoutAlign.xs="start center" fxLayoutAlign="center center">
           <button mat-icon-button (click)="snav.toggle()">
             <mat-icon>menu</mat-icon>
           </button>
         </div>
-        <div fxFlex="80" fxLayout="row" fxLayoutAlign="start center">
-          <div class="logo" fxFlex="25">
+        <div fxFlex="80" fxFlex.xs="40" fxLayout="row" fxLayoutAlign="start center">
+          <div class="logo" fxFlex="20" fxHide.xs='true'>
             <img src="../../../assets/new.png" style="height: 37px ; margin-top: 10px">
           </div>
-          <div fxFlex="50" fxHide.sm='true' fxHide.xs='true'>
+          <div fxHide.sm='true' fxHide.xs='true'>
             <span class="app-title" *ngIf="headerName == null">fundooNotes</span>
             <span class="app-title">{{headerName}}</span>
 
           </div>
         </div>
       </div>
-      <div fxFlex="50">
-        <mat-form-field appearance="outline" fxLayout="column">
-          <!-- <button mat-icon-button>
+      <div fxFlex="50" fxFlex.xs="70" class="search-div">
+        <button mat-button class="search-button">
           <mat-icon>search</mat-icon>
-        </button> -->
-          <input fxFlex="90" fxFlex.sm="80" fxFlex.xs="50" matInput placeholder="search" autocomplete="off">
-        </mat-form-field>
+        </button>
+
+        <input fxFlex="100" fxFlex.sm="80" class="search" fxFlex.xs="100" matInput placeholder="  search"
+          [(ngModel)]="value" autocomplete="off">
+        <div>
+          <button class="close-button" mat-button (click)="value=''">
+            <img src="../../../assets/close.svg">
+          </button>
+        </div>
       </div>
 
-      <div fxFlex="9" fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign="space-between center">
+      <div fxFlex="12" fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign="space-between center">
         <!-- <div fxFlex="3">
           <button mat-icon-button>
             <mat-icon>refresh</mat-icon>
@@ -51,20 +56,21 @@
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <!-- <mat-icon>account_circle</mat-icon> -->
           <div *ngIf="picLink !=''">
-            <img [src]="picLink"  class="account-icon" >
-            </div>
+            <img [src]="picLink" class="account-icon">
+          </div>
         </button>
-        <mat-menu class="logoutMenu" #menu="matMenu">
-          <div>
-            <label>
-              <!-- <span>Change Profile Pic</span> -->
-              <div  fxLayout="row" fxLayoutAlign="space-between start">
+        <mat-menu class="logoutMenu" #menu="matMenu" (click)="$event.stopPropagation();">
+          <div >
+           
+              <div fxLayout="row" fxLayoutAlign="space-between start" (click)="$event.stopPropagation();" >
                 <div class="user-details">
-                  <input #inputImage type="file" class="input-img" (change)="uploadImage(inputImage)">
+                    <label>
+                  <input #inputImage type="file" class="input-img" (change)="uploadImage(inputImage)" >
                   <div *ngIf="picLink !=''">
-                    <img [src]="picLink"  class="profilePic" >
-
+                    <img [src]="picLink" class="profilePic" matTooltip='Change image' matTooltipPosition='right'>
                   </div>
+                </label>
+
                 </div>
                 <div class="user-info">
                   <span class="userName">{{userData.firstName}} {{userData.lastName}}</span>
@@ -72,7 +78,6 @@
                 </div>
 
               </div>
-            </label>
             <mat-divider></mat-divider>
             <div class="options-signout" fxLayout="row">
               <button mat-button (click)="logout()"><span class="logout">Add Account</span>
@@ -82,7 +87,7 @@
             </div>
 
           </div>
-         
+
         </mat-menu>
       </div>
     </div>
@@ -148,236 +153,3 @@
 
     </mat-sidenav-content>
   </mat-sidenav-container>
-
-  <!-- <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav class="sideNavList" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [fixedInViewport]="mobileQuery.matches">
-      <mat-nav-list  class="sideNavList">
-      
-        <div>
-          <button mat-button fxLayout="column" fxLayoutAlign="start stretch">
-            <mat-icon>lightbulb_outline</mat-icon>
-            Notes
-          </button>
-        </div>
-        <div>
-          <button mat-button>
-            <mat-icon>notifications_none</mat-icon>
-            Reminders
-          </button>
-        </div>
-   
-        <mat-divider></mat-divider>
-        <span>LABELS</span>
-        <div>
-          <button mat-button>
-            <mat-icon>create</mat-icon>
-            Edit labels
-          </button>
-        </div>
-
-        <mat-divider></mat-divider>
-        <div>
-          <button mat-button>
-            <mat-icon>archive</mat-icon>
-            Archive
-          </button>
-        </div>
-  
-        <div>
-          <button mat-button>
-            <mat-icon>delete_outline</mat-icon>
-            Trash
-          </button>
-        </div>
-     
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content class="sideNavContent">
-      <app-addnote (childEvent)="addNote($event)"></app-addnote>
-
-      <app-card [parentSubject]="parentSubject"></app-card>
-    </mat-sidenav-content>
-  </mat-sidenav-container> -->
-
-
-
-
-
-  <!-- <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav class="sideNavList" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [fixedInViewport]="mobileQuery.matches">
-      <mat-nav-list  class="sideNavList">
-      
-        <div>
-          <button mat-button fxLayout="column" fxLayoutAlign="start stretch">
-            <mat-icon>lightbulb_outline</mat-icon>
-            Notes
-          </button>
-        </div>
-        <div>
-          <button mat-button>
-            <mat-icon>notifications_none</mat-icon>
-            Reminders
-          </button>
-        </div>
-   
-        <mat-divider></mat-divider>
-        <span>LABELS</span>
-        <div>
-          <button mat-button>
-            <mat-icon>create</mat-icon>
-            Edit labels
-          </button>
-        </div>
-
-        <mat-divider></mat-divider>
-        <div>
-          <button mat-button>
-            <mat-icon>archive</mat-icon>
-            Archive
-          </button>
-        </div>
-  
-        <div>
-          <button mat-button>
-            <mat-icon>delete_outline</mat-icon>
-            Trash
-          </button>
-        </div>
-     
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content class="sideNavContent">
-      <app-addnote (childEvent)="addNote($event)"></app-addnote>
-
-      <app-card [parentSubject]="parentSubject"></app-card>
-    </mat-sidenav-content>
-  </mat-sidenav-container> -->
-
-
-  <!-- <mat-sidenav-container class="sidenavBar">
-          <mat-sidenav #sidenav mode="side" opened="true" style="min-width:50px;" class="sideNav">
-            <mat-nav-list class="sideNavList">       
-              <div>
-                <button mat-button  [routerLink]="['addNote']" (click)="headerName='Fundoo Notes'" [ngClass]="{'sideNavListItems': headerName!='Fundoo Notes', 'sideNavlistItemsColored': headerName=='Fundoo Notes'}">
-                  <mat-icon>lightbulb_outline</mat-icon> Notes
-                </button>
-              </div>
-        
-              <div>
-                <button mat-button  (click)="headerName='Reminders'" [ngClass]="{'sideNavListItems': headerName!='Reminders', 'sideNavlistItemsColored': headerName=='Reminders'}">
-                  <mat-icon>notifications_none</mat-icon> Reminders
-                </button>
-              </div>
-              <mat-divider></mat-divider>
-              <div>
-                <mat-label class="label-example" [style.fontSize.px]=16>Labels</mat-label>
-             
-                <button class="sideNavListItems" mat-button (click)="openModal(mytemplate)"> <mat-icon>edit</mat-icon>Edit Labels</button>
-
-    <ng-template #mytemplate>
-        <div>
-
-            <h3>Edit Label</h3>
-          <div>
-            
-              <div fxLayout="row" fxLayoutAlign="space-between center" >
-              <input matInput type="text" placeholder="add label" [(ngModel)]="value">
-              <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                <mat-icon [style.fontSize.px]=15> close</mat-icon>
-              </button>
-          </div>
-          <div fxLayoutAlign="end" >
-          <button mat-button>close</button></div>
-          </div>
-          
-          
-          </div>
-    </ng-template>
-              </div>
-              <mat-divider></mat-divider>
-              <div>
-                <button mat-button  (click)="headerName='Archive'" [ngClass]="{'sideNavListItems': headerName!='Archive', 'sideNavlistItemsColored': headerName=='Archive'}">
-                  <mat-icon>archive</mat-icon> Archive
-                </button>
-              </div>
-        
-              <div>
-                <button mat-button  (click)="headerName='Trash'" [ngClass]="{'sideNavListItems': headerName!='Trash', 'sideNavlistItemsColored': headerName=='Trash'}">
-                  <mat-icon>delete</mat-icon> Trash
-                </button>
-              </div>     
-            </mat-nav-list>  
-          </mat-sidenav> 
-          <mat-sidenav-content class="sideNavContent">
-          
-            <router-outlet></router-outlet>
-            
-        </mat-sidenav-content> 
-        </mat-sidenav-container> -->
-
-
-
-  <!-- <mat-sidenav-container class="sidenavBar">
-            <mat-sidenav #sidenav mode="side" opened="true" style="min-width:50px;" class="sideNav">
-              <mat-nav-list class="sideNavList">       
-                <div>
-                  <button mat-button  [routerLink]="['addNote']" (click)="headerName='Fundoo Notes'" [ngClass]="{'sideNavListItems': headerName!='Fundoo Notes', 'sideNavlistItemsColored': headerName=='Fundoo Notes'}">
-                    <mat-icon>lightbulb_outline</mat-icon> Notes
-                  </button>
-                </div>
-          
-                <div>
-                  <button mat-button  (click)="headerName='Reminders'" [ngClass]="{'sideNavListItems': headerName!='Reminders', 'sideNavlistItemsColored': headerName=='Reminders'}">
-                    <mat-icon>notifications_none</mat-icon> Reminders
-                  </button>
-                </div>
-                <mat-divider></mat-divider>
-                <div>
-                  <mat-label class="label-example" [style.fontSize.px]=16>Labels</mat-label>
-                  
-                  <button class="sideNavListItems" mat-button (click)="openModal(mytemplate)"> <mat-icon>edit</mat-icon>Edit Labels</button>
-  
-      <ng-template #mytemplate>
-          <div>
-  
-              <h3>Edit Label</h3>
-            <div>
-              
-                <div fxLayout="row" fxLayoutAlign="space-between center" >
-                <input matInput type="text" placeholder="add label" [(ngModel)]="value">
-                <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                  <mat-icon [style.fontSize.px]=15> close</mat-icon>
-                </button>
-            </div>
-            <div fxLayoutAlign="end" >
-            <button mat-button>close</button></div>
-            </div>
-            
-            
-            </div>
-      </ng-template>
-                </div>
-                <mat-divider></mat-divider>
-                <div>
-                  <button mat-button  (click)="headerName='Archive'" [ngClass]="{'sideNavListItems': headerName!='Archive', 'sideNavlistItemsColored': headerName=='Archive'}">
-                    <mat-icon>archive</mat-icon> Archive
-                  </button>
-                </div>
-          
-                <div>
-                  <button mat-button  (click)="headerName='Trash'" [ngClass]="{'sideNavListItems': headerName!='Trash', 'sideNavlistItemsColored': headerName=='Trash'}">
-                    <mat-icon>delete</mat-icon> Trash
-                  </button>
-                </div>     
-              </mat-nav-list>  
-            </mat-sidenav> 
-            <mat-sidenav-content class="sideNavContent">
-            
-<app-addnote (childEvent)="addNote($event)"></app-addnote>
-
-      <app-card [parentSubject]="parentSubject"></app-card>              
-          </mat-sidenav-content> 
-          </mat-sidenav-container>
-          -->

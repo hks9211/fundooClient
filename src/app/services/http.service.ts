@@ -36,12 +36,20 @@ export class HttpService {
   }
 
   postRequestt(purpose, data) {
-    return this.http.post(this.url + purpose, data);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      token: localStorage.getItem('token')
+    });
+    return this.http.post(this.url + purpose, data ,{headers});
   }
 
   get(purpose) {
     var userId = localStorage.getItem('userId');
-    return this.http.get(this.url + purpose + "/" + userId);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      token: localStorage.getItem('token')
+    });
+    return this.http.get(this.url + purpose + "/" + userId , {headers});
   }
 
   loggedIn() {
@@ -56,18 +64,23 @@ export class HttpService {
 
   updateProfilePic(imageUrl){
     var userId = localStorage.getItem('userId');
-    
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      token: localStorage.getItem('token')
+    });
     var updateData = {
       'userId' : userId,
       'imgUrl' : imageUrl
     }
-   return this.http.post(this.url + "updateImage" ,updateData)
+   return this.http.post(this.url + "updateImage" ,updateData , {headers})
   }
 
   getProfilePic(){
     var userId = localStorage.getItem('userId');
-
-    return this.http.get(this.url + 'getProfilePic' + "/" + userId);
-
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      token: localStorage.getItem('token')
+    });
+    return this.http.get(this.url + 'getProfilePic' + "/" + userId , {headers});
   }
 }
