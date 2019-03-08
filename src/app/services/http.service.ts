@@ -83,4 +83,8 @@ export class HttpService {
     });
     return this.http.get(this.url + 'getProfilePic' + "/" + userId , {headers});
   }
+
+  getUsers(purpose , key){
+    return this.http.get(this.url + purpose + "/" + key );
+  }
 }

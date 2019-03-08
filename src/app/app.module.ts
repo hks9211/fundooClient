@@ -31,6 +31,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { AuthGuard } from './services/auth.guard';
 import { EditLabelComponent } from './components/edit-label/edit-label.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
 
 
 
@@ -54,6 +55,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     TrashComponent,
     ArchiveComponent,
     EditLabelComponent,
+    CollaboratorsComponent,
 
 
 

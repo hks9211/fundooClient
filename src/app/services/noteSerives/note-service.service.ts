@@ -31,4 +31,8 @@ export class NoteServiceService {
   getTrash(){
     return this.http.get('getTrash');
   }
+
+  getRelatedUsers(key){
+    return this.http.getUsers('getAllUsers', key);
+  }
 }

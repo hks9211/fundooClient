@@ -69,6 +69,7 @@ export class LoginUserComponent implements OnInit {
           response = data;
           localStorage.setItem('userId', response.message.userId);
           localStorage.setItem('token',response.tokens);
+          
           this.router.navigateByUrl('dashboard');
 
         },

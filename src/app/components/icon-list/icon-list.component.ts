@@ -2,7 +2,8 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { RecursiveTemplateAstVisitor } from '@angular/compiler';
 import { FormControl, Validators } from '@angular/forms';
 import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
+import { CollaboratorsComponent } from '../collaborators/collaborators.component';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class IconListComponent implements OnInit {
 
   constructor(
     private noteServices: NoteServiceService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) { }
 
   isMenuOpen = false;
@@ -123,5 +125,11 @@ export class IconListComponent implements OnInit {
         this.snackBar.open("Note not Deleted", "", { duration: 1000 })
       }
     );
+  }
+
+  openCollabWindow(){
+    const dialogRef = this.dialog.open(CollaboratorsComponent, {
+      autoFocus: false
+    });
   }
 }

@@ -15,6 +15,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { AuthGuard } from './services/auth.guard';
 import { EditLabelComponent } from './components/edit-label/edit-label.component';
+import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
 
 const routes: Routes = [
 {
@@ -73,6 +74,10 @@ const routes: Routes = [
 {
   path:'edit',
   component:EditCardComponent
+},
+{
+  path:'collab',
+  component:CollaboratorsComponent
 },
 {
     path:'editt',

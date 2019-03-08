@@ -108,6 +108,8 @@ export class DashboardComponent implements OnInit {
         this.picLink = (data as any).message[0].img;
         this.userData = (data as any).message[0];
         console.log(this.userData);
+        localStorage.setItem('loginUserData', JSON.stringify(this.userData));
+
 
       },
       error => {

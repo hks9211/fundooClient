@@ -8,7 +8,7 @@ export class ListGridViewService {
 
   private messageSource = new BehaviorSubject('row wrap');
   currentMessage = this.messageSource.asObservable();
-
+  
   constructor() { }
 
   changeMessage(message: string) {

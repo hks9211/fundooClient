@@ -1,7 +1,7 @@
 <div fxLayout="column">
-<div fxFlex="100" class="note" fxLayoutAlign="space-around start" fxFlex.xs="100" *ngIf="flag==true"
-  (click)="reverseFlag()">
-  <mat-card class="mat-card" fxFlex="50" fxLayout="row" fxLayoutAlign="space-between start" fxFlex.xs="100">
+<div fxFlex="100" class="note" fxLayoutAlign="space-around start" fxFlex.xs="100">
+  <mat-card class="mat-card" fxFlex="50" fxLayout="row"  *ngIf="flag==true"
+  (click)="reverseFlag()" fxLayoutAlign="space-between start" fxFlex.xs="100">
     <div fxFlex="65" data-text="Take a note.." class="text-area" contenteditable="true" class="maincard">
     </div>
     <div fxFlex="35" fxLayoutAlign="space-around start">

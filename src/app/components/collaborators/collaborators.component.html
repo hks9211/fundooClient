@@ -1,0 +1,38 @@
+<div class="main-collab" fxFlex="100" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column">
+  <div fxFlex="100" class="main">
+    <div class="collab-title">Collaborators</div>
+    <div class="owner-details" fxLayout="row">
+      <div class="owner-img"> <img [src]="picLink" class="account-icon"> </div>
+      <div fxLayout="column">
+        <div>
+          <span class="initials"> {{firstName}} {{lastName}} </span>
+          <span class="owner">(Owner)</span>
+        </div>
+        <div class="user-email"> {{email}}</div>
+      </div>
+    </div>
+    <div fxLayout="row">
+   <div class="add-icon"> 
+   <img src="../../../assets/person_add.svg" class="img-add-person">   
+  </div>
+  <form class="example-form">
+    <div class="input-field">
+       <input type="text" (keyup)="count = count + 1" (keyup)="findSuggestions(count)"  placeholder="email to share with" aria-label="Number" matInput [formControl]="key" [matAutocomplete]="auto">
+     
+      </div>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{option.email}} 
+          </mat-option>
+        </mat-autocomplete>
+    
+    </form>
+    </div>
+  </div>
+  <div class="footer" fxLayout="row" fxLayoutAlign="end center">
+    <div> <button mat-button><span class="cancel">Cancel</span></button>
+    </div>
+    <div> <button mat-button class="save-btn"><span class="save">Save</span></button>
+    </div>
+  </div>
+</div>
