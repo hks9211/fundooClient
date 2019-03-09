@@ -43,8 +43,8 @@
     <button mat-raised-button (click)="addReminder()">Save</button>
   </mat-menu>
 
-  <button class="collaborator" matTooltip="collaborator" mat-icon-button (click) = "openCollabWindow()">
-    <img src="../../../assets/collaborator.svg">
+  <button class="collaborator" matTooltip="collaborator" mat-icon-button (click) = "openCollabWindow(userData)">
+    <img src="../../../assets/collaborator.svg"> 
   </button>
   <button [matMenuTriggerFor]="colorMenu" matTooltip="change color" mat-icon-button>
     <img src="../../../assets/color.svg">

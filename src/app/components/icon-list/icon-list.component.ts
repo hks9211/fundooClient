@@ -25,8 +25,8 @@ export class IconListComponent implements OnInit {
   time = new FormControl('');
 
   @Input() childMessage: any = "";
-  @Input() noteIdForChild: any = "";
-
+  @Input() userData;
+  @Input() test: string;
   @Output() messageEvent = new EventEmitter<any>();
   @Output() reminderEvent = new EventEmitter<any>();
   @Output() setColorEvent = new EventEmitter<any>();
@@ -38,7 +38,8 @@ export class IconListComponent implements OnInit {
   @Output() archiveFromCardEvent = new EventEmitter<any>();
   @Output() archiveFromCard = new EventEmitter<any>();
 
-  ngOnInit() { }
+  ngOnInit() {
+   }
 
   colorArray = [[
     { 'color': 'rgb(255, 255, 255)', 'name': 'White' },
@@ -104,7 +105,7 @@ export class IconListComponent implements OnInit {
     var updateTrash = {};
     if (this.childMessage == "") {
       updateTrash = {
-        '_id': this.noteIdForChild,
+        '_id': this.childMessage,
         'isDeleted': true
       }
     } else {
@@ -127,9 +128,12 @@ export class IconListComponent implements OnInit {
     );
   }
 
-  openCollabWindow(){
+  openCollabWindow(userData1){
+    console.log(userData1)
     const dialogRef = this.dialog.open(CollaboratorsComponent, {
-      autoFocus: false
+      autoFocus: false,
+      data:this.userData
     });
+    
   }
 }

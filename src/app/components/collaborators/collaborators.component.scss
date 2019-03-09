@@ -138,5 +138,32 @@
     font-size: 13px;
     font-family: 'Google Sans',Roboto,Arial,sans-serif;
     letter-spacing: 0.49px;
+}
 
+/deep/ .mat-input-element {
+    font: inherit;
+    background: 0 0;
+    color: currentColor;
+    border: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align: inherit;
+    font-size: 13px;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+
+    // font-weight: 550;
+}
+
+.suggested-email{
+    font-size: 13px;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;  
+}
+
+/deep/ .mat-option {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: 12px;
 }

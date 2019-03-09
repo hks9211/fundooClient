@@ -17,12 +17,12 @@
   </div>
   <form class="example-form">
     <div class="input-field">
-       <input type="text" (keyup)="count = count + 1" (keyup)="findSuggestions(count)"  placeholder="email to share with" aria-label="Number" matInput [formControl]="key" [matAutocomplete]="auto">
+       <input type="text" (keyup)="count = count + 1;findSuggestions(count)"  placeholder="email to share with" aria-label="Number" matInput [formControl]="key" [matAutocomplete]="auto">
      
       </div>
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of options" [value]="option">
-            {{option.email}} 
+          <mat-option *ngFor="let option of options" [value]="option.email" (click)="selectedData(option);">
+            {{option.firstName}} {{option.lastName}} <{{option.email}}> 
           </mat-option>
         </mat-autocomplete>
     

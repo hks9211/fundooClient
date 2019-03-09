@@ -6,7 +6,7 @@
     <textarea class="note-content-area" spellcheck="false" matTextareaAutosize [formControl]="noteContent" placeholder="Take a note..."></textarea>
   </div>
   <div fxFlex="50"  fxLayout="row" fxLayoutAlign="space-between center" fxLayoutAlign.xs="space-around none">
-        <app-icon-list  (changeColorForEditCard)="receiveChangeColorEvent($event)" [noteIdForChild]="noteId" (sendDeletedNoteInfoEvent)="receiveDeletedNoteInfoEvent($event)" (archiveFromCardEvent)="getArchiveFromCardEvent($event)"></app-icon-list>
+        <app-icon-list  (changeColorForEditCard)="receiveChangeColorEvent($event)"  (sendDeletedNoteInfoEvent)="receiveDeletedNoteInfoEvent($event)" (archiveFromCardEvent)="getArchiveFromCardEvent($event)"></app-icon-list>
       <button  mat-button  mat-dialog-close (click)="save()"><span class="close-button">Close</span></button>
 
   </div>

@@ -14,12 +14,16 @@ import { ListGridViewService } from 'src/app/services/list-grid-view.service';
 export class CardComponent implements OnInit {
   @Input()
   parentSubject: Subject<any>;
+
+
   items: any = [];
   noteId: any;
   updateColor: any;
   isArchived: boolean = false;
   chooseView : String = "row wrap";
   flag: string;
+  userData: any = "";
+  
   constructor(
     private noteServices: NoteServiceService,
     private snackBar: MatSnackBar,
@@ -29,6 +33,7 @@ export class CardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.getCards();
     this.parentSubject.subscribe(event => {
       this.items.push(event);
@@ -47,7 +52,13 @@ export class CardComponent implements OnInit {
   }
   openUpdatePopup(item) {
     this.noteId = item._id;
-    console.log("note Id", this.noteId)
+    console.log("note Id", this.noteId);
+   this.userData = item;
+    // localStorage.setItem('noteId',this.noteId);
+    this.changeViewData.toggleNoteId(this.noteId);
+
+
+
   }
 
   receiveDeletedNoteToTrashEvent($event) {

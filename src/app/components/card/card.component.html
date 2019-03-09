@@ -16,7 +16,7 @@ fxFlex="92" fxFlex.xs="100" fxLayoutAlign="center center">
 
           <mat-card-footer>
             <div class="matCardFooterIcons">
-              <app-icon-list (click)="openUpdatePopup(item)" [childMessage]="noteId"
+              <app-icon-list (click)="openUpdatePopup(item)" [test]="'Blue32'" [userData]="item" [childMessage]="noteId"
                 (updateColorEvent)="receiveUpdateColorEvent($event)"
                 (sendDeletedNoteToTrashEvent)="receiveDeletedNoteToTrashEvent($event)"
                 (archiveFromCard)="receiveArchiveFromCard($event)"></app-icon-list>
@@ -27,32 +27,3 @@ fxFlex="92" fxFlex.xs="100" fxLayoutAlign="center center">
     </div>
   </div>
 </div>
-
-
-
-<!-- <div *ngIf="!chooseView" class="card" fxLayout="column wrap" fxFlex="92" fxFlex.xs="100" fxLayoutAlign="center center">
-  <div *ngFor="let item of items">
-    <div>
-      <mat-card fxFlex="100" class="card-content" fxFlex.xs="100" [style.backgroundColor]="item.color">
-        <div>
-          <div fxFlex="88" class="item-title" (click)="editCard(item)">{{item.noteTitle}}</div>
-          <div fxFlex="4">
-            <button mat-icon-button></button>
-          </div>
-        </div>
-        <mat-card-content fxLayout="column">
-          <div class="description" (click)="editCard(item)">{{item.noteContent}}</div>
-
-          <mat-card-footer>
-            <div class="matCardFooterIcons">
-              <app-icon-list (click)="openUpdatePopup(item)" [childMessage]="noteId"
-                (updateColorEvent)="receiveUpdateColorEvent($event)"
-                (sendDeletedNoteToTrashEvent)="receiveDeletedNoteToTrashEvent($event)"
-                (archiveFromCard)="receiveArchiveFromCard($event)"></app-icon-list>
-            </div>
-          </mat-card-footer>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
-</div> -->
