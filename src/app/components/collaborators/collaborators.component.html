@@ -16,9 +16,8 @@
    <img src="../../../assets/person_add.svg" class="img-add-person">   
   </div>
   <form class="example-form">
-    <div class="input-field">
-       <input type="text" (keyup)="count = count + 1;findSuggestions(count)"  placeholder="email to share with" aria-label="Number" matInput [formControl]="key" [matAutocomplete]="auto">
-     
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+       <input type="text" class="input-field" (keyup)="count = count + 1;findSuggestions(count)"  placeholder="email to share with" aria-label="Number" matInput [formControl]="key" [matAutocomplete]="auto">
       </div>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let option of options" [value]="option.email" (click)="selectedData(option);">
@@ -27,6 +26,8 @@
         </mat-autocomplete>
     
     </form>
+    <div *ngIf="count > 2"> <button mat-button> <img src="../../../assets/done.svg"></button></div>
+
     </div>
   </div>
   <div class="footer" fxLayout="row" fxLayoutAlign="end center">

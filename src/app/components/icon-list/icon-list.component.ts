@@ -37,6 +37,8 @@ export class IconListComponent implements OnInit {
   @Output() sendDeletedNoteInfoEvent = new EventEmitter<any>();
   @Output() archiveFromCardEvent = new EventEmitter<any>();
   @Output() archiveFromCard = new EventEmitter<any>();
+  @Output() reminderEventForCards = new EventEmitter<any>();
+
 
   ngOnInit() {
    }
@@ -60,12 +62,11 @@ export class IconListComponent implements OnInit {
 
 
   addReminder() {
-    const reminderData = {
-      'date': this.date.value,
-      'time': this.time.value
-    }
+    const reminderData =  this.date.value.toLocaleDateString()+","+" "+ this.time.value
+    
     console.log("reminder: ", reminderData)
-    // this.reminderEvent.emit(reminderData);
+     this.reminderEvent.emit(reminderData);
+     this.reminderEventForCards.emit(reminderData);
   }
 
   archiveNewNote() {

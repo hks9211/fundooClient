@@ -87,4 +87,9 @@ export class HttpService {
   getUsers(purpose , key){
     return this.http.get(this.url + purpose + "/" + key );
   }
+
+  addCollaborators(purpose , data){
+
+    return this.http.post(this.url + purpose , data);
+  }
 }

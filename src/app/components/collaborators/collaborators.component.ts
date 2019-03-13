@@ -15,7 +15,7 @@ export class CollaboratorsComponent implements OnInit {
   firstName: any = "";
   lastName: any = "";
   count: Number = 0;
-  noteId : string = "";
+  noteData : any ;
 
   constructor(public dialogRef: MatDialogRef<CollaboratorsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -29,7 +29,7 @@ export class CollaboratorsComponent implements OnInit {
     this.email = user.email;
     this.firstName = user.firstName;
     this.lastName = user.lastName;
-    this.noteId = data;
+    this.noteData = data;
     console.log("data at collab: ",data);
     
   }
@@ -56,7 +56,21 @@ export class CollaboratorsComponent implements OnInit {
   }
 
   selectedData(option){
-    // console.log(option);
-    
+   console.log("user: ",option);
+   const addCollaboratorData = {
+   'noteId' : this.noteData._id,
+   'collaboratorId' :option._id,
+   'ownerId': localStorage.getItem('userId')
+   }
+
+   this.noteService.addCollaborator(addCollaboratorData).subscribe(
+     data => {
+         console.log(data);
+         
+     },
+     error => {
+      console.log(error);
+     }
+   )
   }
 }

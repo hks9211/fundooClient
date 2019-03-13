@@ -72,12 +72,34 @@ export class CardComponent implements OnInit {
     this.updateArchive();
   }
 
+  saveReminderOnCardEvent($event){
+    console.log("event on card for reminder",$event);
+
+    const item = {
+      '_id':this.noteId,
+      'reminder':$event
+    }
+    this.noteServices.postUpdateNote(item).subscribe(
+      data => {
+        this.getCards();
+        this.snackBar.open('Reminder Added', '', { duration: 2000 });
+
+      },
+      error => {
+        this.snackBar.open('Note not updated', '', { duration: 2000 });
+        console.log('error response: ', error);
+      }
+    ) 
+  }  
+
+
   updateArchive(){
     const updateArchiveData = {
       '_id' : this.noteId,
       'isArchived':this.isArchived
     }
 
+  
     this.noteServices.postUpdateNote(updateArchiveData).subscribe(
       data => {
         this.snackBar.open("Archived","",{duration:1000})
@@ -98,6 +120,8 @@ export class CardComponent implements OnInit {
     this.noteServices.getCards(reqData).subscribe(
       data => {
         this.items = data['response'];
+        console.log("response for get all cards",data);
+        
       },
       error => {
         this.snackBar.open("error occured while loading cards","",{duration:2000});
@@ -122,5 +146,20 @@ export class CardComponent implements OnInit {
         }
       )
     })
+  }
+
+  removeReminder(item){
+    console.log(item);
+    item.reminder = "";
+    this.noteServices.postUpdateNote(item).subscribe(
+      data => {
+        this.getCards();
+        this.snackBar.open('Reminder Removed', '', { duration: 2000 });
+      },
+      error => {
+        this.snackBar.open('Note not updated', '', { duration: 2000 });
+        console.log('error response: ', error);
+      }
+    )
   }
 }

@@ -1,8 +1,8 @@
 <!-- <ng4-loading-spinner [threshold]="0000" [timeout]="1000" -->
 <!-- [loadingText]="'Please wait... while we are loading your dashboard..'" [zIndex]="9999"></ng4-loading-spinner> -->
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" fxFlex="100" fxFlex.xs="100">
+<div class="example-container" fxFlex="100" fxFlex.xs="100" fxLayout="column">
 
-  <mat-toolbar class="example-toolbar" fxFlex.xs="100">
+  <mat-toolbar class="example-toolbar">
     <div fxFlex="100" fxLayoutAlign="space-between center">
       <div fxFlex="20" fxLayoutAlign="space-between center">
         <div fxFlex="20" fxFlex.xs="5" fxLayout="row" fxLayoutAlign.xs="start center" fxLayoutAlign="center center">
@@ -60,24 +60,24 @@
           </div>
         </button>
         <mat-menu class="logoutMenu" #menu="matMenu" (click)="$event.stopPropagation();">
-          <div >
-           
-              <div fxLayout="row" fxLayoutAlign="space-between start" (click)="$event.stopPropagation();" >
-                <div class="user-details">
-                    <label>
-                  <input #inputImage type="file" class="input-img" (change)="uploadImage(inputImage)" >
+          <div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between start" (click)="$event.stopPropagation();">
+              <div class="user-details">
+                <label>
+                  <input #inputImage type="file" class="input-img" (change)="uploadImage(inputImage)">
                   <div *ngIf="picLink !=''">
                     <img [src]="picLink" class="profilePic" matTooltip='Change image' matTooltipPosition='right'>
                   </div>
                 </label>
 
-                </div>
-                <div class="user-info">
-                  <span class="userName">{{userData.firstName}} {{userData.lastName}}</span>
-                  <div class="userMail">{{userData.email}}</div>
-                </div>
-
               </div>
+              <div class="user-info">
+                <span class="userName">{{userData.firstName}} {{userData.lastName}}</span>
+                <div class="userMail">{{userData.email}}</div>
+              </div>
+
+            </div>
             <mat-divider></mat-divider>
             <div class="options-signout" fxLayout="row">
               <button mat-button (click)="logout()"><span class="logout">Add Account</span>
@@ -107,7 +107,7 @@
           </div>
 
           <div>
-            <button mat-button (click)="headerName='Reminders'"
+            <button mat-button [routerLink]="['reminders']" (click)="headerName='Reminders'"
               [ngClass]="{'sideNavListItems': headerName!='Reminders', 'sideNavlistItemsColored': headerName=='Reminders'}">
               <mat-icon>notifications_none</mat-icon> Reminders
             </button>
@@ -153,3 +153,4 @@
 
     </mat-sidenav-content>
   </mat-sidenav-container>
+</div>

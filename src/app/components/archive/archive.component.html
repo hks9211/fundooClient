@@ -14,6 +14,14 @@
           <div class="description" >{{item.noteContent}}</div>
 
           <mat-card-footer>
+              <mat-chip-list class="chip-list">
+
+                  <mat-chip class="show-reminders" style="margin-left: 10px;" *ngIf="item?.reminder">
+                    <mat-icon matChipRemove class="time-icon" style="margin-right: 8px;">access_time</mat-icon>
+                     <span class="show-time">{{item?.reminder}}</span>
+                    <mat-icon matChipRemove class="remove" (click)="removeReminder(item)">close </mat-icon>
+                  </mat-chip>
+                  </mat-chip-list>
             <div class="matCardFooterIcons">
                       <app-icon-list></app-icon-list>
             </div>

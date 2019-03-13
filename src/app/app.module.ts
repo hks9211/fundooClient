@@ -32,6 +32,7 @@ import { AuthGuard } from './services/auth.guard';
 import { EditLabelComponent } from './components/edit-label/edit-label.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
+import { RemindersComponent } from './components/reminders/reminders.component';
 
 
 
@@ -56,6 +57,7 @@ import { CollaboratorsComponent } from './components/collaborators/collaborators
     ArchiveComponent,
     EditLabelComponent,
     CollaboratorsComponent,
+    RemindersComponent,
 
 
 

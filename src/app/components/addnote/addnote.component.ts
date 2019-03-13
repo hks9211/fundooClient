@@ -43,9 +43,9 @@ export class AddnoteComponent implements OnInit {
   }
 
   receiveReminderEvent($event){
-    console.log("event received")
+    console.log("event received for reminder: ",$event)
     this.reminderData = $event;
-    console.log(this.reminderData.time)
+    console.log(this.reminderData)
   }
 
   receiveSetColorEvent($event){
@@ -75,7 +75,7 @@ export class AddnoteComponent implements OnInit {
       userId: localStorage.getItem('userId'),
       noteTitle: this.noteTitle.value,
       noteContent: this.noteContent.value,
-      reminder: this.reminderData.time,
+      reminder: this.reminderData,
       color: this.setColor,
       isPined : false,
       isArchived : this.isArchive.isArchived,
@@ -86,6 +86,8 @@ export class AddnoteComponent implements OnInit {
 
       this.noteService.postHttpRequest(newNoteData , 'addNote').subscribe(
       data => {
+        console.log("data received after addnote: ",data);
+        
         this.snackBar.open('Your note has been saved successfully', '', { duration: 2000 });
       },
       error => {

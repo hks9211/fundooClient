@@ -35,4 +35,13 @@ export class NoteServiceService {
   getRelatedUsers(key){
     return this.http.getUsers('getAllUsers', key);
   }
+  addCollaborator(data){
+    console.log("data at note Service",data);
+    
+    return this.http.addCollaborators('addCollaborator', data);
+  }
+
+  getReminders(){
+    return this.http.get('getAllReminders');
+  }
 }

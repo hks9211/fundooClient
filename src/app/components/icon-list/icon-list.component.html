@@ -1,8 +1,8 @@
 <div class="icon-list" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutAlign.xs="start start">
-  <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation();">
+  <button mat-button [matMenuTriggerFor]="menu">
     <img src="../../../assets//reminder.svg">
   </button>
-  <mat-menu #menu="matMenu">
+  <mat-menu #menu="matMenu" (click)="$event.stopPropagation();">
     <span class="texts">Reminder:</span>
     <button mat-menu-item>
       <span class="fake-text-show">Later Today</span>
@@ -29,9 +29,9 @@
       <span class="fake-text-show">Pick date & time</span>
     </button>
   </mat-menu>
-  <mat-menu #invertebrates="matMenu">
+  <mat-menu #invertebrates="matMenu" (click)="$event.stopPropagation();">
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]="date">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]="date" (click)="$event.stopPropagation();">
       <mat-datepicker-toggle matSuffix [for]="picker" (click)="$event.stopPropagation();"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>

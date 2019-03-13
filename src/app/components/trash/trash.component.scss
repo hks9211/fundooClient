@@ -3,12 +3,12 @@
     margin-bottom: 40px;
     justify-content: center;
     max-width: 250px;
-    max-height: 400px;
+    min-height: 130px;
     border-radius: 10px;
 }
 
 .card{
-   justify-content: center; 
+//    justify-content: center; 
    margin-top: 20px;
 }
 
@@ -29,6 +29,8 @@
     visibility: hidden;
     opacity: 0;
     transition: visibility 0.5s, opacity 0.2s linear;
+    margin-bottom: 30px;
+    
 }
 
 .card-content:hover .matCardFooterIcons {
@@ -54,4 +56,28 @@ mat-card{
             width:350px;
         }
         }
-        
+
+        .trash-header{
+            font-size: 16px;
+    font-style: italic;
+    justify-content: center;
+    padding-top: 24px;
+    padding-bottom: 8px;
+    color: #202124;
+    direction: ltr;
+    font-family: 'Roboto',arial,sans-serif;
+    letter-spacing: 0.55px;
+
+        }
+
+ .trash-btn{
+     margin-left: 10px;
+ }       
+
+ .trash{
+    color: #377bf1;
+    font-weight: 550;
+    letter-spacing: 0.55px;
+  
+
+ }
