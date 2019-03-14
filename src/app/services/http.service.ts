@@ -92,4 +92,8 @@ export class HttpService {
 
     return this.http.post(this.url + purpose , data);
   }
+
+  deleteNote(data , purpose){
+    return this.http.get(this.url + purpose + "/" + data);
+  }
 }

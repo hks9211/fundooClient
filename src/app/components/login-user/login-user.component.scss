@@ -1,3 +1,11 @@
+@import '../../scss/colors.scss';
+@import '../../scss/constants.scss';
+
+@mixin myColorScheme {
+    color: $white;
+    background-color: $darkYellow;
+    }
+
 .login-form{
     margin-top: 2%
 }
@@ -17,7 +25,7 @@
     letter-spacing: .1px;
     line-height: 1.5;
     font-weight: 400;
-    color: #202124;
+    color: $black;
     font-family: roboto,arial,sans-serif;
 }
 
@@ -27,7 +35,7 @@
 }
 
 .login-subsubheader{
-    color: #202124;
+    color: $black;
     font-family: roboto,arial,sans-serif;
     color: rgba(0,0,0,.87);
     direction: ltr;
@@ -72,7 +80,7 @@
     text-align: center;
     font-size: 14px;
     font-family: 'Google Sans',arial,sans-serif;
-    color: #fff;
+    color: $white;
     letter-spacing: .45px;
 
 }

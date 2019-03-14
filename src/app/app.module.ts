@@ -33,6 +33,8 @@ import { EditLabelComponent } from './components/edit-label/edit-label.component
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
+import { SearchPipe } from './search.pipe';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -58,6 +60,8 @@ import { RemindersComponent } from './components/reminders/reminders.component';
     EditLabelComponent,
     CollaboratorsComponent,
     RemindersComponent,
+    SearchPipe,
+    SearchComponent,
 
 
 

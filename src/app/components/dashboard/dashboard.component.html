@@ -27,7 +27,7 @@
         </button>
 
         <input fxFlex="100" fxFlex.sm="80" class="search" fxFlex.xs="100" matInput placeholder="  search"
-          [(ngModel)]="value" autocomplete="off">
+        [(ngModel)]="Search" (keyup)="lookFor()" (click)="goSearch()" autocomplete="off">
         <div>
           <button class="close-button" mat-button (click)="value=''">
             <img src="../../../assets/close.svg">

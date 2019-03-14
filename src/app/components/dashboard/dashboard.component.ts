@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
   viewToolTip: string;
   croppedImage: any = '';
   value = ' ';
+  Search : any 
 
 
 
@@ -137,5 +138,13 @@ export class DashboardComponent implements OnInit {
       this.icon = 'view_agenda_outline';
       this.changeViewData.changeMessage('column wrap');
     }
+  }
+
+  goSearch() {
+    this.router.navigate(['dashboard/Search']);
+  }
+
+  lookFor() {
+    this.changeViewData.searchMessage(this.Search)
   }
 }

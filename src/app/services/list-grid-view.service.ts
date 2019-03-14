@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject , Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,18 @@ export class ListGridViewService {
   currentMessage = this.messageSource.asObservable();
   private noteIdSource = new BehaviorSubject("");
   currentNoteId = this.noteIdSource.asObservable();
+
+  private searchSource = new BehaviorSubject('');
+  findMessage = this.searchSource.asObservable();
   
   constructor() { 
 
    }
+   searchMessage(message : string) {
+    this.searchSource.next(message)
+    console.log("message at search service: ",message);
+    
+  }
 
   changeMessage(message: string) {
     console.log("message at service: ",message);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
 import { ListGridViewService } from 'src/app/services/list-grid-view.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-trash',
@@ -10,10 +11,12 @@ import { ListGridViewService } from 'src/app/services/list-grid-view.service';
 export class TrashComponent implements OnInit {
   items: any = [];
   chooseView : String = "row wrap";
+  noteId: any;
 
   constructor(
     private noteServices: NoteServiceService,
-    private changeViewData : ListGridViewService
+    private changeViewData : ListGridViewService,
+    private snackBar : MatSnackBar
 
   ) { }
 
@@ -35,5 +38,28 @@ export class TrashComponent implements OnInit {
        console.log("error at archive component",error);   
       }
     )
+  }
+
+  getItemDetails(item){
+    this.noteId = item._id;
+  }
+
+  deleteForever(){
+   try{
+   if(this.noteId == undefined || this.noteId == null  )throw "note id missing"
+    this.noteServices.deleteNoteForver(this.noteId).subscribe(
+      data => {
+       this.getTrash();
+       console.log("data after delelte",data);
+       
+      },
+      error => {
+       console.log("error");
+       
+      }
+    )
+    }catch(err){
+      this.snackBar.open(err , "", {duration : 2000});
+    }
   }
 }

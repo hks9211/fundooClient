@@ -44,4 +44,8 @@ export class NoteServiceService {
   getReminders(){
     return this.http.get('getAllReminders');
   }
+
+  deleteNoteForver(data){
+    return this.http.deleteNote(data ,'deleteNoteForever');
+  }
 }

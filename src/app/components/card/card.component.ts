@@ -15,12 +15,14 @@ export class CardComponent implements OnInit {
   @Input()
   parentSubject: Subject<any>;
 
+  @Input() Search: string;
+
 
   items: any = [];
   noteId: any;
   updateColor: any;
   isArchived: boolean = false;
-  chooseView : String = "row wrap";
+  chooseView : string = "row wrap";
   flag: string;
   userData: any = "";
   

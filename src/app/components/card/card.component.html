@@ -1,10 +1,10 @@
 <div  class="card" fxLayout="{{chooseView}}" 
-fxFlex="90" fxFlex.xs="100" fxLayoutAlign="center center">
-  <div *ngFor="let item of items">
+fxFlex="90"  fxFlex.xs="100" fxLayoutAlign="center center"  cdkDropList (cdkDropListDropped)="drop($event)">
+  <div cdkDrag *ngFor="let item of items | search : Search;">
     <div>
       <mat-card fxFlex="100" class="card-content" 
       [ngClass]="{'cardGridView': chooseView == 'row wrap','cardListView': chooseView == 'column wrap'}"
-      fxFlex.xs="100" [style.backgroundColor]="item.color">
+      fxFlex.xs="100" fxFlex="90" [style.backgroundColor]="item.color">
         <div>
           <div fxFlex="88" class="item-title" (click)="editCard(item)">{{item.noteTitle}}</div>
           <div fxFlex="4">
