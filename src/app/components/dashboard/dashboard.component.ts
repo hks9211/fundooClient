@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { EditLabelComponent } from '../edit-label/edit-label.component';
 import { HttpService } from 'src/app/services/http.service';
 import { ListGridViewService } from '../../services/list-grid-view.service'
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class DashboardComponent implements OnInit {
   viewToolTip: string;
   croppedImage: any = '';
   value = ' ';
-  Search : any 
+  Search : any;
+  labels = []; 
 
 
 
@@ -51,6 +53,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.spinnerService.show();
     this.getProfilePic();
+    this.getLabels();
   }
 
   ngOnDestroy(): void {
@@ -68,7 +71,13 @@ export class DashboardComponent implements OnInit {
 
   openEditLabelDialog() {
     const dialogRef = this.dialog.open(EditLabelComponent, {
+      data : this.labels,
+      autoFocus: false,
     });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('dialog updated content :', result, '\n updated data');
+      this.getLabels();
+    })
   }
 
   uploadImage(imageInput) {
@@ -78,7 +87,7 @@ export class DashboardComponent implements OnInit {
       data => {
         console.log("data got after image upload", data)
         this.picLink = data['imgUrl'];
-        console.log("link: ", this.picLink);
+        // console.log("link: ", this.picLink);
         this.showProfilepic(this.picLink);
 
 
@@ -94,7 +103,7 @@ export class DashboardComponent implements OnInit {
     this.http.updateProfilePic(imageUrl).subscribe(
       data => {
         this.picLink = data['message']['img'];
-        console.log("after save link: ", this.picLink);
+        // console.log("after save link: ", this.picLink);
         // this.getProfilePic();
       },
       error => {
@@ -108,10 +117,8 @@ export class DashboardComponent implements OnInit {
       data => {
         this.picLink = (data as any).message[0].img;
         this.userData = (data as any).message[0];
-        console.log(this.userData);
+        // console.log(this.userData);
         localStorage.setItem('loginUserData', JSON.stringify(this.userData));
-
-
       },
       error => {
         console.log(error);
@@ -119,15 +126,7 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  imageCropped(file) {
-    this.croppedImage = file.base64;
-  }
-  imageLoaded() {
-    // show cropper
-  }
-  loadImageFailed() {
-    // show message
-  }
+  
 
   setGridOrListView() {
     if (this.icon === 'view_agenda_outline') {
@@ -147,4 +146,33 @@ export class DashboardComponent implements OnInit {
   lookFor() {
     this.changeViewData.searchMessage(this.Search)
   }
+
+  imageChangedEvent: any = '';
+
+fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+}
+imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+}
+imageLoaded() {
+    // show cropper
+}
+loadImageFailed() {
+    // show message
+}
+
+getLabels(){
+
+  this.http.getLabels('getLabels').subscribe(
+   data => {
+    // console.log("getLabel data: ",(data as any).response);
+    this.labels = (data as any).response;
+   },
+   error => {
+   console.log(error);
+   
+   }
+  )
+}
 }

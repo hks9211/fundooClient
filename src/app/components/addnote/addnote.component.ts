@@ -79,7 +79,8 @@ export class AddnoteComponent implements OnInit {
       color: this.setColor,
       isPined : false,
       isArchived : this.isArchive.isArchived,
-      isDeleted : false
+      isDeleted : false,
+      labels : []
     };
       // this.childEvent.emit(newNoteData);
       this.parentSubject.next(newNoteData);
@@ -87,7 +88,6 @@ export class AddnoteComponent implements OnInit {
       this.noteService.postHttpRequest(newNoteData , 'addNote').subscribe(
       data => {
         console.log("data received after addnote: ",data);
-        
         this.snackBar.open('Your note has been saved successfully', '', { duration: 2000 });
       },
       error => {

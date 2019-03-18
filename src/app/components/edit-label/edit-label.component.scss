@@ -21,9 +21,11 @@
     box-sizing: border-box;
     overflow: hidden;
     outline: 0;
-    width: 100%;
+    width: 83%;
     height: 100%;
-    min-height: inherit;
+    min-height: 250px;
+    height: 100%;
+   
     max-height: inherit;
 } 
 .done{
@@ -67,3 +69,84 @@ img{
     font-weight: 550;
     
 }
+
+span{
+    font-size: 13px;
+    margin-left: 40px;
+    position: absolute;
+    margin-top: 2px;
+   letter-spacing: 0.34px;
+    font-family: 'Roboto',arial,sans-serif;
+    font-weight: 550;
+
+
+
+}
+
+// /deep/ .material-icons {
+    
+//     font-size: 19px;
+//     margin-left: 23px;
+//     opacity: 0.60;
+// }
+
+.show-labels{
+    margin-bottom: 19px;
+    visibility: visible;
+}
+
+.create-label{
+    margin-top: 10px;
+}
+
+
+/deep/ .mat-input-element {
+    font: inherit;
+    background: 0 0;
+    color: currentColor;
+    border: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    width: 90%;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align: inherit;
+    font-size: 10px;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+}
+
+.input-field{
+    margin-bottom: 9px;
+}
+
+.footer-label{
+    margin-top: 10px;
+    margin-left: 53px;
+}
+
+.label-icon{
+    font-size: 15px;
+    opacity: 0.65;
+    // margin-left: 23px;
+    // margin-left: -43px;
+}
+.delete-btn{
+    visibility: hidden;
+}
+.show-labels:hover .delete-btn{
+ visibility: visible;
+ margin-top:-10px;
+}
+
+.show-labels:hover .label{
+    visibility: hidden;
+
+   }
+
+  .label{
+    margin-left: -67px;
+    margin-top:-10px;
+    
+
+  } 

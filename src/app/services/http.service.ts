@@ -96,4 +96,22 @@ export class HttpService {
   deleteNote(data , purpose){
     return this.http.get(this.url + purpose + "/" + data);
   }
+
+  emptyTrash(purpose){
+    var userId = localStorage.getItem('userId');
+    return this.http.get(this.url + purpose + "/" + userId );
+  }
+
+  addLabel(data , purpose){
+    return this.http.post(this.url + purpose , data );
+  }
+
+  getLabels(purpose) {
+    var userId = localStorage.getItem('userId');
+    return this.http.get(this.url + purpose + "/" + userId);
+  }
+
+  addLabelToNote(data , purpose){
+    return this.http.post(this.url + purpose , data);
+  }
 }

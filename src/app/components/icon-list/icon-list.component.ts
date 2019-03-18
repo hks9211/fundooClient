@@ -4,6 +4,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { CollaboratorsComponent } from '../collaborators/collaborators.component';
+import { HttpService } from 'src/app/services/http.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -16,16 +18,20 @@ export class IconListComponent implements OnInit {
   constructor(
     private noteServices: NoteServiceService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private http: HttpService,
   ) { }
-
+  labels : any = [];
   isMenuOpen = false;
   open = false;
   date = new FormControl('');
   time = new FormControl('');
+  checked = new FormControl(false);
+
 
   @Input() childMessage: any = "";
   @Input() userData;
+  @Input() noteData;
   @Input() test: string;
   @Output() messageEvent = new EventEmitter<any>();
   @Output() reminderEvent = new EventEmitter<any>();
@@ -38,9 +44,12 @@ export class IconListComponent implements OnInit {
   @Output() archiveFromCardEvent = new EventEmitter<any>();
   @Output() archiveFromCard = new EventEmitter<any>();
   @Output() reminderEventForCards = new EventEmitter<any>();
+  @Output() updateLabelsEvent = new EventEmitter<any>();
 
 
   ngOnInit() {
+    this.getLabels();
+    
    }
 
   colorArray = [[
@@ -71,11 +80,28 @@ export class IconListComponent implements OnInit {
 
   archiveNewNote() {
     const archiveData = {
+      '_id':this.userData._id,
       'isArchived': true
     }
-    this.archiveEvent.emit(archiveData);
-    this.archiveFromCardEvent.emit(archiveData);
-    this.archiveFromCard.emit(archiveData);
+ console.log("user data at icon",this.userData);
+ console.log("update archive data at icon: ",archiveData);
+ 
+this.noteServices.postUpdateNote(archiveData).subscribe(
+      data => {
+        this.snackBar.open("Archived","",{duration:1000})
+        console.log("data after archive at card component",data);
+            this.archiveFromCard.emit("done");
+
+      },
+      error => {
+        this.snackBar.open("Archived failed","",{duration:1000})
+        console.log("Error after archive at card component",error);
+      }
+    ) 
+
+    // this.archiveEvent.emit(archiveData);
+    // // this.archiveFromCardEvent.emit(archiveData);
+    // this.archiveFromCard.emit(archiveData);
   }
 
   setColor(colorId) {
@@ -135,6 +161,45 @@ export class IconListComponent implements OnInit {
       autoFocus: false,
       data:this.userData
     });
+  }
+
+  getLabels(){
+    this.http.getLabels('getLabels').subscribe(
+     data => {
+      // console.log("getLabel data: ",(data as any).response);
+      this.labels = (data as any).response;
+     },
+     error => {
+     console.log(error);
+     }
+    )
+  }
+
+  checkBoxClicked(item){
+    console.log(this.userData);
     
+    if(this.checked.value == false){
+    console.log(this.checked.value);
+    console.log(item);    
+    
+    const data = {
+      '_id':item._id , 
+      'noteId':this.userData._id,
+      'labelData':{
+        'labelName':item.labelName,
+        'labelId':item._id
+      }
+    }
+  this.noteServices.addLabelToNote(data).subscribe(
+    data => {
+      console.log("data after update label" , data);
+      this.updateLabelsEvent.emit("done");
+      
+    },
+    error => {
+       console.log("data after error" , error);
+    }
+  )
+    }
   }
 }

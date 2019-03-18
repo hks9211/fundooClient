@@ -23,6 +23,7 @@ export class TrashComponent implements OnInit {
   ngOnInit() {
     this.getTrash();
     this.changeViewData.currentMessage.subscribe(message =>   this.chooseView = message);
+  
 
   }
  
@@ -61,5 +62,20 @@ export class TrashComponent implements OnInit {
     }catch(err){
       this.snackBar.open(err , "", {duration : 2000});
     }
+  }
+
+  emptyTrash(){
+    console.log("eswrfesfgdsfdkjaufui");
+    
+    this.noteServices.emptyTrash().subscribe(
+      data => {
+       console.log("data at trash", data);
+       this.getTrash();
+      },
+      error => {
+        console.log("error at trash", error);
+        
+      }
+    )
   }
 }

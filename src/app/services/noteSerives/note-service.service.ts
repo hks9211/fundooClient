@@ -48,4 +48,16 @@ export class NoteServiceService {
   deleteNoteForver(data){
     return this.http.deleteNote(data ,'deleteNoteForever');
   }
+
+  emptyTrash(){
+    return this.http.emptyTrash('emptyTrash');
+  }
+
+  addLabel(data){
+    return this.http.addLabel(data ,'addLabel');
+  }
+
+  addLabelToNote(data){
+  return this.http.addLabelToNote(data , 'updateLabel');
+  }
 }

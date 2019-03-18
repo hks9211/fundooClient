@@ -23,12 +23,20 @@ fxFlex="90"  fxFlex.xs="100" fxLayoutAlign="center center"  cdkDropList (cdkDrop
                 <mat-icon matChipRemove class="remove" (click)="removeReminder(item)">close </mat-icon>
               </mat-chip>
               </mat-chip-list>
+              <mat-chip-list class="chip-list"  *ngIf=" item != undefined && item.labels.length >= 1" wrap="hard">
+                  <mat-chip class="show-reminders" style="margin-left: 10px;"  *ngFor="let label of item.labels" >
+                     <span class="show-time" style="margin-left: 30px;" *ngIf="label != null ">{{label.labelName}}</span>
+                    <mat-icon matChipRemove class="remove" (click)="removeLabel(label,item)">close </mat-icon>
+                  </mat-chip>
+                  </mat-chip-list>
+
               <div class="matCardFooterIcons">
               <app-icon-list (click)="openUpdatePopup(item)" [test]="'Blue32'" [userData]="item" [childMessage]="noteId"
                 (updateColorEvent)="receiveUpdateColorEvent($event)"
                 (sendDeletedNoteToTrashEvent)="receiveDeletedNoteToTrashEvent($event)"
                 (archiveFromCard)="receiveArchiveFromCard($event)" 
-                (reminderEventForCards)="saveReminderOnCardEvent($event)" ></app-icon-list>
+                (reminderEventForCards)="saveReminderOnCardEvent($event)"
+                (updateLabelsEvent)="receiveUpdateLabelsEvent($event)"></app-icon-list>
             </div>
           </mat-card-footer>
         </mat-card-content>

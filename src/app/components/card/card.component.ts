@@ -4,6 +4,8 @@ import { MatSnackBar, MatDialog } from '@angular/material';
 import { Subject } from 'rxjs';
 import { EditCardComponent } from '../edit-card/edit-card.component';
 import { ListGridViewService } from 'src/app/services/list-grid-view.service';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { HttpService } from 'src/app/services/http.service';
 
 
 @Component({
@@ -17,7 +19,6 @@ export class CardComponent implements OnInit {
 
   @Input() Search: string;
 
-
   items: any = [];
   noteId: any;
   updateColor: any;
@@ -25,12 +26,15 @@ export class CardComponent implements OnInit {
   chooseView : string = "row wrap";
   flag: string;
   userData: any = "";
+  noteData: any = "";
+  labels : any;
   
   constructor(
     private noteServices: NoteServiceService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private changeViewData : ListGridViewService
+    private changeViewData : ListGridViewService,
+    private http : HttpService
 
   ) { }
 
@@ -41,10 +45,9 @@ export class CardComponent implements OnInit {
       this.items.push(event);
     });
     this.changeViewData.currentMessage.subscribe(message =>   this.chooseView = message);
-    console.log("flag value: ", this.flag);
+    // console.log("flag value: ", this.flag);
     // this.chooseView = !!this.flag
-    console.log("chooseview: ",this.chooseView);
-    
+    // this.getLabels()
   }
 
   receiveUpdateColorEvent($event) {
@@ -53,6 +56,7 @@ export class CardComponent implements OnInit {
     this.getCards();
   }
   openUpdatePopup(item) {
+    
     this.noteId = item._id;
     console.log("note Id", this.noteId);
    this.userData = item;
@@ -70,9 +74,28 @@ export class CardComponent implements OnInit {
 
   receiveArchiveFromCard($event) {
     console.log("event at card for archive",$event);
-    this.isArchived = true;
-    this.updateArchive();
+     this.getCards();
   }
+
+  //   const updateArchiveData = {
+  //     '_id' : this.noteId,
+  //     'isArchived':this.isArchived
+  //   }
+
+  //  console.log("POST REQUEST DATA: ", updateArchiveData);
+   
+  //   this.noteServices.postUpdateNote(updateArchiveData).subscribe(
+  //     data => {
+  //       this.snackBar.open("Archived","",{duration:1000})
+  //       console.log("data after archive at card component",data);
+  //       this.getCards();
+  //     },
+  //     error => {
+  //       this.snackBar.open("Archived failed","",{duration:1000})
+  //       console.log("Error after archive at card component",error);
+  //     }
+  //   )
+  // }
 
   saveReminderOnCardEvent($event){
     console.log("event on card for reminder",$event);
@@ -96,23 +119,7 @@ export class CardComponent implements OnInit {
 
 
   updateArchive(){
-    const updateArchiveData = {
-      '_id' : this.noteId,
-      'isArchived':this.isArchived
-    }
-
-  
-    this.noteServices.postUpdateNote(updateArchiveData).subscribe(
-      data => {
-        this.snackBar.open("Archived","",{duration:1000})
-        console.log("data after archive at card component",data);
-        this.getCards();
-      },
-      error => {
-        this.snackBar.open("Archived failed","",{duration:1000})
-        console.log("Error after archive at card component",error);
-      }
-    )
+    
   }
 
   getCards() {
@@ -123,6 +130,9 @@ export class CardComponent implements OnInit {
       data => {
         this.items = data['response'];
         console.log("response for get all cards",data);
+        // this.labels = (data as any).response[0].labels
+        // console.log("labels on cards: ", this.labels);
+        
         
       },
       error => {
@@ -163,5 +173,54 @@ export class CardComponent implements OnInit {
         console.log('error response: ', error);
       }
     )
+  }
+
+  drop(event: CdkDragDrop<any[]>){
+    moveItemInArray(this.items, event.previousIndex , event.currentIndex)
+  }
+
+  // drop(event: CdkDragDrop<string[]>) {
+  //   if (event.previousContainer === event.container) {
+  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  //   } else {
+  //     transferArrayItem(event.previousContainer.data,
+  //                       event.container.data,
+  //                       event.previousIndex,
+  //                       event.currentIndex);
+  //   }
+  getSelectedLabels(item){
+    let userId =  localStorage.getItem('userId');
+    
+    const userData = {
+        'userId' : userId,
+        'noteId' : item._id    
+    }
+console.log("user data: ",userData);
+  }
+
+  // getLabels(){
+  //   this.http.getLabels('getLabels').subscribe(
+  //    data => {
+  //     console.log("getLabel data at card: ",(data as any).response);
+  //     this.labels = (data as any).response;
+  //     console.log("label data",this.labels);
+  //    },
+  //    error => {
+  //    console.log(error);
+  //    }
+  //   )
+  // }
+
+  receiveUpdateLabelsEvent($event){
+    console.log($event);
+    this.getCards();
+  }
+
+  removeLabel(label , item){
+    console.log("label: ",label);
+    console.log("item: ",item);
+    
+    
+    
   }
 }

@@ -32,7 +32,7 @@ export class ListGridViewService {
   }
 
   toggleNoteId(noteId : string){
-    console.log("noteId at service: ",noteId);
+    // console.log("noteId at service: ",noteId);
     this.noteIdSource.next(noteId);
     
   }

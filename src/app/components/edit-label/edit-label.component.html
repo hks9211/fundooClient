@@ -1,19 +1,36 @@
+<div fxFlex="100">
 <div>
 <div class="label-top" >Edit labels</div>
-<div >
+<div fxLayout="row" class="input-field">
     <button mat-button *ngIf="true" matSuffix (click)="value=''">
      <img src="../../../assets/close.svg">
       </button>
-  
-<mat-form-field class="example-form-field" placeholder="Create new label">
-<input matInput type="text" [(ngModel)]="value">
-  </mat-form-field>
-  <button mat-button (click)="value=''">
+ <div class="create-label">
+    <input matInput  type="text" [(ngModel)]="value" placeholder="Create new label" autocomplete="off">
+ </div> 
+  <button mat-button (click)="addLabel(); value=''">
       <img src="../../../assets/save.svg">
     </button>   
   </div>
 </div>
+<div *ngFor="let item of data" class="show-labels" fxLayout="row" >
+
+ <div class="delete-btn">
+    <button mat-button >
+ <mat-icon>delete</mat-icon>
+    </button>
+ </div> 
+ <div class="label"> 
+    <button mat-button>
+      <mat-icon class="label-size">label</mat-icon>
+         </button>
+ </div>
+ <div>   <span class="labelName">{{item.labelName}}</span> </div>
+  </div>  
 <mat-divider></mat-divider>
-<div fxLayoutAlign="end end">
-    <button mat-button mat-dialog-close><span class="done">Done</span></button>
+<div fxLayout="row">
+    <button class="footer-label" mat-button mat-dialog-close><span class="done">Done</span></button>
+  </div>
 </div>
+  
+

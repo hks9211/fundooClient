@@ -1,17 +1,17 @@
 <div fxLayout="column">
   <div fxLayout="row">
-  <div fxFill fxLayoutAlign="center center" class="trash-header">
+  <div fxFill fxLayoutAlign="center center" class="trash-header" >
     Notes in Trash are deleted after 7 days.
-  <div class="trash-btn">  <button mat-button>
+  <div class="trash-btn">  <button mat-button  (click)="emptyTrash()">
     <span class="trash">Empty Trash
       </span>
     </button> </div>
   </div>
 </div>
   <div class="card" fxLayout="{{chooseView}}" fxLayoutAlign="center center">
-    <div *ngFor="let item of items">
+    <div *ngFor="let item of items" >
       <div class="trash-card">
-        <mat-card fxFlex="100" class="card-content" fxLayout="column"
+        <mat-card fxFlex="100" class="card-content" fxLayout="column" 
           [ngClass]="{'cardGridView': chooseView == 'row wrap','cardListView': chooseView == 'column wrap'}"
           fxFlex.xs="100" [style.backgroundColor]="item.color">
           <div fxFlex="88" class="item-title">{{item.noteTitle}}</div>
