@@ -27,7 +27,7 @@
         </button>
 
         <input fxFlex="100" fxFlex.sm="80" class="search" fxFlex.xs="100" matInput placeholder="  search"
-        [(ngModel)]="Search" (keyup)="lookFor()" (click)="goSearch()" autocomplete="off">
+          [(ngModel)]="Search" (keyup)="lookFor()" (click)="goSearch()" autocomplete="off">
         <div>
           <button class="close-button" mat-button (click)="value=''">
             <img src="../../../assets/close.svg">
@@ -119,9 +119,12 @@
           <div class="label-example">
             <label><span class="label-name">LABELS</span></label>
           </div>
-          <div *ngFor="let item of labels" class="sideNavListItems">
+          <div *ngFor="let item of labels">
+              <button mat-button [routerLink]="['']" routerLinkActive="router-link-active"  (click)="headerName=item.labelName"
+              [ngClass]="{'sideNavListItems': headerName!=item.labelName, 'sideNavlistItemsColored': headerName==item.labelName}">
             <img src="../../../assets/label.svg">
             <span class="labelName">{{item.labelName}}</span>
+          </button>
           </div>
 
           <button class="sideNavListItems" mat-button (click)="openEditLabelDialog()">

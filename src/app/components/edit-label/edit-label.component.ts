@@ -28,12 +28,14 @@ export class EditLabelComponent implements OnInit {
  
   addLabel(){
     try{
-      if(this.value == "")throw "Label value csnt be empty"
+      if(this.value.trim() == "")throw "Label value cant be empty"
       var userId = localStorage.getItem('userId');
       var labelData = {
         'userId': userId , 
-        'labelName': this.value
+        'labelName': this.value.trim()
       }
+      console.log(labelData);
+      
       this.noteServices.addLabel(labelData).subscribe(
         data => {
           this.snackBar.open("Label added " , "Done" , {duration : 2000});
@@ -63,6 +65,21 @@ export class EditLabelComponent implements OnInit {
      
      }
     )
+  }
+
+  deleteLabel(item){
+    console.log(item);
+
+    this.noteServices.deleteLabel(item._id).subscribe(
+      data => {
+        this.snackBar.open("Label removed" , "" , {duration : 2000});
+        this.getLabels();
+      },
+      error => {
+        this.snackBar.open("Can't remove Label right now" , "" , {duration : 2000});
+      }
+    )
+    
   }
 
  

@@ -18,6 +18,7 @@ import { EditLabelComponent } from './components/edit-label/edit-label.component
 import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { SearchComponent } from './components/search/search.component';
+import { ShowSelectedCardsComponent } from './compoenents/show-selected-cards/show-selected-cards.component';
 
 const routes: Routes = [
 {
@@ -77,6 +78,8 @@ const routes: Routes = [
     path: 'Search',
     component: SearchComponent
   },
+  { path: 'selectlabel/:label', component: ShowSelectedCardsComponent  },
+
 
   ]
 

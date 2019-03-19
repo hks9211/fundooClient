@@ -114,4 +114,16 @@ export class HttpService {
   addLabelToNote(data , purpose){
     return this.http.post(this.url + purpose , data);
   }
+
+  deleteLabel(id , purpose){
+    return this.http.post(this.url + purpose + "/" + id , "");
+  }
+
+  restore(data , purpose){
+    return this.http.post(this.url + purpose , data);
+  }
+
+  removeLabel(data , purpose){
+    return this.http.post(this.url + purpose , data);
+  }
 }

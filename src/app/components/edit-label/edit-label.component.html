@@ -16,7 +16,7 @@
 <div *ngFor="let item of data" class="show-labels" fxLayout="row" >
 
  <div class="delete-btn">
-    <button mat-button >
+    <button mat-button (click)="deleteLabel(item)">
  <mat-icon>delete</mat-icon>
     </button>
  </div> 

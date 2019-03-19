@@ -35,6 +35,7 @@ import { CollaboratorsComponent } from './components/collaborators/collaborators
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { SearchPipe } from './search.pipe';
 import { SearchComponent } from './components/search/search.component';
+import { ShowSelectedCardsComponent } from './compoenents/show-selected-cards/show-selected-cards.component';
 
 
 
@@ -62,6 +63,7 @@ import { SearchComponent } from './components/search/search.component';
     RemindersComponent,
     SearchPipe,
     SearchComponent,
+    ShowSelectedCardsComponent,
 
 
 

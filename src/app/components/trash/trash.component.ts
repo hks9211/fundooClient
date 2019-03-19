@@ -43,6 +43,8 @@ export class TrashComponent implements OnInit {
 
   getItemDetails(item){
     this.noteId = item._id;
+    console.log(this.noteId);
+    
   }
 
   deleteForever(){
@@ -64,9 +66,7 @@ export class TrashComponent implements OnInit {
     }
   }
 
-  emptyTrash(){
-    console.log("eswrfesfgdsfdkjaufui");
-    
+  emptyTrash(){    
     this.noteServices.emptyTrash().subscribe(
       data => {
        console.log("data at trash", data);
@@ -74,8 +74,23 @@ export class TrashComponent implements OnInit {
       },
       error => {
         console.log("error at trash", error);
-        
       }
     )
+  }
+
+  restore(){
+    const updateData = {
+      'noteId':this.noteId,
+      'isDeleted':false
+    }
+   this.noteServices.restore(updateData).subscribe(
+     data => {
+       this.snackBar.open("Note Restored" , "" , {duration : 2000});
+       this.getTrash();
+     },
+     error => {
+      this.snackBar.open("Note Restorion Failed" , "" , {duration : 2000})
+     }
+   )
   }
 }

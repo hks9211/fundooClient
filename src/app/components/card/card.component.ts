@@ -77,26 +77,6 @@ export class CardComponent implements OnInit {
      this.getCards();
   }
 
-  //   const updateArchiveData = {
-  //     '_id' : this.noteId,
-  //     'isArchived':this.isArchived
-  //   }
-
-  //  console.log("POST REQUEST DATA: ", updateArchiveData);
-   
-  //   this.noteServices.postUpdateNote(updateArchiveData).subscribe(
-  //     data => {
-  //       this.snackBar.open("Archived","",{duration:1000})
-  //       console.log("data after archive at card component",data);
-  //       this.getCards();
-  //     },
-  //     error => {
-  //       this.snackBar.open("Archived failed","",{duration:1000})
-  //       console.log("Error after archive at card component",error);
-  //     }
-  //   )
-  // }
-
   saveReminderOnCardEvent($event){
     console.log("event on card for reminder",$event);
 
@@ -219,6 +199,23 @@ console.log("user data: ",userData);
   removeLabel(label , item){
     console.log("label: ",label);
     console.log("item: ",item);
+
+    var removeLabelData = {
+      'noteId':item._id,
+      'labelName':label.labelName
+    }
+
+    this.noteServices.removeLabel(removeLabelData).subscribe(
+      data => {
+       this.snackBar.open("Label removed", "" , {duration : 2000});
+       this.getCards();
+      },
+      error => {
+      this.snackBar.open("Label not removed", "" , {duration : 2000});  
+      console.log(error);
+      
+      }
+    )
     
     
     

@@ -60,4 +60,16 @@ export class NoteServiceService {
   addLabelToNote(data){
   return this.http.addLabelToNote(data , 'updateLabel');
   }
+
+  deleteLabel(id){
+    return this.http.deleteLabel(id , 'deleteLabel');
+  }
+
+  restore(data){
+    return this.http.restore(data , 'restore');
+  }
+
+  removeLabel(data){
+    return this.http.removeLabel(data , 'removeLabelFromCard');
+  }
 }
