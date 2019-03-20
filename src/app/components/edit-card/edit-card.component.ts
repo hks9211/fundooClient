@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl } from '@angular/forms';
+import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
+import { Subscriber } from 'rxjs';
 
 
 @Component({
@@ -18,6 +20,7 @@ export class EditCardComponent implements OnInit {
   isArchived: boolean = false;
 
   constructor(
+    private noteService: NoteServiceService,
     public dialogRef: MatDialogRef<EditCardComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
@@ -50,5 +53,24 @@ export class EditCardComponent implements OnInit {
     this.data.isArchived=this.isArchived;
 
     this.dialogRef.close({ data: this.data });
+  }
+
+  removeImage(data){
+    console.log(data);
+    const removeImageData = {
+      '_id':data._id,
+      'img':""
+    }
+    this.noteService.postUpdateNote(removeImageData).subscribe(
+      data => {
+        this.data.img = "";
+      },
+      error => {
+       console.log("error after image delete: ",error);
+       
+      }
+    )
+
+    
   }
 }

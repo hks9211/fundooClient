@@ -27,6 +27,8 @@ export class IconListComponent implements OnInit {
   date = new FormControl('');
   time = new FormControl('');
   checked = new FormControl(false);
+  picLink: any = "";
+
 
 
   @Input() childMessage: any = "";
@@ -45,6 +47,7 @@ export class IconListComponent implements OnInit {
   @Output() archiveFromCard = new EventEmitter<any>();
   @Output() reminderEventForCards = new EventEmitter<any>();
   @Output() updateLabelsEvent = new EventEmitter<any>();
+  @Output() imageUpdateEvent = new EventEmitter<any>();
 
 
   ngOnInit() {
@@ -202,4 +205,40 @@ this.noteServices.postUpdateNote(archiveData).subscribe(
   )
     }
   }
+
+  uploadImage(imageInput) {
+    // debugger;
+    const file: File = imageInput.files[0];
+    this.http.uploadImage(file, 'image-upload').subscribe(
+      data => {
+        console.log("data got after image upload", data)
+        this.picLink = data['imgUrl'];
+        console.log("link: ", this.picLink);
+        var updateImageData = {
+          '_id':this.userData._id,
+          'img':this.picLink
+        }
+
+        this.noteServices.postUpdateNote(updateImageData).subscribe(
+          data => {
+            this.snackBar.open("Image updated" , "done" , {duration : 2000});
+            this.imageUpdateEvent.emit("done");
+          },
+          error => {
+            this.snackBar.open("Image not updated" , "" , {duration : 2000});
+            console.log("after update note img error: ",error);
+            
+          }
+        )
+
+      },
+      error => {
+        console.log("error after image upload: ", error);
+
+      }
+    )
+  }
+
+
+   
 }

@@ -57,12 +57,13 @@ export class AddnoteComponent implements OnInit {
   receiveArchiveEvent($event){
     this.isArchive = $event;
     this.snackBar.open("archived","",{duration:1000})
-
-    
-    
   }
   reverseFlag() {
     this.flag = !this.flag;
+  }
+
+  removeReminder(){
+    this.reminderData = "";
   }
 
    addNote() {

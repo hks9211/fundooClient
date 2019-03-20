@@ -212,12 +212,15 @@ console.log("user data: ",userData);
       },
       error => {
       this.snackBar.open("Label not removed", "" , {duration : 2000});  
-      console.log(error);
-      
+      console.log(error); 
       }
     )
-    
-    
+  }
+
+  receiveImageUpdateEvent($event){
+    console.log($event);
+    this.getCards();
     
   }
+
 }

@@ -5,6 +5,9 @@ fxFlex="90"  fxFlex.xs="100" fxLayoutAlign="center center"  cdkDropList (cdkDrop
       <mat-card fxFlex="100" class="card-content" 
       [ngClass]="{'cardGridView': chooseView == 'row wrap','cardListView': chooseView == 'column wrap'}"
       fxFlex.xs="100"  [style.backgroundColor]="item.color">
+      <div class="card-image" *ngIf="item.img" (click)="editCard(item)">
+          <img [src]="item.img" class="account-icon">
+        </div>
         <div>
           <div fxFlex="88" class="item-title" (click)="editCard(item)">{{item.noteTitle}}</div>
           <div fxFlex="4">
@@ -36,7 +39,8 @@ fxFlex="90"  fxFlex.xs="100" fxLayoutAlign="center center"  cdkDropList (cdkDrop
                 (sendDeletedNoteToTrashEvent)="receiveDeletedNoteToTrashEvent($event)"
                 (archiveFromCard)="receiveArchiveFromCard($event)" 
                 (reminderEventForCards)="saveReminderOnCardEvent($event)"
-                (updateLabelsEvent)="receiveUpdateLabelsEvent($event)"></app-icon-list>
+                (updateLabelsEvent)="receiveUpdateLabelsEvent($event)"
+                 (imageUpdateEvent)="receiveImageUpdateEvent($event)"></app-icon-list>
             </div>
           </mat-card-footer>
         </mat-card-content>

@@ -62,7 +62,8 @@
       </div>
     </ng-template>
   </mat-menu>
-  <button matTooltip="add image" mat-icon-button>
+  <input #inputImage type="file" class="input-img" (change)="uploadImage(inputImage)">
+  <button matTooltip="add image" mat-icon-button (click)="inputImage.click()">
     <img src="../../../assets//photoadd.svg">
   </button>
   <button matTooltip="Archive" mat-icon-button (click)="archiveNewNote()">

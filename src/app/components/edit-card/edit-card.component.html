@@ -1,11 +1,31 @@
-<div class ="edit-card" [style.backgroundColor]="data.color" fxFlex="100" fxFlex.xs="100" fxFlex.sm="100"  fxLayout="column"  >
-  <div class="note-title" fxFlex="90"  >
+<div [ngClass]="{'edit-card-withImage':data.img , 'edit-card':!data.img}" [style.backgroundColor]="data.color" fxFlex="100" fxFlex.xs="100" fxFlex.sm="100"  fxLayout="column"  >
+    <div class="card-image" *ngIf="data.img">
+        <img [src]="data.img" class="account-icon">
+      
+          <button class="btn" mat-icon-button matTooltip="Remove" (click)="removeImage(data)"><mat-icon>delete</mat-icon></button>
+  
+      </div>
+  <div [ngClass]="{'area-withImage':data.img , 'note-title':!data.img}"  fxFlex="90">
      <textarea class="note-title-area" spellcheck="false" placeholder="Title" matTextareaAutosize [formControl]="noteTitle"></textarea>
   </div>
-  <div class="area" fxFlex="90">
+  <div [ngClass]="{'area-withImage':data.img , 'area':!data.img}"  fxFlex="90">
     <textarea class="note-content-area" spellcheck="false" matTextareaAutosize [formControl]="noteContent" placeholder="Take a note..."></textarea>
   </div>
+  <mat-chip-list class="chip-list">
+      <mat-chip class="show-reminders" style="margin-left: 10px;" *ngIf="data?.reminder">
+        <mat-icon matChipRemove class="time-icon" style="margin-right: 8px;">access_time</mat-icon>
+         <span class="show-time">{{data?.reminder}}</span>
+        <mat-icon matChipRemove class="remove" >close </mat-icon>
+      </mat-chip>
+      </mat-chip-list>
+      <mat-chip-list class="chip-list"  *ngIf=" data != undefined && data.labels.length >= 1" >
+          <mat-chip class="show-reminders" style="margin-left: 10px;"  *ngFor="let label of data.labels" >
+             <span class="show-time" style="margin-left: 30px;" *ngIf="label != null ">{{label.labelName}}</span>
+            <mat-icon matChipRemove class="remove">close </mat-icon>
+          </mat-chip>
+          </mat-chip-list>
   <div fxFlex="50"  fxLayout="row" fxLayoutAlign="space-between center" fxLayoutAlign.xs="space-around none">
+      
         <app-icon-list  (changeColorForEditCard)="receiveChangeColorEvent($event)"  (sendDeletedNoteInfoEvent)="receiveDeletedNoteInfoEvent($event)" (archiveFromCardEvent)="getArchiveFromCardEvent($event)"></app-icon-list>
       <button  mat-button  mat-dialog-close (click)="save()"><span class="close-button">Close</span></button>
 
