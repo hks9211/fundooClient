@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddnoteComponent } from './addnote.component';
+import { AppMaterial } from '../../app.material.module'
+import { HttpClientModule } from '@angular/common/http';
+
 
 describe('AddnoteComponent', () => {
   let component: AddnoteComponent;
@@ -8,7 +11,8 @@ describe('AddnoteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddnoteComponent ]
+      declarations: [ AddnoteComponent,
+      HttpClientModule,     ]
     })
     .compileComponents();
   }));

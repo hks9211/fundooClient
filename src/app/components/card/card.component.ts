@@ -56,15 +56,12 @@ export class CardComponent implements OnInit {
     this.getCards();
   }
   openUpdatePopup(item) {
+    console.log(item._id);
     
-    this.noteId = item._id;
+    this.noteId =item._id;
     console.log("note Id", this.noteId);
    this.userData = item;
-    // localStorage.setItem('noteId',this.noteId);
     this.changeViewData.toggleNoteId(this.noteId);
-
-
-
   }
 
   receiveDeletedNoteToTrashEvent($event) {
@@ -108,8 +105,8 @@ export class CardComponent implements OnInit {
     };
     this.noteServices.getCards(reqData).subscribe(
       data => {
-        this.items = data['response'];
-        console.log("response for get all cards",data);
+         this.items = data['response'];
+        console.log("response for get all cards",(data as any).response);
         // this.labels = (data as any).response[0].labels
         // console.log("labels on cards: ", this.labels);
         
@@ -201,7 +198,7 @@ console.log("user data: ",userData);
     console.log("item: ",item);
 
     var removeLabelData = {
-      'noteId':item._id,
+      'noteId':item.note._id,
       'labelName':label.labelName
     }
 

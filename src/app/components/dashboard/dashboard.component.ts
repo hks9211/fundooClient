@@ -8,6 +8,7 @@ import { EditLabelComponent } from '../edit-label/edit-label.component';
 import { HttpService } from 'src/app/services/http.service';
 import { ListGridViewService } from '../../services/list-grid-view.service'
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { ProfilePicComponent } from '../profile-pic/profile-pic.component';
 
 
 @Component({
@@ -28,8 +29,8 @@ export class DashboardComponent implements OnInit {
   viewToolTip: string;
   croppedImage: any = '';
   value = ' ';
-  Search : any;
-  labels = []; 
+  Search: any;
+  labels = [];
 
 
 
@@ -71,7 +72,7 @@ export class DashboardComponent implements OnInit {
 
   openEditLabelDialog() {
     const dialogRef = this.dialog.open(EditLabelComponent, {
-      data : this.labels,
+      data: this.labels,
       autoFocus: false,
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -89,12 +90,9 @@ export class DashboardComponent implements OnInit {
         this.picLink = data['imgUrl'];
         // console.log("link: ", this.picLink);
         this.showProfilepic(this.picLink);
-
-
       },
       error => {
         console.log("error after image upload: ", error);
-
       }
     )
   }
@@ -126,8 +124,6 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  
-
   setGridOrListView() {
     if (this.icon === 'view_agenda_outline') {
       this.icon = 'dashboard';
@@ -149,31 +145,40 @@ export class DashboardComponent implements OnInit {
 
   imageChangedEvent: any = '';
 
-fileChangeEvent(event: any): void {
+  fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
-}
-imageCropped(event: ImageCroppedEvent) {
+  }
+  imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
-}
-imageLoaded() {
+  }
+  imageLoaded() {
     // show cropper
-}
-loadImageFailed() {
+  }
+  loadImageFailed() {
     // show message
-}
+  }
 
-getLabels(){
+  getLabels() {
 
-  this.http.getLabels('getLabels').subscribe(
-   data => {
-    // console.log("getLabel data: ",(data as any).response);
-    this.labels = (data as any).response;
-   },
-   error => {
-   console.log(error);
-   
-   }
-  )
-}
+    this.http.getLabels('getLabels').subscribe(
+      data => {
+        // console.log("getLabel data: ",(data as any).response);
+        this.labels = (data as any).response;
+      },
+      error => {
+        console.log(error);
+
+      }
+    )
+  }
+
+  setProfilePic(){
+    const dialogRef = this.dialog.open(ProfilePicComponent, {
+      data: this.labels,
+      autoFocus: false,
+      width: '850px',
+      height:'550px'
+    });
+  }
 
 }

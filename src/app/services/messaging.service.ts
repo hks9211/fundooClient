@@ -11,15 +11,22 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MessagingService {
 
-  messaging;// = firebase.messaging()
+  messaging ;// = firebase.messaging()
   currentMessage = new BehaviorSubject(null)
   constructor() { 
+    // if (!firebase.apps.length) {
+      try{
     firebase.initializeApp({
       'messagingSenderId': '324312227145'
     });
+  
     
     this.messaging = firebase.messaging();
+   }catch(err){
+    console.error('Firebase initialization error', err.stack);
+   }
   }
+
 
 
   // updateToken(token) {

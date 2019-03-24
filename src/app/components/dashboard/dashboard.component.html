@@ -65,10 +65,11 @@
             <div fxLayout="row" fxLayoutAlign="space-between start" (click)="$event.stopPropagation();">
               <div class="user-details">
                 <label>
-                  <input #inputImage type="file" class="input-img" (change)="uploadImage(inputImage)">
+                  <!-- <input #inputImage type="file" class="input-img" (change)="uploadImage(inputImage)">
                   <div *ngIf="picLink !=''">
                     <img [src]="picLink" class="profilePic" matTooltip='Change image' matTooltipPosition='right'>
-                  </div>
+                  </div> -->
+                  <button (click)="setProfilePic()"> </button>
                 </label>
 
               </div>

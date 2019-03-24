@@ -81,7 +81,8 @@ export class AddnoteComponent implements OnInit {
       isPined : false,
       isArchived : this.isArchive.isArchived,
       isDeleted : false,
-      labels : []
+      labels : [],
+      img:""
     };
       // this.childEvent.emit(newNoteData);
       this.parentSubject.next(newNoteData);

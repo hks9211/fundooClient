@@ -36,6 +36,7 @@ import { RemindersComponent } from './components/reminders/reminders.component';
 import { SearchPipe } from './search.pipe';
 import { SearchComponent } from './components/search/search.component';
 import { ShowSelectedCardsComponent } from './compoenents/show-selected-cards/show-selected-cards.component';
+import { ProfilePicComponent } from './components/profile-pic/profile-pic.component';
 
 
 
@@ -64,6 +65,7 @@ import { ShowSelectedCardsComponent } from './compoenents/show-selected-cards/sh
     SearchPipe,
     SearchComponent,
     ShowSelectedCardsComponent,
+    ProfilePicComponent,
 
 
 
@@ -83,6 +85,9 @@ import { ShowSelectedCardsComponent } from './compoenents/show-selected-cards/sh
 
 
 
+  ],
+  entryComponents: [
+    ProfilePicComponent
   ],
   providers: [
     HttpService,

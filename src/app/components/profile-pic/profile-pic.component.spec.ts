@@ -1,21 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardComponent } from './card.component';
-import { AppMaterial } from '../../app.material.module'
+import { ProfilePicComponent } from './profile-pic.component';
 
-describe('CardComponent', () => {
-  let component: CardComponent;
-  let fixture: ComponentFixture<CardComponent>;
+describe('ProfilePicComponent', () => {
+  let component: ProfilePicComponent;
+  let fixture: ComponentFixture<ProfilePicComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardComponent ]
+      declarations: [ ProfilePicComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardComponent);
+    fixture = TestBed.createComponent(ProfilePicComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
