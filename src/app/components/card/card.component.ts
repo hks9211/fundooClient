@@ -48,6 +48,8 @@ export class CardComponent implements OnInit {
     // console.log("flag value: ", this.flag);
     // this.chooseView = !!this.flag
     // this.getLabels()
+    this.changeViewData.collab.subscribe(message => this.getCards());
+    
   }
 
   receiveUpdateColorEvent($event) {
@@ -198,7 +200,7 @@ console.log("user data: ",userData);
     console.log("item: ",item);
 
     var removeLabelData = {
-      'noteId':item.note._id,
+      'noteId':item._id,
       'labelName':label.labelName
     }
 
@@ -218,6 +220,10 @@ console.log("user data: ",userData);
     console.log($event);
     this.getCards();
     
+  }
+  removeImage(item){
+  // console.log("item after button click: ",item);
+  
   }
 
 }

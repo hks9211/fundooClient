@@ -9,11 +9,15 @@ export class ListGridViewService {
 
   private messageSource = new BehaviorSubject('row wrap');
   currentMessage = this.messageSource.asObservable();
+
   private noteIdSource = new BehaviorSubject("");
   currentNoteId = this.noteIdSource.asObservable();
 
   private searchSource = new BehaviorSubject('');
   findMessage = this.searchSource.asObservable();
+
+  private collabSource = new BehaviorSubject('');
+  collab = this.collabSource.asObservable();
   
   constructor() { 
 
@@ -21,13 +25,11 @@ export class ListGridViewService {
    searchMessage(message : string) {
     this.searchSource.next(message)
     console.log("message at search service: ",message);
-    
   }
 
   changeMessage(message: string) {
     console.log("message at service: ",message);
     // localStorage.removeItem('noteId');
-
     this.messageSource.next(message);
   }
 
@@ -35,5 +37,9 @@ export class ListGridViewService {
     // console.log("noteId at service: ",noteId);
     this.noteIdSource.next(noteId);
     
+  }
+
+  updateCollab(message : string){
+    this.collabSource.next(message);
   }
 }

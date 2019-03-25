@@ -11,6 +11,21 @@
         <div class="user-email"> {{email}}</div>
       </div>
     </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div *ngFor="let item of collabData"  class="owner-detailss" fxLayout="row">
+      <!-- <div class="owner-img"> <img [src]="picLink" class="account-icon"> </div> -->
+      <div class="add-icons" *ngIf="!item.img">
+        <div class="img-add-person" matTooltip="{{item.firstName}} <{{item.email}}>"><span class="initialss">{{item.firstName.charAt(0).toUpperCase()}}</span></div>
+       </div>
+      <div fxLayout="column">
+        <div>
+          <span class="initials"> {{item.firstName}} {{item.lastName}} </span>
+        </div>
+        <div class="user-email"> {{item.email}}</div>
+      </div>
+      <div class="remove-btn" fxLayoutAlign="end end"> <button matTooltip="remove" mat-icon-button (click)="removeCollab(item)"> <img src="../../../assets//close.svg" style="height:15px; opacity: 0.65;"> </button></div>
+    </div>
+  </div>
     <div fxLayout="row">
    <div class="add-icon"> 
    <img src="../../../assets/person_add.svg" class="img-add-person">   
@@ -31,9 +46,9 @@
     </div>
   </div>
   <div class="footer" fxLayout="row" fxLayoutAlign="end center">
-    <div> <button mat-button><span class="cancel">Cancel</span></button>
-    </div>
-    <div> <button mat-button class="save-btn"><span class="save">Save</span></button>
+    <!-- <div> <button mat-button><span class="cancel">Cancel</span></button>
+    </div> -->
+    <div> <button mat-button class="save-btn" mat-dialog-close><span class="save">Done</span></button>
     </div>
   </div>
 </div>

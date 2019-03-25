@@ -38,6 +38,10 @@
     margin-top: 10px;
 }
 
+.owner-detailss{
+    margin-top: 10px;
+}
+
 .owner-img{
     margin-right:17px;
   }
@@ -166,4 +170,39 @@
 /deep/ .mat-option {
     font-family: Roboto,"Helvetica Neue",sans-serif;
     font-size: 12px;
+}
+
+.add-icons{
+    -moz-border-radius: 50px/50px;
+    -webkit-border-radius: 50px 50px;
+    border-radius: 50px;
+    border: solid 3px rgb(0, 0, 0);
+    height: 36px;
+    width : 36px;
+    margin-top: -1px;
+    margin-right: 15px;
+    margin-left: -2px;
+    // background-color: #fff;
+    // padding: 4px;
+    box-shadow: 0 0 0 1px rgb(251, 251, 251);
+    background-color: rgb(215, 174, 251);
+
+}
+
+.initialss{
+    color: aliceblue;
+    font-weight: 550;
+    font-size: 20px;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;  
+    margin-left: 4px;
+
+
+}
+
+.owner-detailss:hover .remove-btn{
+   visibility: visible;
+}
+
+.remove-btn{
+    visibility: hidden;
 }

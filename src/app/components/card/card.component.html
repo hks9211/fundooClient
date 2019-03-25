@@ -7,6 +7,7 @@ fxFlex="90"  fxFlex.xs="100" fxLayoutAlign="center center"  cdkDropList (cdkDrop
       fxFlex.xs="100"  [style.backgroundColor]="item.note.color">
       <div class="card-image" *ngIf="item.note.img" (click)="editCard(item.note)">
           <img [src]="item.note.img" class="account-icon">
+          <button class="btn" mat-icon-button matTooltip="Remove" (click)="removeImage(item.note)"><mat-icon>delete</mat-icon></button>
         </div>
         <div>
           <div fxFlex="88" class="item-title" (click)="editCard(item.note)">{{item.note.noteTitle}}</div>

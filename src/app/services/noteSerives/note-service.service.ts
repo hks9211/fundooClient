@@ -72,4 +72,8 @@ export class NoteServiceService {
   removeLabel(data){
     return this.http.removeLabel(data , 'removeLabelFromCard');
   }
+
+  removeCollab(data){
+    return this.http.removeCollab(data , 'removeCollab');
+  }
 }

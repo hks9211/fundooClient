@@ -21,7 +21,7 @@ export class IconListComponent implements OnInit {
     public dialog: MatDialog,
     private http: HttpService,
   ) { }
-  labels : any = [];
+  labels: any = [];
   isMenuOpen = false;
   open = false;
   date = new FormControl('');
@@ -52,8 +52,8 @@ export class IconListComponent implements OnInit {
 
   ngOnInit() {
     this.getLabels();
-    
-   }
+
+  }
 
   colorArray = [[
     { 'color': 'rgb(255, 255, 255)', 'name': 'White' },
@@ -74,34 +74,37 @@ export class IconListComponent implements OnInit {
 
 
   addReminder() {
-    const reminderData =  this.date.value.toLocaleDateString()+","+" "+ this.time.value
-    
+    const reminderData = this.date.value.toLocaleDateString() + "," + " " + this.time.value
+
     console.log("reminder: ", reminderData)
-     this.reminderEvent.emit(reminderData);
-     this.reminderEventForCards.emit(reminderData);
+    this.reminderEvent.emit(reminderData);
+    this.reminderEventForCards.emit(reminderData);
   }
 
   archiveNewNote() {
+    try{
+    if(this.userData.note._id == undefined || this.userData.note._id.trim() == "" ) throw "note Id not found"
     const archiveData = {
-      '_id':this.userData._id,
+      '_id': this.userData.note._id,
       'isArchived': true
     }
- console.log("user data at icon",this.userData);
- console.log("update archive data at icon: ",archiveData);
- 
-this.noteServices.postUpdateNote(archiveData).subscribe(
-      data => {
-        this.snackBar.open("Archived","",{duration:1000})
-        console.log("data after archive at card component",data);
-            this.archiveFromCard.emit("done");
+    // console.log("user data at icon", this.userData);
+    // console.log("update archive data at icon: ", archiveData);
 
+    this.noteServices.postUpdateNote(archiveData).subscribe(
+      data => {
+        this.snackBar.open("Archived", "", { duration: 1000 })
+        // console.log("data after archive at card component", data);
+        this.archiveFromCard.emit("done");
       },
       error => {
-        this.snackBar.open("Archived failed","",{duration:1000})
-        console.log("Error after archive at card component",error);
+        this.snackBar.open("Archived failed", "", { duration: 1000 })
+        console.log("Error after archive at card component", error);
       }
-    ) 
-
+    )
+    }catch(err){
+      this.snackBar.open("Archived failed", "", { duration: 1000 })
+    }
     // this.archiveEvent.emit(archiveData);
     // // this.archiveFromCardEvent.emit(archiveData);
     // this.archiveFromCard.emit(archiveData);
@@ -158,51 +161,55 @@ this.noteServices.postUpdateNote(archiveData).subscribe(
     );
   }
 
-  openCollabWindow(userData1){
+  openCollabWindow(userData1) {
     console.log(userData1)
     const dialogRef = this.dialog.open(CollaboratorsComponent, {
       autoFocus: false,
-      data:this.userData
+      data: this.userData
     });
   }
 
-  getLabels(){
+  getLabels() {
     this.http.getLabels('getLabels').subscribe(
-     data => {
-      // console.log("getLabel data: ",(data as any).response);
-      this.labels = (data as any).response;
-     },
-     error => {
-     console.log(error);
-     }
+      data => {
+        // console.log("getLabel data: ",(data as any).response);
+        this.labels = (data as any).response;
+      },
+      error => {
+        console.log(error);
+      }
     )
   }
 
-  checkBoxClicked(item){
+  checkBoxClicked(item) {
     console.log(this.userData);
-    
-    if(this.checked.value == false){
-    console.log(this.checked.value);
-    console.log(item);    
-    
-    const data = {
-      '_id':item._id , 
-      'noteId':this.userData._id,
-      'labelData':{
-        'labelName':item.labelName,
-        'labelId':item._id
+
+    if (this.checked.value == false) {
+      // console.log("checklist value: ",this.checked.value);
+      // console.log("item at check: ",item);    
+
+      const data = {
+        '_id': item._id,
+        'noteId': this.userData.note._id,
+        'labelData': {
+          'labelName': item.labelName,
+          'labelId': item._id
+        }
       }
-    }
-  this.noteServices.addLabelToNote(data).subscribe(
-    data => {
-      console.log("data after update label" , data);
-      this.updateLabelsEvent.emit("done");
-      
-    },
-    error => {
-       console.log("data after error" , error);
-    }
-  )
+      // console.log("data to be sent :" ,data);
+
+      this.noteServices.addLabelToNote(data).subscribe(
+        data => {
+          // console.log("data after update label" , data);
+          this.snackBar.open("label added", "done", { duration: 2000 });
+          this.updateLabelsEvent.emit("done");
+
+        },
+        error => {
+          this.snackBar.open("label not added", "", { duration: 2000 });
+          //  console.log("data after error" , error);
+        }
+      )
     }
   }
 
@@ -215,30 +222,24 @@ this.noteServices.postUpdateNote(archiveData).subscribe(
         this.picLink = data['imgUrl'];
         console.log("link: ", this.picLink);
         var updateImageData = {
-          '_id':this.userData._id,
-          'img':this.picLink
+          '_id': this.userData._id,
+          'img': this.picLink
         }
 
         this.noteServices.postUpdateNote(updateImageData).subscribe(
           data => {
-            this.snackBar.open("Image updated" , "done" , {duration : 2000});
+            this.snackBar.open("Image updated", "done", { duration: 2000 });
             this.imageUpdateEvent.emit("done");
           },
           error => {
-            this.snackBar.open("Image not updated" , "" , {duration : 2000});
-            console.log("after update note img error: ",error);
-            
+            this.snackBar.open("Image not updated", "", { duration: 2000 });
+            console.log("after update note img error: ", error);
           }
         )
-
       },
       error => {
         console.log("error after image upload: ", error);
-
       }
     )
   }
-
-
-   
 }

@@ -126,4 +126,9 @@ export class HttpService {
   removeLabel(data , purpose){
     return this.http.post(this.url + purpose , data);
   }
+
+  removeCollab(data, purpose){
+  
+    return this.http.post(this.url + purpose , data);
+  }
 }
