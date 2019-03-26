@@ -1,62 +1,59 @@
-<div  class="card" fxLayout="{{chooseView}}" 
-fxFlex="90"  fxFlex.xs="100" fxLayoutAlign="center center"  cdkDropList (cdkDropListDropped)="drop($event)">
+<div class="card" fxLayout="{{chooseView}}" fxFlex="90" fxFlex.xs="100" fxLayoutAlign="center center" cdkDropList
+  (cdkDropListDropped)="drop($event)">
   <div cdkDrag *ngFor="let item of items | search : Search;">
     <div>
-      <mat-card fxFlex="100" class="card-content" 
-      [ngClass]="{'cardGridView': chooseView == 'row wrap','cardListView': chooseView == 'column wrap'}"
-      fxFlex.xs="100"  [style.backgroundColor]="item.note.color">
-      <div class="card-image" *ngIf="item.note.img" (click)="editCard(item.note)">
+      <mat-card fxFlex="100" class="card-content"
+        [ngClass]="{'cardGridView': chooseView == 'row wrap','cardListView': chooseView == 'column wrap'}"
+        fxFlex.xs="100" [style.backgroundColor]="item.note.color">
+        <div class="card-image" *ngIf="item.note.img" (click)="editCard(item.note)">
           <img [src]="item.note.img" class="account-icon">
-          <button class="btn" mat-icon-button matTooltip="Remove" (click)="removeImage(item.note)"><mat-icon>delete</mat-icon></button>
+          <button class="btn" mat-icon-button matTooltip="Remove" (click)="removeImage(item.note)">
+            <mat-icon>delete</mat-icon>
+          </button>
         </div>
-        <div>
+        <div fxLayout="row">
           <div fxFlex="88" class="item-title" (click)="editCard(item.note)">{{item.note.noteTitle}}</div>
-          <div fxFlex="4">
-            <button mat-icon-button></button>
+          <!-- <div *ngIf="value==false" (click)="reverseValue()" > <img src="../../../assets/pin.svg"></div>
+          <div *ngIf="value==true" (click)="reverseValue()"> <img src="../../../assets/unpin.svg"></div> -->
+          <div class="pin-icon">
+            <app-pin></app-pin>
           </div>
         </div>
         <mat-card-content fxLayout="column">
           <div class="description" (click)="editCard(item.note)">{{item.note.noteContent}}</div>
 
           <mat-card-footer>
-              <mat-chip-list class="chip-list">
+            <mat-chip-list class="chip-list">
 
               <mat-chip class="show-reminders" style="margin-left: 10px;" *ngIf="item?.note.reminder">
                 <mat-icon matChipRemove class="time-icon" style="margin-right: 8px;">access_time</mat-icon>
-                 <span class="show-time">{{item?.note.reminder}}</span>
+                <span class="show-time">{{item?.note.reminder}}</span>
                 <mat-icon matChipRemove class="remove" (click)="removeReminder(item.note)">close </mat-icon>
               </mat-chip>
-              </mat-chip-list>
-              <mat-chip-list class="chip-list"  *ngIf=" item.note != undefined && item.note.labels.length >= 1" wrap="hard">
-                  <mat-chip class="show-reminders" style="margin-left: 10px;"  *ngFor="let label of item.note.labels" >
-                     <span class="show-time" style="margin-left: 30px;" *ngIf="label != null ">{{label.labelName}}</span>
-                    <mat-icon matChipRemove class="remove" (click)="removeLabel(label,item.note)">close </mat-icon>
-                  </mat-chip>
-                  </mat-chip-list>
-                  <div *ngFor="let item of item.collab">
-                  <!-- <mat-list class="add-icon" *ngIf="!item.img"> 
+            </mat-chip-list>
+            <mat-chip-list class="chip-list" *ngIf=" item.note != undefined && item.note.labels.length >= 1"
+              wrap="hard">
+              <mat-chip class="show-reminders" style="margin-left: 10px;" *ngFor="let label of item.note.labels">
+                <span class="show-time" style="margin-left: 30px;" *ngIf="label != null ">{{label.labelName}}</span>
+                <mat-icon matChipRemove class="remove" (click)="removeLabel(label,item.note)">close </mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+            <div *ngFor="let item of item.collab">
+              <!-- <mat-list class="add-icon" *ngIf="!item.img"> 
                      <mat-list-item > -->
-                        <div class="add-icon" *ngIf="!item.img"> 
-                            <div class="img-add-person" matTooltip="{{item.firstName}} <{{item.email}}>"><span class="initials">{{item.firstName.charAt(0).toUpperCase()}}</span></div>
-                           </div>
-                           <!-- <div class="add-icon" *ngIf="item.img"> 
-                              <div class="img-add" matTooltip="{{item.firstName}} <{{item.email}}>"><img [src]="item.img"></div>
-                             </div>    -->
-                     <!-- <img *ngIf="item.img" [src]="item.img"> 
-                        <button *ngIf="!item.img" mat-mini-fab color="item.note.color">{{item.firstName.charAt(0).toUpperCase()}}</button> -->
-                      <!-- <h3 matLine> {{Person.name }} </h3>
-                      <mat-divider></mat-divider> -->
-                    <!-- </mat-list-item> -->
-                  <!-- </mat-list> -->
-                </div>
-              <div class="matCardFooterIcons">
-              <app-icon-list (click)="openUpdatePopup(item.note)" [test]="'Blue32'" [userData]="item" [childMessage]="noteId"
-                (updateColorEvent)="receiveUpdateColorEvent($event)"
+              <div class="add-icon" *ngIf="!item.img">
+                <div class="img-add-person" matTooltip="{{item.firstName}} <{{item.email}}>"><span
+                    class="initials">{{item.firstName.charAt(0).toUpperCase()}}</span></div>
+              </div>
+            </div>
+            <div class="matCardFooterIcons">
+              <app-icon-list (click)="openUpdatePopup(item.note)" [test]="'Blue32'" [userData]="item"
+                [childMessage]="noteId" (updateColorEvent)="receiveUpdateColorEvent($event)"
                 (sendDeletedNoteToTrashEvent)="receiveDeletedNoteToTrashEvent($event)"
-                (archiveFromCard)="receiveArchiveFromCard($event)" 
+                (archiveFromCard)="receiveArchiveFromCard($event)"
                 (reminderEventForCards)="saveReminderOnCardEvent($event)"
                 (updateLabelsEvent)="receiveUpdateLabelsEvent($event)"
-                 (imageUpdateEvent)="receiveImageUpdateEvent($event)"></app-icon-list>
+                (imageUpdateEvent)="receiveImageUpdateEvent($event)"></app-icon-list>
             </div>
           </mat-card-footer>
         </mat-card-content>

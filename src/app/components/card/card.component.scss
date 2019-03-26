@@ -31,11 +31,20 @@
     margin-top: 10px;
 }
 
+.pin-icon{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.2s linear;  
+}
+
+.card-content:hover .pin-icon {
+    visibility: visible;
+    opacity: 1;
+}
+
 .card-content:hover .matCardFooterIcons {
     visibility: visible;
     opacity: 1;
-
-    // background-color: black;
 }
 
 .card-content:hover{

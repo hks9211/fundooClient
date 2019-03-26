@@ -214,18 +214,19 @@ export class IconListComponent implements OnInit {
   }
 
   uploadImage(imageInput) {
-    // debugger;
+// console.log("userData inside uploadImage: ",this.userData);
     const file: File = imageInput.files[0];
     this.http.uploadImage(file, 'image-upload').subscribe(
       data => {
         console.log("data got after image upload", data)
         this.picLink = data['imgUrl'];
-        console.log("link: ", this.picLink);
+        // console.log("link: ", this.picLink);
         var updateImageData = {
-          '_id': this.userData._id,
+          '_id': this.userData.note._id,
           'img': this.picLink
         }
-
+        console.log("update img data: ",updateImageData);
+        
         this.noteServices.postUpdateNote(updateImageData).subscribe(
           data => {
             this.snackBar.open("Image updated", "done", { duration: 2000 });
@@ -242,4 +243,5 @@ export class IconListComponent implements OnInit {
       }
     )
   }
+
 }

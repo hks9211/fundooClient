@@ -18,6 +18,9 @@ export class ListGridViewService {
 
   private collabSource = new BehaviorSubject('');
   collab = this.collabSource.asObservable();
+
+  private imageSource = new BehaviorSubject('');
+  image = this.imageSource.asObservable();
   
   constructor() { 
 
@@ -41,5 +44,11 @@ export class ListGridViewService {
 
   updateCollab(message : string){
     this.collabSource.next(message);
+  }
+
+  updateProfilePic(imgData : string){
+    console.log("image data at service: ",imgData);
+    
+    this.imageSource.next(imgData);
   }
 }

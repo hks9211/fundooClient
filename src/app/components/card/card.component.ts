@@ -28,6 +28,9 @@ export class CardComponent implements OnInit {
   userData: any = "";
   noteData: any = "";
   labels : any;
+  value: boolean = false;
+  cards: any;
+
   
   constructor(
     private noteServices: NoteServiceService,
@@ -108,10 +111,10 @@ export class CardComponent implements OnInit {
     this.noteServices.getCards(reqData).subscribe(
       data => {
          this.items = data['response'];
-        console.log("response for get all cards",(data as any).response);
+        // console.log("response for get all cards",(data as any).response);
         // this.labels = (data as any).response[0].labels
         // console.log("labels on cards: ", this.labels);
-        
+       this.cards = (data as any).response; 
         
       },
       error => {
@@ -221,9 +224,8 @@ console.log("user data: ",userData);
     this.getCards();
     
   }
-  removeImage(item){
-  // console.log("item after button click: ",item);
-  
+  reverseValue() {
+    this.value = !this.value;
   }
 
 }

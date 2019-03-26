@@ -1,16 +1,41 @@
-<div fxLayout="column" >
-  <div class="main-profile-card" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
-    <div><span class="title">Select profile photo</span></div>
-    <div class="cancel-btn">
-      <button mat-icon-button>
-        <img src="../../../assets/close.svg">
-      </button>
+<div fxLayout="column">
+  <div fxLayout="column" class="top-div">
+    <div class="main-profile-card" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
+      <div><span class="title">Select profile photo</span></div>
+      <div class="cancel-btn">
+        <button mat-icon-button mat-dialog-close>
+          <img src="../../../assets/close.svg">
+        </button>
+      </div>
     </div>
-  </div>
-  <div class="divider">
+    <!-- <div class="divider">
     <mat-divider></mat-divider>
+  </div> -->
+
+    <div fxLayoutAlign="center center" class="add-img-btn">
+      <!-- <label>Select a photo from your computer
+        <input  type="file" class="input-img">
+      </label> -->
+      <label fxLayout="column">
+        <input type="file" id="selectedFile" (change)="onSelectedFile($event)" style="display: none;" />
+        <div *ngIf="flag == false" fxFlex="30" fxLayoutAlign="center center" class="tooltip" (click)="changeFlag()">
+          <img class="add-image-icon" src='../../../assets/user_male_add_new_create-512.png'>
+          <span class="tooltiptext">Update profile pic</span>
+        </div>
+        <span *ngIf="flag == false" class="btn-text">Select a photo from your computer</span>
+      </label>
+    </div>
+    <image-cropper *ngIf="flag == true" [imageChangedEvent]="imageChangedEvent" (imageCropped)="imageCropped($event)">
+    </image-cropper>
+
+    <!-- <img name="profile1" [src]="croppedImage" /> -->
+
   </div>
-  <div fxFlex="30" fxLayoutAlign="center center">
-    <img  class="add-image-icon" src='../../../assets/user_male_add_new_create-512.png'>
+  <div fxFlex="100" class="footer">
+    <mat-divider></mat-divider>
+    <div fxLayout="row" class="footer-btns">
+      <button mat-dialog-close mat-button class="set-profile-button" (click)="addImage(croppedImage)">Set as profile photo</button>
+      <button mat-dialog-close mat-button class="cancel-button">Cancel</button>
+    </div>
   </div>
 </div>

@@ -17,7 +17,11 @@
 
 <div fxFlex="100" class="big-note" fxLayoutAlign="space-around start" *ngIf="flag==false" fxFlex.xs="100">
   <mat-card  [style.backgroundColor]="setColor"  fxFlex="50" fxLayout="column" fxLayoutAlign="space-between start" fxFlex.xs="100" fxFlex.sm="80">
-    <input class="title" type="text" [formControl]="noteTitle" placeholder="Title" >
+    <div fxLayout="row" fxLayoutGap="420px">
+    <input class="title" type="text" [formControl]="noteTitle" placeholder="Title">
+    <div *ngIf="value==false" (click)="reverseValue()" > <img src="../../../assets/pin.svg"></div>
+    <div *ngIf="value==true" (click)="reverseValue()"> <img src="../../../assets/unpin.svg"></div>
+  </div>
     <div class="area">
       <textarea class="add-note" matTextareaAutosize [formControl]="noteContent" placeholder="Take a note..."></textarea>
     </div>

@@ -14,4 +14,112 @@
     height: 178px;
     margin-top: 59px;
     opacity: 0.5;
+    transition: 0.5s;
+
+}
+
+.add-image-icon:hover{
+    transform: scale(1.075);
+
+}
+
+.btn-text{
+    font-size: 10px;
+    font-family: Roboto,Arial,sans-serif;
+    font-weight: 550;
+    margin-top: 10px;
+    margin-left: -6px;
+}
+
+
+
+.add-img-btn{
+    margin-top: 10px;
+    // margin-bottom: 118px;
+
+}
+
+.add-img{
+    margin-right: 25px;
+
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 65px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    height: 10px;
+    font-size: 8px;
+    font-family: Roboto,Arial,sans-serif;
+
+}
+  
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .footer{
+    // background-color: rgba(0,0,0,0.07);
+    height: 45px;  
+    margin-top: 104px;
+  }
+
+  .top-div{
+      margin-bottom: 50px;
+  }
+
+  .footer-btns{
+      margin-top: 8px;
+  }
+
+  .set-profile-btn{
+      margin-right: 10px
+  }
+
+  .btn-text-set-profile{
+    font-size: 10px;
+    font-family: Roboto,Arial,sans-serif;
+    font-weight: 550;
+ 
+}
+
+.btn-text-cencel{
+    font-size: 10px;
+    font-family: Roboto,Arial,sans-serif;
+    font-weight: 550;
+ 
+}
+
+.set-profile-button{
+    margin-right: 20px;
+    font-size: 11px;
+    font-family: Roboto,Arial,sans-serif;
+    font-weight: 550;
+    background: #4D90FE;
+    border: 0ch;
+    color: #fff;
+}
+
+.cancel-button{
+    font-size: 11px;
+    font-family: Roboto,Arial,sans-serif;
+    font-weight: 550;
+    border: 0ch;
+}
+
+/deep/ .mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
+    width: 134px;
+    height: 35px;
 }

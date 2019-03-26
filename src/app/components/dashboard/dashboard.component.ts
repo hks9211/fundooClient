@@ -55,6 +55,9 @@ export class DashboardComponent implements OnInit {
     this.spinnerService.show();
     this.getProfilePic();
     this.getLabels();
+    this.changeViewData.image.subscribe(message => this.picLink = message);
+    console.log(this.picLink);
+    
   }
 
   ngOnDestroy(): void {
@@ -115,7 +118,7 @@ export class DashboardComponent implements OnInit {
       data => {
         this.picLink = (data as any).message[0].img;
         this.userData = (data as any).message[0];
-        // console.log(this.userData);
+         console.log("userdata at dashboard: ",this.userData);
         localStorage.setItem('loginUserData', JSON.stringify(this.userData));
       },
       error => {

@@ -37,6 +37,7 @@ import { SearchPipe } from './search.pipe';
 import { SearchComponent } from './components/search/search.component';
 import { ShowSelectedCardsComponent } from './compoenents/show-selected-cards/show-selected-cards.component';
 import { ProfilePicComponent } from './components/profile-pic/profile-pic.component';
+import { PinComponent } from './components/pin/pin.component';
 
 
 
@@ -66,6 +67,7 @@ import { ProfilePicComponent } from './components/profile-pic/profile-pic.compon
     SearchComponent,
     ShowSelectedCardsComponent,
     ProfilePicComponent,
+    PinComponent,
 
 
 
