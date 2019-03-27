@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
     this.getProfilePic();
     this.getLabels();
     this.changeViewData.image.subscribe(message => this.picLink = message);
-    console.log(this.picLink);
+    // console.log(this.picLink);
     
   }
 
@@ -79,7 +79,7 @@ export class DashboardComponent implements OnInit {
       autoFocus: false,
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('dialog updated content :', result, '\n updated data');
+      // console.log('dialog updated content :', result, '\n updated data');
       this.getLabels();
     })
   }
@@ -89,7 +89,7 @@ export class DashboardComponent implements OnInit {
     const file: File = imageInput.files[0];
     this.http.uploadImage(file, 'image-upload').subscribe(
       data => {
-        console.log("data got after image upload", data)
+        // console.log("data got after image upload", data)
         this.picLink = data['imgUrl'];
         // console.log("link: ", this.picLink);
         this.showProfilepic(this.picLink);
@@ -118,7 +118,7 @@ export class DashboardComponent implements OnInit {
       data => {
         this.picLink = (data as any).message[0].img;
         this.userData = (data as any).message[0];
-         console.log("userdata at dashboard: ",this.userData);
+        //  console.log("userdata at dashboard: ",this.userData);
         localStorage.setItem('loginUserData', JSON.stringify(this.userData));
       },
       error => {

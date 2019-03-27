@@ -56,7 +56,7 @@
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <!-- <mat-icon>account_circle</mat-icon> -->
           <div *ngIf="picLink !=''">
-            <img [src]="picLink" class="account-icon">
+            <img [src]="picLink" class="account-icon" matTooltip= {{userData.email}}>
           </div>
         </button>
         <mat-menu class="logoutMenu" #menu="matMenu" (click)="$event.stopPropagation();">
@@ -66,9 +66,11 @@
               <div class="user-details">
                 <label>
                   <!-- <input #inputImage type="file" class="input-img" (change)="uploadImage(inputImage)"> -->
-                  <div *ngIf="picLink !=''"> 
-                    <img [src]="picLink" (click)="setProfilePic()" class="profilePic" matTooltip='Change image' matTooltipPosition='right'>
-                  </div> 
+                  <div *ngIf="picLink !=''">
+                    <img [src]="picLink" (click)="setProfilePic()" class="profilePic" matTooltip='Change image'
+                      matTooltipPosition='right'>
+                    <div class="pic-profile">Change</div>
+                  </div>
                 </label>
 
               </div>
@@ -103,7 +105,7 @@
               (click)="headerName='fundooNotes'"
               [ngClass]="{'sideNavListItems': headerName!='fundooNotes', 'sideNavlistItemsColored': headerName=='fundooNotes'}">
               <mat-icon>lightbulb_outline</mat-icon> Notes
-            </button> 
+            </button>
           </div>
 
           <div>
@@ -120,11 +122,12 @@
             <label><span class="label-name">LABELS</span></label>
           </div>
           <div *ngFor="let item of labels">
-              <button mat-button [routerLink]="['']" routerLinkActive="router-link-active"  (click)="headerName=item.labelName"
+            <button mat-button [routerLink]="['']" routerLinkActive="router-link-active"
+              (click)="headerName=item.labelName"
               [ngClass]="{'sideNavListItems': headerName!=item.labelName, 'sideNavlistItemsColored': headerName==item.labelName}">
-            <img src="../../../assets/label.svg">
-            <span class="labelName">{{item.labelName}}</span>
-          </button>
+              <img src="../../../assets/label.svg">
+              <span class="labelName">{{item.labelName}}</span>
+            </button>
           </div>
 
           <button class="sideNavListItems" mat-button (click)="openEditLabelDialog()">

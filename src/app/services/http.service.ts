@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserModel } from '../model/userModel'
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,12 @@ export class HttpService {
     private http: HttpClient
   ) { }
 
+  register : UserModel = {
+    firstName : "",
+    lastName : "",
+    email : "",
+    password : ""               
+  }
   post(data: object, purpose: string) {
     return this.http.post(this.url + purpose, data);
   }

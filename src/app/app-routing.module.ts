@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {RegisterUserComponent  } from './register-user/register-user.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
@@ -18,88 +18,86 @@ import { EditLabelComponent } from './components/edit-label/edit-label.component
 import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { SearchComponent } from './components/search/search.component';
-import { ShowSelectedCardsComponent } from './compoenents/show-selected-cards/show-selected-cards.component';
 
 const routes: Routes = [
-{
-  path: '',
-  redirectTo : '/login',
-  pathMatch : 'full'
-},
-{
-  path: 'register',
-  component: RegisterUserComponent
-},
-
-{
-  path: 'emailVerificaton/:token' ,
-  component: VerifyEmailComponent
-},
-{
-  path: 'login',
-  component: LoginUserComponent
-},
-{
-  path: 'forgotpassword',
-  component: ForgotPasswordComponent
-},
-{
-  path: 'resetPassword/:token',
-  component: ResetPasswordComponent
-},
-{
-  path: 'dashboard',
-  component: DashboardComponent,
-  canActivate: [AuthGuard],
-  children: [
-
   {
-    path:'',
-    component:AddnoteComponent
-  } , 
-  {
-    path: 'notes',
-    component: AddnoteComponent
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
   },
   {
-    path: 'reminders',
-    component: RemindersComponent
+    path: 'register',
+    component: RegisterUserComponent
+  },
+
+  {
+    path: 'emailVerificaton/:token',
+    component: VerifyEmailComponent
   },
   {
-    path:'archives',
-    component:ArchiveComponent
+    path: 'login',
+    component: LoginUserComponent
   },
   {
-    path:'trash',
-    component:TrashComponent
+    path: 'forgotpassword',
+    component: ForgotPasswordComponent
   },
   {
-    path: 'Search',
-    component: SearchComponent
+    path: 'resetPassword/:token',
+    component: ResetPasswordComponent
   },
-  { path: 'selectlabel/:label', component: ShowSelectedCardsComponent  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+    children: [
+
+      {
+        path: '',
+        component: AddnoteComponent
+      },
+      {
+        path: 'notes',
+        component: AddnoteComponent
+      },
+      {
+        path: 'reminders',
+        component: RemindersComponent
+      },
+      {
+        path: 'archives',
+        component: ArchiveComponent
+      },
+      {
+        path: 'trash',
+        component: TrashComponent
+      },
+      {
+        path: 'Search',
+        component: SearchComponent
+      },
 
 
-  ]
+    ]
 
-},
-{
-  path:'edit',
-  component:EditCardComponent
-},
-{
-  path:'collab',
-  component:CollaboratorsComponent
-},
-{
-    path:'editt',
-    component:EditLabelComponent
-},
+  },
+  {
+    path: 'edit',
+    component: EditCardComponent
+  },
+  {
+    path: 'collab',
+    component: CollaboratorsComponent
+  },
+  {
+    path: 'editt',
+    component: EditLabelComponent
+  },
 
-{
-  path: '**',
-  component: InvalidUrlComponent
-},
+  {
+    path: '**',
+    component: InvalidUrlComponent
+  },
 
 
 ];

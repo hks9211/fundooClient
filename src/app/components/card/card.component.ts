@@ -30,6 +30,9 @@ export class CardComponent implements OnInit {
   labels : any;
   value: boolean = false;
   cards: any;
+  pinedCards: any;
+  unPinedCards: any;
+  note:any = []
 
   
   constructor(
@@ -45,7 +48,21 @@ export class CardComponent implements OnInit {
 
     this.getCards();
     this.parentSubject.subscribe(event => {
-      this.items.push(event);
+      console.log(event);
+      
+      if(event.isPined == false){
+        var data = {
+          note : event
+        }
+        this.unPinedCards.push(data);
+      }else{
+        var data = {
+          note : event
+        }
+        // this.note.push(data);
+        this.pinedCards.push(data);
+        // console.log("pinned cards: ",this.pinedCards);
+      }      
     });
     this.changeViewData.currentMessage.subscribe(message =>   this.chooseView = message);
     // console.log("flag value: ", this.flag);
@@ -57,7 +74,7 @@ export class CardComponent implements OnInit {
 
   receiveUpdateColorEvent($event) {
     this.updateColor = $event;
-    console.log("update color on card", this.updateColor);
+    // console.log("update color on card", this.updateColor);
     this.getCards();
   }
   openUpdatePopup(item) {
@@ -70,17 +87,17 @@ export class CardComponent implements OnInit {
   }
 
   receiveDeletedNoteToTrashEvent($event) {
-    console.log("delete note event received", $event);
+    // console.log("delete note event received", $event);
     this.getCards();
   }
 
   receiveArchiveFromCard($event) {
-    console.log("event at card for archive",$event);
+    // console.log("event at card for archive",$event);
      this.getCards();
   }
 
   saveReminderOnCardEvent($event){
-    console.log("event on card for reminder",$event);
+    // console.log("event on card for reminder",$event);
 
     const item = {
       '_id':this.noteId,
@@ -99,9 +116,7 @@ export class CardComponent implements OnInit {
     ) 
   }  
 
-
   updateArchive(){
-    
   }
 
   getCards() {
@@ -115,6 +130,18 @@ export class CardComponent implements OnInit {
         // this.labels = (data as any).response[0].labels
         // console.log("labels on cards: ", this.labels);
        this.cards = (data as any).response; 
+       this.pinedCards = this.cards.filter(function (el) {
+        return (el.note.isPined === true);
+        });
+
+        this.unPinedCards = this.cards.filter(function (el) {
+          return (el.note.isPined === false);
+          });
+
+        console.log("pinned cards: ",this.pinedCards);
+        console.log("unpinned cards: ",this.unPinedCards);
+
+        
         
       },
       error => {
@@ -129,7 +156,7 @@ export class CardComponent implements OnInit {
       data: item
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('dialog updated content :', result, '\n updated data', item);
+      // console.log('dialog updated content :', result, '\n updated data', item);
       this.noteServices.postUpdateNote(item).subscribe(
         data => {
           this.getCards();
@@ -177,21 +204,8 @@ export class CardComponent implements OnInit {
         'userId' : userId,
         'noteId' : item._id    
     }
-console.log("user data: ",userData);
+// console.log("user data: ",userData);
   }
-
-  // getLabels(){
-  //   this.http.getLabels('getLabels').subscribe(
-  //    data => {
-  //     console.log("getLabel data at card: ",(data as any).response);
-  //     this.labels = (data as any).response;
-  //     console.log("label data",this.labels);
-  //    },
-  //    error => {
-  //    console.log(error);
-  //    }
-  //   )
-  // }
 
   receiveUpdateLabelsEvent($event){
     console.log($event);
@@ -220,12 +234,35 @@ console.log("user data: ",userData);
   }
 
   receiveImageUpdateEvent($event){
-    console.log($event);
+    // console.log($event);
     this.getCards();
     
   }
   reverseValue() {
     this.value = !this.value;
+  }
+
+  changePin(item){
+    try{
+     if(item._id == undefined) throw "unable to perform this operation";
+     var updatePinData = {
+       '_id':item._id,
+       'isPined':!item.isPined
+     }
+
+     this.noteServices.postUpdateNote(updatePinData).subscribe(
+       data => {
+        this.snackBar.open("Done" , "", {duration : 1000});
+        this.getCards();        
+       },
+       error => {
+        this.snackBar.open("Failed" , "", {duration : 1000});
+        console.log("after reesponse data: ",error);
+       }
+     )
+    }catch(err){
+      this.snackBar.open(err , "" , {duration : 1000});
+    }
   }
 
 }

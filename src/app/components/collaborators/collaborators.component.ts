@@ -72,7 +72,7 @@ export class CollaboratorsComponent implements OnInit {
    }
    this.noteService.addCollaborator(addCollaboratorData).subscribe(
      data => {
-         console.log(data);
+        //  console.log(data);
          this.collabData.push(addDataToArray);
          this.collabService.updateCollab(" ");
      },

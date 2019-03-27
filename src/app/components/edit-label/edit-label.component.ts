@@ -50,11 +50,9 @@ export class EditLabelComponent implements OnInit {
     }catch(err){
        this.snackBar.open(err , "" , {duration : 2000});
     }
-    
   }
 
   getLabels(){
-
     this.http.getLabels('getLabels').subscribe(
      data => {
       console.log("getLabel data: ",(data as any).response);
@@ -62,14 +60,12 @@ export class EditLabelComponent implements OnInit {
      },
      error => {
      console.log(error);
-     
      }
     )
   }
 
   deleteLabel(item){
     console.log(item);
-
     this.noteServices.deleteLabel(item._id).subscribe(
       data => {
         this.snackBar.open("Label removed" , "" , {duration : 2000});
@@ -78,9 +74,6 @@ export class EditLabelComponent implements OnInit {
       error => {
         this.snackBar.open("Can't remove Label right now" , "" , {duration : 2000});
       }
-    )
-    
+    ) 
   }
-
- 
 }

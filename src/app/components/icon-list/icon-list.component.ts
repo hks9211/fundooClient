@@ -33,7 +33,6 @@ export class IconListComponent implements OnInit {
 
   @Input() childMessage: any = "";
   @Input() userData;
-  @Input() noteData;
   @Input() test: string;
   @Output() messageEvent = new EventEmitter<any>();
   @Output() reminderEvent = new EventEmitter<any>();
@@ -121,7 +120,7 @@ export class IconListComponent implements OnInit {
       }
       this.noteServices.updateColor(updateColorData).subscribe(
         data => {
-          console.log(' response: ', data);
+          // console.log(' response: ', data);
           this.updateColorEvent.emit(colorId);
         },
         error => {
@@ -162,7 +161,7 @@ export class IconListComponent implements OnInit {
   }
 
   openCollabWindow(userData1) {
-    console.log(userData1)
+    // console.log(userData1)
     const dialogRef = this.dialog.open(CollaboratorsComponent, {
       autoFocus: false,
       data: this.userData
@@ -218,7 +217,7 @@ export class IconListComponent implements OnInit {
     const file: File = imageInput.files[0];
     this.http.uploadImage(file, 'image-upload').subscribe(
       data => {
-        console.log("data got after image upload", data)
+        // console.log("data got after image upload", data)
         this.picLink = data['imgUrl'];
         // console.log("link: ", this.picLink);
         var updateImageData = {

@@ -41,11 +41,11 @@ export class MessagingService {
   getPermission() {
       this.messaging.requestPermission()
       .then(() => {
-        console.log('Notification permission granted.');
+        // console.log('Notification permission granted.');
         return this.messaging.getToken()
       })
       .then(token => {
-        console.log(token)
+        // console.log(token)
         //this.updateToken(token)
       })
       .catch((err) => {

@@ -23,7 +23,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddnoteComponent } from './components/addnote/addnote.component';
 import { IconListComponent } from './components/icon-list/icon-list.component';
 import { CardComponent } from './components/card/card.component';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { EditCardComponent } from './components/edit-card/edit-card.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { TrashComponent } from './components/trash/trash.component';
@@ -35,14 +35,8 @@ import { CollaboratorsComponent } from './components/collaborators/collaborators
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { SearchPipe } from './search.pipe';
 import { SearchComponent } from './components/search/search.component';
-import { ShowSelectedCardsComponent } from './compoenents/show-selected-cards/show-selected-cards.component';
 import { ProfilePicComponent } from './components/profile-pic/profile-pic.component';
 import { PinComponent } from './components/pin/pin.component';
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -65,7 +59,6 @@ import { PinComponent } from './components/pin/pin.component';
     RemindersComponent,
     SearchPipe,
     SearchComponent,
-    ShowSelectedCardsComponent,
     ProfilePicComponent,
     PinComponent,
 

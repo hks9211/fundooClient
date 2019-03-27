@@ -1,37 +1,44 @@
+<div fxLayout="column">
+  <div class="text" *ngIf="pinedCards?.length > 0">PINNED</div>
 <div class="card" fxLayout="{{chooseView}}" fxFlex="90" fxFlex.xs="100" fxLayoutAlign="center center" cdkDropList
   (cdkDropListDropped)="drop($event)">
-  <div cdkDrag *ngFor="let item of items | search : Search;">
+  <div cdkDrag *ngFor="let item of pinedCards | search : Search;">
     <div>
       <mat-card fxFlex="100" class="card-content"
         [ngClass]="{'cardGridView': chooseView == 'row wrap','cardListView': chooseView == 'column wrap'}"
-        fxFlex.xs="100" [style.backgroundColor]="item.note.color">
-        <div class="card-image" *ngIf="item.note.img" (click)="editCard(item.note)">
-          <img [src]="item.note.img" class="account-icon">
+        fxFlex.xs="100" [style.backgroundColor]="item?.note?.color">
+        <div class="card-image" *ngIf="item?.note?.img" (click)="editCard(item.note)">
+          <img [src]="item?.note?.img" class="account-icon">
           <button class="btn" mat-icon-button matTooltip="Remove" (click)="removeImage(item.note)">
             <mat-icon>delete</mat-icon>
           </button>
         </div>
         <div fxLayout="row">
-          <div fxFlex="88" class="item-title" (click)="editCard(item.note)">{{item.note.noteTitle}}</div>
+          <div fxFlex="88" class="item-title" (click)="editCard(item.note)">{{item?.note?.noteTitle}}</div>
           <!-- <div *ngIf="value==false" (click)="reverseValue()" > <img src="../../../assets/pin.svg"></div>
           <div *ngIf="value==true" (click)="reverseValue()"> <img src="../../../assets/unpin.svg"></div> -->
-          <div class="pin-icon">
-            <app-pin></app-pin>
+          <div class="pin-icon" *ngIf="item?.note?.isPined == true">
+            <!-- <app-pin></app-pin> -->
+            <div> <img src="../../../assets/unpin.svg" (click)=" changePin(item.note)"></div>
+          </div>
+          <div class="pin-icon" *ngIf="item?.note?.isPined == false">
+            <!-- <app-pin></app-pin> -->
+            <div> <img src="../../../assets/pin.svg" (click)="changePin(item.note)"></div>
           </div>
         </div>
         <mat-card-content fxLayout="column">
-          <div class="description" (click)="editCard(item.note)">{{item.note.noteContent}}</div>
+          <div class="description" (click)="editCard(item.note)">{{item?.note?.noteContent}}</div>
 
           <mat-card-footer>
             <mat-chip-list class="chip-list">
 
-              <mat-chip class="show-reminders" style="margin-left: 10px;" *ngIf="item?.note.reminder">
+              <mat-chip class="show-reminders" style="margin-left: 10px;" *ngIf="item?.note?.reminder">
                 <mat-icon matChipRemove class="time-icon" style="margin-right: 8px;">access_time</mat-icon>
-                <span class="show-time">{{item?.note.reminder}}</span>
+                <span class="show-time">{{item?.note?.reminder}}</span>
                 <mat-icon matChipRemove class="remove" (click)="removeReminder(item.note)">close </mat-icon>
               </mat-chip>
             </mat-chip-list>
-            <mat-chip-list class="chip-list" *ngIf=" item.note != undefined && item.note.labels.length >= 1"
+            <mat-chip-list class="chip-list" *ngIf=" item?.note != undefined && item?.note?.labels.length >= 1"
               wrap="hard">
               <mat-chip class="show-reminders" style="margin-left: 10px;" *ngFor="let label of item.note.labels">
                 <span class="show-time" style="margin-left: 30px;" *ngIf="label != null ">{{label.labelName}}</span>
@@ -41,13 +48,13 @@
             <div *ngFor="let item of item.collab">
               <!-- <mat-list class="add-icon" *ngIf="!item.img"> 
                      <mat-list-item > -->
-              <div class="add-icon" *ngIf="!item.img">
-                <div class="img-add-person" matTooltip="{{item.firstName}} <{{item.email}}>"><span
-                    class="initials">{{item.firstName.charAt(0).toUpperCase()}}</span></div>
+              <div class="add-icon" *ngIf="!item?.img">
+                <div class="img-add-person" matTooltip="{{item?.firstName}} <{{item?.email}}>"><span
+                    class="initials">{{item?.firstName.charAt(0).toUpperCase()}}</span></div>
               </div>
             </div>
             <div class="matCardFooterIcons">
-              <app-icon-list (click)="openUpdatePopup(item.note)" [test]="'Blue32'" [userData]="item"
+              <app-icon-list (click)="openUpdatePopup(item.note)" [userData]="item" 
                 [childMessage]="noteId" (updateColorEvent)="receiveUpdateColorEvent($event)"
                 (sendDeletedNoteToTrashEvent)="receiveDeletedNoteToTrashEvent($event)"
                 (archiveFromCard)="receiveArchiveFromCard($event)"
@@ -60,4 +67,78 @@
       </mat-card>
     </div>
   </div>
+</div>
+
+<div class="text" *ngIf="pinedCards?.length > 0 && unPinedCards?.length > 0">OTHERS</div>
+<div class="card" fxLayout="{{chooseView}}" fxFlex="90" fxFlex.xs="100" fxLayoutAlign="center center" cdkDropList
+  (cdkDropListDropped)="drop($event)">
+  <div cdkDrag *ngFor="let item of unPinedCards | search : Search;">
+    <div>
+      <mat-card fxFlex="100" class="card-content"
+        [ngClass]="{'cardGridView': chooseView == 'row wrap','cardListView': chooseView == 'column wrap'}"
+        fxFlex.xs="100" [style.backgroundColor]="item.note.color">
+        <div class="card-image" *ngIf="item?.note?.img" (click)="editCard(item.note)">
+          <img [src]="item?.note?.img" class="account-icon">
+          <button class="btn" mat-icon-button matTooltip="Remove" (click)="removeImage(item.note)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex="88" class="item-title" (click)="editCard(item.note)">{{item?.note?.noteTitle}}</div>
+          <!-- <div *ngIf="value==false" (click)="reverseValue()" > <img src="../../../assets/pin.svg"></div>
+          <div *ngIf="value==true" (click)="reverseValue()"> <img src="../../../assets/unpin.svg"></div> -->
+          <div class="pin-icon" *ngIf="item?.note?.isPined == true">
+            <!-- <app-pin></app-pin> -->
+            <div> <img src="../../../assets/unpin.svg" (click)=" changePin(item.note)"></div>
+          </div>
+          <div class="pin-icon" *ngIf="item?.note?.isPined == false">
+            <!-- <app-pin></app-pin> -->
+            <div> <img src="../../../assets/pin.svg" (click)="changePin(item.note)"></div>
+          </div>
+        </div>
+        <mat-card-content fxLayout="column">
+          <div class="description" (click)="editCard(item.note)">{{item?.note?.noteContent}}</div>
+
+          <mat-card-footer>
+            <mat-chip-list class="chip-list">
+
+              <mat-chip class="show-reminders" style="margin-left: 10px;" *ngIf="item?.note?.reminder">
+                <mat-icon matChipRemove class="time-icon" style="margin-right: 8px;">access_time</mat-icon>
+                <span class="show-time">{{item?.note?.reminder}}</span>
+                <mat-icon matChipRemove class="remove" (click)="removeReminder(item.note)">close </mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+            <mat-chip-list class="chip-list" *ngIf=" item?.note != undefined && item?.note?.labels?.length >= 1"
+              wrap="hard">
+              <mat-chip class="show-reminders" style="margin-left: 10px;" *ngFor="let label of item?.note?.labels">
+                <span class="show-time" style="margin-left: 30px;" *ngIf="label != null ">{{label?.labelName}}</span>
+                <mat-icon matChipRemove class="remove" (click)="removeLabel(label,item.note)">close </mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+            <div *ngFor="let item of item?.collab">
+              <!-- <mat-list class="add-icon" *ngIf="!item.img"> 
+                     <mat-list-item > -->
+              <div class="add-icon" *ngIf="!item?.img">
+                <div class="img-add-person" matTooltip="{{item.firstName}} <{{item.email}}>"><span
+                    class="initials">{{item.firstName.charAt(0).toUpperCase()}}</span></div>
+              </div>
+            </div>
+            <div class="matCardFooterIcons">
+              <app-icon-list (click)="openUpdatePopup(item.note)" [userData]="item" 
+                [childMessage]="noteId" (updateColorEvent)="receiveUpdateColorEvent($event)"
+                (sendDeletedNoteToTrashEvent)="receiveDeletedNoteToTrashEvent($event)"
+                (archiveFromCard)="receiveArchiveFromCard($event)"
+                (reminderEventForCards)="saveReminderOnCardEvent($event)"
+                (updateLabelsEvent)="receiveUpdateLabelsEvent($event)"
+                (imageUpdateEvent)="receiveImageUpdateEvent($event)"></app-icon-list>
+            </div>
+          </mat-card-footer>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+
 </div>

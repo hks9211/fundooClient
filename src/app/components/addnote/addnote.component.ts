@@ -80,7 +80,7 @@ export class AddnoteComponent implements OnInit {
         noteContent: this.noteContent.value,
         reminder: this.reminderData,
         color: this.setColor,
-        isPined: false,
+        isPined: this.value,
         isArchived: this.isArchive.isArchived,
         isDeleted: false,
         labels: [],

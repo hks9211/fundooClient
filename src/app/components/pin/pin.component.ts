@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-pin',
@@ -7,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PinComponent implements OnInit {
   value: boolean = false;
+  @Input() noteData;
 
   constructor() { }
 
   ngOnInit() {
+    console.log("noteData at pin: ",this.noteData);
+    
   }
   reverseValue() {
     this.value = !this.value;
