@@ -7,7 +7,7 @@ import { UserModel } from '../model/userModel'
   providedIn: 'root'
 })
 export class HttpService {
-  private url = 'http://localhost:3000/';
+  private url = 'http://18.222.210.103:3000/';
   constructor(
     private http: HttpClient
   ) { }

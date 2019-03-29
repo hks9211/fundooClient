@@ -1,3 +1,8 @@
+<div *ngIf="items.length <= 0" fxLayout="row" fxLayoutAlign="end center" >
+ <img class="archive-pic" src = "../../../assets/archive2.svg"> 
+ <div class="no-archive-text">Your archived notes appear here</div>
+</div>
+<!-- <img src = "../../../assets/archive2.svg">  -->
 <div class="card" fxLayout="{{chooseView}}" fxFlex="92" fxLayoutAlign="center center">
   <div *ngFor="let item of items">
     <div class="main-card">

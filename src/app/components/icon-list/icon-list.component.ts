@@ -81,27 +81,27 @@ export class IconListComponent implements OnInit {
   }
 
   archiveNewNote() {
-    try{
-    if(this.userData.note._id == undefined || this.userData.note._id.trim() == "" ) throw "note Id not found"
-    const archiveData = {
-      '_id': this.userData.note._id,
-      'isArchived': true
-    }
-    // console.log("user data at icon", this.userData);
-    // console.log("update archive data at icon: ", archiveData);
-
-    this.noteServices.postUpdateNote(archiveData).subscribe(
-      data => {
-        this.snackBar.open("Archived", "", { duration: 1000 })
-        // console.log("data after archive at card component", data);
-        this.archiveFromCard.emit("done");
-      },
-      error => {
-        this.snackBar.open("Archived failed", "", { duration: 1000 })
-        console.log("Error after archive at card component", error);
+    try {
+      if (this.userData.note._id == undefined || this.userData.note._id.trim() == "") throw "note Id not found"
+      const archiveData = {
+        '_id': this.userData.note._id,
+        'isArchived': true
       }
-    )
-    }catch(err){
+      // console.log("user data at icon", this.userData);
+      // console.log("update archive data at icon: ", archiveData);
+
+      this.noteServices.postUpdateNote(archiveData).subscribe(
+        data => {
+          this.snackBar.open("Archived", "", { duration: 1000 })
+          // console.log("data after archive at card component", data);
+          this.archiveFromCard.emit("done");
+        },
+        error => {
+          this.snackBar.open("Archived failed", "", { duration: 1000 })
+          console.log("Error after archive at card component", error);
+        }
+      )
+    } catch (err) {
       this.snackBar.open("Archived failed", "", { duration: 1000 })
     }
     // this.archiveEvent.emit(archiveData);
@@ -213,7 +213,7 @@ export class IconListComponent implements OnInit {
   }
 
   uploadImage(imageInput) {
-// console.log("userData inside uploadImage: ",this.userData);
+    // console.log("userData inside uploadImage: ",this.userData);
     const file: File = imageInput.files[0];
     this.http.uploadImage(file, 'image-upload').subscribe(
       data => {
@@ -224,8 +224,8 @@ export class IconListComponent implements OnInit {
           '_id': this.userData.note._id,
           'img': this.picLink
         }
-        console.log("update img data: ",updateImageData);
-        
+        console.log("update img data: ", updateImageData);
+
         this.noteServices.postUpdateNote(updateImageData).subscribe(
           data => {
             this.snackBar.open("Image updated", "done", { duration: 2000 });

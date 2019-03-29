@@ -52,7 +52,7 @@
           </button>
         </div> -->
       </div>
-      <div fxFlex="10" fxLayoutAlign="end end">
+      <div fxFlex="10" fxFlex.xs="2" fxLayoutAlign="end end" fxLayoutAlign.xs="end end">
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <!-- <mat-icon>account_circle</mat-icon> -->
           <div *ngIf="picLink !=''">
@@ -122,7 +122,7 @@
             <label><span class="label-name">LABELS</span></label>
           </div>
           <div *ngFor="let item of labels">
-            <button mat-button [routerLink]="['']" routerLinkActive="router-link-active"
+            <button mat-button  routerLinkActive="router-link-active"
               (click)="headerName=item.labelName"
               [ngClass]="{'sideNavListItems': headerName!=item.labelName, 'sideNavlistItemsColored': headerName==item.labelName}">
               <img src="../../../assets/label.svg">
