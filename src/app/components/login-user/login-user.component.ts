@@ -35,6 +35,8 @@ export class LoginUserComponent implements OnInit {
     ]);
 
   ngOnInit() {
+    this.spinnerService.show();
+
   }
 
   errorMessageForEmail() {
