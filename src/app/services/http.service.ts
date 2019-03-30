@@ -39,7 +39,7 @@ export class HttpService {
   }
 
   postRequest(data, purpose) {
-    return this.http.post('http://localhost:3000/addnote', data);
+    return this.http.post(this.url + 'addnote', data);
   }
 
   postRequestt(purpose, data) {
