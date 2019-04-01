@@ -87,11 +87,12 @@ export class AddnoteComponent implements OnInit {
         img: ""
       };
       // this.childEvent.emit(newNoteData);
-      this.parentSubject.next(newNoteData);
 
       this.noteService.postHttpRequest(newNoteData, 'addNote').subscribe(
         data => {
-          console.log("data received after addnote: ", data);
+          var pushData = (data as any).response.result;
+          this.parentSubject.next(pushData);
+
           this.snackBar.open('Your note has been saved successfully', '', { duration: 2000 });
         },
         error => {

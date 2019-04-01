@@ -6,6 +6,7 @@ import { EditCardComponent } from '../edit-card/edit-card.component';
 import { ListGridViewService } from 'src/app/services/list-grid-view.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { HttpService } from 'src/app/services/http.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -40,7 +41,8 @@ export class CardComponent implements OnInit {
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
     private changeViewData : ListGridViewService,
-    private http : HttpService
+    private http : HttpService,
+    private router : Router
 
   ) { }
 
@@ -55,6 +57,8 @@ export class CardComponent implements OnInit {
           note : event
         }
         this.unPinedCards.push(data);
+        this.router.navigateByUrl('dashboard');
+
       }else{
         var data = {
           note : event
@@ -62,7 +66,8 @@ export class CardComponent implements OnInit {
         // this.note.push(data);
         this.pinedCards.push(data);
         // console.log("pinned cards: ",this.pinedCards);
-      }      
+      }  
+      
     });
     this.changeViewData.currentMessage.subscribe(message =>   this.chooseView = message);
     // console.log("flag value: ", this.flag);

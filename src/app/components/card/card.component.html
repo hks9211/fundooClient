@@ -1,10 +1,18 @@
+<!-- <div *ngIf="pinedCards?.length <= 0 && unPinnedCards.length <= 0" fxLayout="row" fxLayoutAlign="end center" >
+  <img class="trash-pic" src = "../../../assets/reminder.svg"> 
+  <div class="no-trash-text">Notes with upcoming reminders appear here</div>
+ </div> -->
 <div fxLayout="column">
+  <div  fxLayout="row" fxLayoutAlign="end center" *ngIf="pinedCards?.length <= 0 && unPinedCards?.length <= 0">
+  <mat-icon class="note-pic"> lightbulb_outline</mat-icon> 
+  <div class="no-trash-text">Notes you add appear here</div>
+ </div>
   <div class="text" *ngIf="pinedCards?.length > 0">PINNED</div>
-<div class="card" fxLayout="{{chooseView}}" fxFlex="90" fxFlex.xs="100" fxLayoutAlign="center center" cdkDropList
+<div class="card" fxLayout="{{chooseView}}" fxFlex="90" fxFlex.xs="100" fxLayoutAlign.xs="space-around center" cdkDropList
   (cdkDropListDropped)="drop($event)">
   <div cdkDrag *ngFor="let item of pinedCards | search : Search;">
-    <div>
-      <mat-card fxFlex="100" class="card-content"
+    <div >
+      <mat-card fxFlex="100" fxFlex.xs="100" class="card-content"
         [ngClass]="{'cardGridView': chooseView == 'row wrap','cardListView': chooseView == 'column wrap'}"
         fxFlex.xs="100" [style.backgroundColor]="item?.note?.color">
         <div class="card-image" *ngIf="item?.note?.img" (click)="editCard(item.note)">

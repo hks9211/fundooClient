@@ -1,6 +1,6 @@
 <div [ngClass]="{'edit-card-withImage':data.img , 'edit-card':!data.img}" [style.backgroundColor]="data.color" fxFlex="100" fxFlex.xs="100" fxFlex.sm="100"  fxLayout="column"  >
     <div class="card-image" *ngIf="data.img">
-        <img [src]="data.img" class="account-icon">
+        <img fxFlex [src]="data.img" class="account-icon">
       
           <button class="btn" mat-icon-button matTooltip="Remove" (click)="removeImage(data)"><mat-icon>delete</mat-icon></button>
   

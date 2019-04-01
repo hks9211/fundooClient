@@ -2,12 +2,17 @@
   <div fxLayout="row">
   <div fxFill fxLayoutAlign="center center" class="trash-header" >
     Notes in Trash are deleted after 7 days.
-  <div class="trash-btn">  <button mat-button  (click)="emptyTrash()">
+  <div class="trash-btn" *ngIf="items.length > 0" >  <button mat-button  (click)="emptyTrash()">
     <span class="trash">Empty Trash
       </span>
     </button> </div>
   </div>
 </div>
+
+<div *ngIf="items.length <= 0" fxLayout="row" fxLayoutAlign="end center" >
+  <img class="trash-pic" src = "../../../assets/trash2.svg"> 
+  <div class="no-trash-text">No notes in Trash</div>
+ </div>
   <div class="card" fxLayout="{{chooseView}}" fxLayoutAlign="center center">
     <div *ngFor="let item of items" >
       <div class="trash-card">

@@ -349,4 +349,112 @@ app-archive{
   height: 100%;
 }
 
+.add-icons{
+  -moz-border-radius: 50px/50px;
+  -webkit-border-radius: 50px 50px;
+  border-radius: 50px;
+  // border: solid 3px rgb(0, 0, 0);
+  height: 36px;
+  width : 36px;
+  margin-top: -1px;
+  margin-right: 15px;
+  margin-left: -2px;
+  // background-color: #fff;
+  // padding: 4px;
+  box-shadow: 0 0 0 1px rgb(251, 251, 251);
+  background-color: rgb(215, 174, 251);
 
+}
+
+.initialss{
+  color: aliceblue;
+  font-weight: 550;
+  font-size: 20px;
+  font-family: 'Google Sans',Roboto,Arial,sans-serif;  
+  margin-left: 4px;
+
+}
+
+// .img-add-person-main{
+//   -moz-border-radius: 50px/50px;
+//   -webkit-border-radius: 50px 50px;
+//   border-radius: 50px;
+//   // border: solid 3px rgb(0, 0, 0);
+//   height: 36px;
+//   width : 36px;
+//   margin-top: -1px;
+//   margin-right: 15px;
+//   margin-left: -2px;
+//   // background-color: #fff;
+//   // padding: 4px;
+//   box-shadow: 0 0 0 1px rgb(251, 251, 251);
+//   background-color: rgb(215, 174, 251);
+// }
+
+// .add-icons-main{
+//   -moz-border-radius: 50px/50px;
+//   -webkit-border-radius: 50px 50px;
+//   border-radius: 50px;
+//   // border: solid 3px rgb(0, 0, 0);
+//   width: 93px;
+//   height: 93px;
+
+//   right: 209px;
+
+
+//   // background-color: #fff;
+//   // padding: 4px;
+//   box-shadow: 0 0 0 1px rgb(251, 251, 251);
+//   background-color: rgb(215, 174, 251);
+// }
+
+// .initials{
+//   color: aliceblue;
+//   font-weight: 550;
+//   font-size: 20px;
+//   font-family: 'Google Sans',Roboto,Arial,sans-serif;  
+//   margin-left: 4px;
+
+// }
+
+.pic-profile-main{
+  background: rgba(145, 149, 154, 0.7);
+color: #fff;
+font-size: 9px;
+font-weight: bold;
+line-height: 5px;
+position: absolute;
+padding: 7px 0;
+text-align: center;
+width: 90px;
+top: 76px;
+right: 222px;
+border-bottom-left-radius: 38px;
+border-bottom-right-radius: 35px;
+font-family: arial;
+}
+
+.img-add-person-main{
+  -moz-border-radius: 50px/50px;
+  -webkit-border-radius: 50px 50px;
+  border-radius: 50px;
+  // border: solid 3px rgb(0, 0, 0);
+  width: 93px;
+  height: 93px;
+
+  right: 209px;
+
+
+  // background-color: #fff;
+  // padding: 4px;
+  box-shadow: 0 0 0 1px rgb(251, 251, 251);
+  background-color: rgb(215, 174, 251);
+}
+
+.initials {
+  color: aliceblue;
+  font-weight: 550;
+  font-size: 83px;
+  font-family: 'Google Sans',Roboto,Arial,sans-serif;
+  margin-left: 21px;
+}

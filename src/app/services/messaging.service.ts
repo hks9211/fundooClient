@@ -45,7 +45,7 @@ export class MessagingService {
         return this.messaging.getToken()
       })
       .then(token => {
-        // console.log(token)
+        console.log(token)
         //this.updateToken(token)
       })
       .catch((err) => {

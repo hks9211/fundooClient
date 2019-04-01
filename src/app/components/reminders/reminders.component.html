@@ -1,3 +1,7 @@
+<div *ngIf="items.length <= 0" fxLayout="row" fxLayoutAlign="end center" >
+  <img class="trash-pic" src = "../../../assets/reminder.svg"> 
+  <div class="no-trash-text">Notes with upcoming reminders appear here</div>
+ </div>
 <div class="card" fxLayout="{{chooseView}}" fxFlex="92" fxLayoutAlign="center center">
   <div *ngFor="let item of items">
     <div>

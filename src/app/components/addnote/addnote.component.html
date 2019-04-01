@@ -1,7 +1,7 @@
 <div fxLayout="column">
-<div fxFlex="100" class="note" fxLayoutAlign="space-around start" fxFlex.xs="100">
+<div fxFlex="100" class="note" fxLayoutAlign="space-around start" fxFlex.xs="95" >
   <mat-card class="mat-card" fxFlex="50" fxLayout="row"  *ngIf="flag==true"
-  (click)="reverseFlag()" fxLayoutAlign="space-between start" fxFlex.xs="100">
+  (click)="reverseFlag()" fxLayoutAlign="space-between start" fxFlex.xs="95" fxLayoutAlign.xs="space-around start">
     <div fxFlex="65" data-text="Take a note.." class="text-area" contenteditable="true" class="maincard">
     </div>
     <div fxFlex="35" fxLayoutAlign="space-around start">
@@ -16,7 +16,7 @@
 </div>
 
 <div fxFlex="100" class="big-note" fxLayoutAlign="space-around start" *ngIf="flag==false" fxFlex.xs="100">
-  <mat-card  [style.backgroundColor]="setColor"  fxFlex="50" fxLayout="column" fxLayoutAlign="space-between start" fxFlex.xs="100" fxFlex.sm="80">
+  <mat-card  [style.backgroundColor]="setColor"  fxFlex="50" fxLayout="column" fxLayoutAlign="space-between start" fxLayoutAlign.xs="space-around start" fxFlex.xs="95" fxFlex.sm="80">
     <div fxLayout="row" fxLayoutGap="420px">
     <input class="title" type="text" [formControl]="noteTitle" placeholder="Title">
     <div *ngIf="value==false" (click)="reverseValue()" > <img src="../../../assets/pin.svg"></div>
