@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
-import { Subscriber } from 'rxjs';
 
 
 @Component({

@@ -51,9 +51,7 @@ croppedImage: any = '';
           this.snackBar.open("Error in uploading profile pic","",{duration: 2000});
         }
       )
-      // }catch(err){
-      //   this.snackBar.open("Error in uploading profile pic","",{duration: 2000});
-      // }
+
     }
 
     showProfilepic(imageUrl) {

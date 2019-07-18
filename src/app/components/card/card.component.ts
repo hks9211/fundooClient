@@ -118,7 +118,7 @@ export class CardComponent implements OnInit {
         this.snackBar.open('Note not updated', '', { duration: 2000 });
         console.log('error response: ', error);
       }
-    ) 
+    )  
   }  
 
   updateArchive(){

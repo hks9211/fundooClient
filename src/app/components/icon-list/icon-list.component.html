@@ -31,7 +31,8 @@
   </mat-menu>
   <mat-menu #invertebrates="matMenu" (click)="$event.stopPropagation();">
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]="date" (click)="$event.stopPropagation();">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]="date"
+        (click)="$event.stopPropagation();">
       <mat-datepicker-toggle matSuffix [for]="picker" (click)="$event.stopPropagation();"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -43,8 +44,8 @@
     <button mat-raised-button (click)="addReminder()">Save</button>
   </mat-menu>
 
-  <button class="collaborator" matTooltip="collaborator" mat-icon-button (click) = "openCollabWindow(userData)">
-    <img src="../../../assets/collaborator.svg"> 
+  <button class="collaborator" matTooltip="collaborator" mat-icon-button (click)="openCollabWindow(userData)">
+    <img src="../../../assets/collaborator.svg">
   </button>
   <button [matMenuTriggerFor]="colorMenu" matTooltip="change color" mat-icon-button>
     <img src="../../../assets/color.svg">
@@ -91,10 +92,10 @@
     Label Note
     <div *ngFor="let item of labels;">
       <!-- <div > -->
-          <section class="example-section" (click)="$event.stopPropagation();">
-              <mat-checkbox class="example-margin" [formControl]="checked" (click)="checkBoxClicked(item)"></mat-checkbox>
-              {{item.labelName}}
-            </section>
+      <section class="example-section" (click)="$event.stopPropagation();">
+        <mat-checkbox class="example-margin" [formControl]="checked" (click)="checkBoxClicked(item)"></mat-checkbox>
+        {{item.labelName}}
+      </section>
       <!-- </div> -->
 
     </div>

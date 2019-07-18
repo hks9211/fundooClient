@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArchiveComponent } from './archive.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+import { AppMaterial } from 'src/app/app.material.module';
 
 describe('ArchiveComponent', () => {
   let component: ArchiveComponent;
@@ -8,9 +11,15 @@ describe('ArchiveComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArchiveComponent ]
+      imports: [
+        AppMaterial,
+        FlexLayoutModule,
+        HttpClientModule
+      ],
+      providers: [],
+      declarations: [ArchiveComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

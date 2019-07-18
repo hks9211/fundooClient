@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
+import { AppMaterial } from 'src/app/app.material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+import { SearchPipe } from 'src/app/search.pipe';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -8,6 +12,12 @@ describe('DashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        AppMaterial,
+        FlexLayoutModule,
+        HttpClientModule,
+
+      ],
       declarations: [ DashboardComponent ]
     })
     .compileComponents();

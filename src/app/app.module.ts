@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 // import { MatCheckboxModule } from '@angular/material/checkbox';
 
-import { AppMaterial } from './app.material.module';
+// import { AppMaterial } from './app.material.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +37,7 @@ import { SearchPipe } from './search.pipe';
 import { SearchComponent } from './components/search/search.component';
 import { ProfilePicComponent } from './components/profile-pic/profile-pic.component';
 import { PinComponent } from './components/pin/pin.component';
+import { AppMaterial } from './app.material.module';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { PinComponent } from './components/pin/pin.component';
 
   ],
   entryComponents: [
-    ProfilePicComponent
+    ProfilePicComponent,
+    CollaboratorsComponent
   ],
   providers: [
     HttpService,

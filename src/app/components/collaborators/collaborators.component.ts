@@ -26,14 +26,16 @@ export class CollaboratorsComponent implements OnInit {
     ) {
     var user = JSON.parse(localStorage.getItem('loginUserData'));
     // console.log("data at collab: ", user)
+    if(user !=  undefined || user != null){
     this.picLink = user.img;
+   
     console.log("piclink: ", this.picLink);
     this.email = user.email;
     this.firstName = user.firstName;
     this.lastName = user.lastName;
     this.noteData = data;
     console.log("data at collab: ",data.collab);
-    this.collabData = data.collab;
+    this.collabData = data.collab;}
   }
 
   ngOnInit() {
@@ -95,7 +97,7 @@ export class CollaboratorsComponent implements OnInit {
      var index;
      for(let i = 0; i < this.collabData.length ; i++){
        if(this.collabData[i]._id == item._id){
-        index = this.collabData[i]._id.indexOf(this.collabData[i]._id);  
+          index = this.collabData[i]._id.indexOf(this.collabData[i]._id);  
        }
      }
     //  console.log(this.collabData.length);     

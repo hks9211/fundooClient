@@ -11,7 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MessagingService {
 
-  messaging ;// = firebase.messaging()
+  messaging;// = firebase.messaging()
   currentMessage = new BehaviorSubject(null)
   constructor() { 
     // if (!firebase.apps.length) {
