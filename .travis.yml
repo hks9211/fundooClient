@@ -4,10 +4,10 @@ node_js:
 cache: npm
 
 install:
--npm install
+- npm install
 
 script:
--npm build
+- npm build
 
 deploy:
   provider: pages
