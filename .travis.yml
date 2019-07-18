@@ -7,7 +7,7 @@ install:
 - npm install
 
 script:
-- npm build
+- ng build --prod --base-href https://hks9211.github.io/fundooClient/
 
 deploy:
   provider: pages
