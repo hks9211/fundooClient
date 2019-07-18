@@ -2,16 +2,15 @@ language: node_js
 node_js:
 - 8.9.0
 cache: npm
-
 install:
 - npm install
-
 script:
 - ng build --base-href https://hks9211.github.io/fundooClient/
-
 deploy:
-  provider: pages
+  provider: heroku
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
+  github_token: "$GITHUB_TOKEN"
   on:
     branch: master
+  api_key:
+    secure: kA3dORBrpJkDNzIMK9Pz/zg+5EqfwSbUy6KCURWDdX4RvJbQL657ioVf8kKZyP/IMk1FKfOjH5LKrkmC/y/7iTQh3senCmGE3qITG1+s8pZ1Jm4hR6uDN7mutAWZbPv1JIpOeXCXYUlWnfpLj6A14kJRMcwybDpSsg03CJo40RUKh4JZdiHWBT3ySXS2mpjb8jwNIOy58L44W5F/UH6JIXwjA0gh5+rZ0mdHDrSG3EPOju1/cGyYQOJuz76VFOavcggJS4Q0sn+HChlvfNNO08BppXXw1WH9Et9UiiQdxRnyLbmV7Ju+Y0ihMZkGbV5aLuauOyIvaR8JCHyK6/WbX0iO+uMG8v+xEA6aQTpF3tKKqRP6Z8SbOB9S0SXxAYBmJPwRtrsVZVK/2Hl1A0OqJTYpXT3DUyWY9d+PNmfWa5LRWRy5ASmQUkV6zwkPQRVyXiKgxoubtOnL6QYkLIPBwjFVhihnp73Wp+Kblgq5yoVOUvF00Bx5oIOFS5mpdbb90W5cstLbv1YrxIwN9zi4//bB5yT2jmrk4EfvMC+TpuOJCoMsRuyXOHYL/ffsYR5ipS9a3qy8RdRpnwTZOoidbM47Z+AqnOfhLvTuPg1rQ8NkiYiBanZmyAQOf0sGGRBZQaCTaYmbIzWFnPQ7NugAe1sdCRiw3LZu9ZuStMHcDDU=
