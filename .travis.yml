@@ -5,9 +5,13 @@ language: node_js
 node_js:
   - "11.0"
 
+addons:
+  chrome: stable
+
 cache:
   directories:
-    - node_modules
+    - "$HOME/.npm"
+
 branches:
   only:
     - master
@@ -16,7 +20,8 @@ install:
 - npm install
 
 script:
-- ng build --prod --base-href https://hks9211.github.io/fundooClient/
+  - npm run test-single-run -- --browsers ChromeHeadless
+  - (npm start > /dev/null &) && npm run protractor -- --capabilities.chromeOptions.args headless
 
 deploy:
   provider: pages
