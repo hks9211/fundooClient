@@ -9,9 +9,8 @@ script:
 deploy:
   provider: heroku
   skip_cleanup: true
-  github_token: "$GITHUB_TOKEN"
+  github_token: $GITHUB_TOKEN
   on:
     branch: master
-  app: fundoo
-  secure: lCHBrV2RHan06wt3kLAVTaE3zZHFyXJzkGRlm6h9vYs8i6DV9Ra2GPo3aP/kaB8CluXWbX+bH+Xl5yqgo1JpIveumW91UcdZcqpbSG7shJuJ5qhgL8khDbpm7HTP2Yvf4MsserzKFbruY70pu/y2wBue2P3JhzFf4hIO9QnSs3Flm622YO/GmK5L8uZcRBLmfVhNv7glxCuT5+fseNgpOZi/brMdEzCVrQjEE4mT0pkDkjtzCD347y0dn1XFCLVZ8QgwGjyNkKEtevTCFK+25XYo8AUQ0dqpYmeyWtiSllmD9fVXEmvu7pyZTaZBke4vuaS5qt0CNBIjoTLod1uxCeFraelvZ0+/yU1wmJanRDcIzUgXPr0zu42pTLCTuOs6UBaUGolSlH0KIIakNVJPNyh5Mn4ye45SQ3o4MHqk+QejZSbiIVU2BZLOMl8fd/ECTQOw5BvWpxQiG8PGW0gfY6mXDrA3pWnnZ8BweRx0wa4ZvR1vSKhntIOzL4k3YXyYYrTnbMP2S2pW5JGNIsbz61zwuSw3XH4uy14eRP8m8MRn4QAy24L7t6JeucIsIV7CRQK37Ze2jUnooToGPqBe0On36HtMe8Vj9D3VHs+N5rswnCw/Or9XqdF21Jz7xYE9SDvtX9USyfI04k3T7FAAOlo1VKUxhh0ToCmjeqNu/G8=
+
 
