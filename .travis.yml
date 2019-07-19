@@ -22,6 +22,6 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: dist/fundoo
+  local_dir: dist/fundoo/fundooClient
   on:
     branch: master
