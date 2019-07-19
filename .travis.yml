@@ -7,7 +7,7 @@ install:
 script:
 - ng build --base-href https://hks9211.github.io/fundooClient/
 deploy:
-  provider: heroku
+  provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   on:
