@@ -1,16 +1,33 @@
+dist: trusty
+sudo: false
+
 language: node_js
 node_js:
-- 8.9.0
+  - "11.0"
+
+addons:
+  chrome: stable
+
+cache:
+  directories:
+    - "$HOME/.npm"
+
+branches:
+  only:
+    - master
 
 install:
 - npm install
+
 script:
-- npm run build
+  - npm run test-single-run -- --browsers ChromeHeadless
+  - (npm start > /dev/null &) && npm run protractor -- --capabilities.chromeOptions.args headless
+
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: build
+  local_dir: dist/fundooClient
   on:
     branch: master
 
