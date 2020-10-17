@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpService } from './services/http.service';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
@@ -38,6 +38,8 @@ import { SearchComponent } from './components/search/search.component';
 import { ProfilePicComponent } from './components/profile-pic/profile-pic.component';
 import { PinComponent } from './components/pin/pin.component';
 import { AppMaterial } from './app.material.module';
+import { WebcamModule } from 'ngx-webcam';
+import { TestcropperComponent } from './components/testcropper/testcropper.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { AppMaterial } from './app.material.module';
     SearchComponent,
     ProfilePicComponent,
     PinComponent,
+    TestcropperComponent,
 
 
 
@@ -77,10 +80,8 @@ import { AppMaterial } from './app.material.module';
     HttpClientModule,
     Ng4LoadingSpinnerModule,
     NgxMaterialTimepickerModule.forRoot(),
-    ImageCropperModule
-
-
-
+    ImageCropperModule,
+    WebcamModule
   ],
   entryComponents: [
     ProfilePicComponent,

@@ -1,7 +1,4 @@
-<!-- <div *ngIf="pinedCards?.length <= 0 && unPinnedCards.length <= 0" fxLayout="row" fxLayoutAlign="end center" >
-  <img class="trash-pic" src = "../../../assets/reminder.svg"> 
-  <div class="no-trash-text">Notes with upcoming reminders appear here</div>
- </div> -->
+
 <div fxLayout="column">
   <div  fxLayout="row" fxLayoutAlign="end center" *ngIf="pinedCards?.length <= 0 && unPinedCards?.length <= 0">
   <mat-icon class="note-pic"> lightbulb_outline</mat-icon> 
@@ -20,14 +17,11 @@
         </div>
         <div fxLayout="row">
           <div fxFlex="88" class="item-title" (click)="editCard(item.note)">{{item?.note?.noteTitle}}</div>
-          <!-- <div *ngIf="value==false" (click)="reverseValue()" > <img src="../../../assets/pin.svg"></div>
-          <div *ngIf="value==true" (click)="reverseValue()"> <img src="../../../assets/unpin.svg"></div> -->
+         
           <div class="pin-icon" *ngIf="item?.note?.isPined == true">
-            <!-- <app-pin></app-pin> -->
             <div> <img src="../../../assets/unpin.svg" (click)=" changePin(item.note)"></div>
           </div>
           <div class="pin-icon" *ngIf="item?.note?.isPined == false">
-            <!-- <app-pin></app-pin> -->
             <div> <img src="../../../assets/pin.svg" (click)="changePin(item.note)"></div>
           </div>
         </div>
@@ -51,8 +45,7 @@
               </mat-chip>
             </mat-chip-list>
             <div *ngFor="let item of item.collab">
-              <!-- <mat-list class="add-icon" *ngIf="!item.img"> 
-                     <mat-list-item > -->
+            
               <div class="add-icon" *ngIf="!item?.img">
                 <div class="img-add-person" matTooltip="{{item?.firstName}} <{{item?.email}}>"><span
                     class="initials">{{item?.firstName.charAt(0).toUpperCase()}}</span></div>
@@ -87,14 +80,11 @@
         </div>
         <div fxLayout="row">
           <div fxFlex="88" class="item-title" (click)="editCard(item.note)">{{item?.note?.noteTitle}}</div>
-          <!-- <div *ngIf="value==false" (click)="reverseValue()" > <img src="../../../assets/pin.svg"></div>
-          <div *ngIf="value==true" (click)="reverseValue()"> <img src="../../../assets/unpin.svg"></div> -->
+         
           <div class="pin-icon" *ngIf="item?.note?.isPined == true">
-            <!-- <app-pin></app-pin> -->
             <div> <img src="../../../assets/unpin.svg" (click)=" changePin(item.note)"></div>
           </div>
           <div class="pin-icon" *ngIf="item?.note?.isPined == false">
-            <!-- <app-pin></app-pin> -->
             <div> <img src="../../../assets/pin.svg" (click)="changePin(item.note)"></div>
           </div>
         </div>
@@ -118,8 +108,7 @@
               </mat-chip>
             </mat-chip-list>
             <div *ngFor="let item of item?.collab">
-              <!-- <mat-list class="add-icon" *ngIf="!item.img"> 
-                     <mat-list-item > -->
+            
               <div class="add-icon" *ngIf="!item?.img">
                 <div class="img-add-person" matTooltip="{{item.firstName}} <{{item.email}}>"><span
                     class="initials">{{item.firstName.charAt(0).toUpperCase()}}</span></div>
@@ -136,6 +125,8 @@
             </div>
           </mat-card-footer>
         </mat-card-content>
+
+        
       </mat-card>
     </div>
   </div>
@@ -144,3 +135,7 @@
 
 
 </div>
+
+<!-- <div [@openClose]="isOpen ? 'open' : 'closed'" (click)="toggle()" class="open-close-container">
+  <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+</div> -->

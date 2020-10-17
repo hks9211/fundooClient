@@ -4,6 +4,8 @@ import { AddnoteComponent } from './addnote.component';
 import { AppMaterial } from '../../app.material.module'
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { IconListComponent } from '../icon-list/icon-list.component';
+import { Subject } from 'rxjs';
 
 
 describe('AddnoteComponent', () => {
@@ -15,11 +17,11 @@ describe('AddnoteComponent', () => {
       imports: [
         AppMaterial,
         FlexLayoutModule,
-        HttpClientModule,
-
+        Subject
       ],
       declarations: [ AddnoteComponent,
-      HttpClientModule,     ]
+        IconListComponent
+      ]
     })
     .compileComponents();
   }));

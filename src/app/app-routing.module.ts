@@ -18,6 +18,7 @@ import { EditLabelComponent } from './components/edit-label/edit-label.component
 import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { SearchComponent } from './components/search/search.component';
+import { TestcropperComponent } from './components/testcropper/testcropper.component';
 
 const routes: Routes = [
   {
@@ -47,14 +48,18 @@ const routes: Routes = [
     component: ResetPasswordComponent
   },
   {
+    path: 'testcropper',
+    component: TestcropperComponent
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
 
       {
         path: '',
-        component: AddnoteComponent
+        component: AddnoteComponent,
       },
       {
         path: 'notes',

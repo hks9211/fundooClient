@@ -6,13 +6,42 @@ import { EditCardComponent } from '../edit-card/edit-card.component';
 import { ListGridViewService } from 'src/app/services/list-grid-view.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { HttpService } from 'src/app/services/http.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
+  animations: [
+    trigger('openClose', [
+      // ...
+      state('open', style({
+        height: '200px',
+        opacity: 1,
+        backgroundColor: 'yellow'
+      })),
+      state('closed', style({
+        height: '100px',
+        opacity: 0.5,
+        backgroundColor: 'green'
+      })),
+      transition('open => closed', [
+        animate('1s')
+      ]),
+      transition('closed => open', [
+        animate('0.5s')
+      ]),
+    ]),
+  ]
 })
 export class CardComponent implements OnInit {
   @Input()
@@ -42,12 +71,13 @@ export class CardComponent implements OnInit {
     public dialog: MatDialog,
     private changeViewData : ListGridViewService,
     private http : HttpService,
-    private router : Router
+    private router : Router,
+    private activatedRoute: ActivatedRoute
 
   ) { }
 
   ngOnInit() {
-
+    this.activatedRoute.data
     this.getCards();
     this.parentSubject.subscribe(event => {
       console.log(event);
@@ -268,6 +298,11 @@ export class CardComponent implements OnInit {
     }catch(err){
       this.snackBar.open(err , "" , {duration : 1000});
     }
+  }
+  isOpen = true;
+
+  toggle() {
+    this.isOpen = !this.isOpen;
   }
 
 }

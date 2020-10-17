@@ -36,7 +36,7 @@
     <div class="login-email">
       <mat-form-field class="login-email-input" appearance="outline" fxLayout="column">
         <mat-label>Your email address</mat-label>
-        <input  matInput placeholder="Your email address" [formControl]="email" autocomplete="off">
+        <input  matInput placeholder="Your email address" id="email" [formControl]="email" autocomplete="off">
         <mat-error *ngIf="email.invalid"> {{errorMessageForEmail()}}</mat-error>
       </mat-form-field>
     </div>
@@ -44,7 +44,7 @@
       <div class="login-password" fxLayout="column">
         <mat-form-field class="login-password-input" appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput placeholder="Password" [formControl]="password" autocomplete="off"  [type]=" hide ? 'password' : 'password'">
+          <input matInput placeholder="Password" id="password" [formControl]="password" autocomplete="off"  [type]=" hide ? 'password' : 'password'">
           <mat-error *ngIf="password.invalid"> {{errorMessageForPassword()}}</mat-error>
         </mat-form-field>
       </div>

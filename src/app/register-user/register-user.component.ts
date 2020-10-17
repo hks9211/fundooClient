@@ -41,7 +41,7 @@ export class RegisterUserComponent implements OnInit {
 
   email = new FormControl('',
     [Validators.required, Validators.minLength(12),
-    Validators.maxLength(25),
+    Validators.maxLength(55),
     Validators.email
     ]);
 
@@ -111,13 +111,15 @@ export class RegisterUserComponent implements OnInit {
         firstName: this.firstName.value,
         lastName: this.lastName.value,
         email: this.email.value,
-        password: this.password.value
+        password: this.password.value,
+        cardId:"",
+        service:"advance"
       };
-      console.log('userdata = ', newUser);
 
-      this.HttpService.post(newUser, 'register').subscribe(
+      this.HttpService.post(newUser, '/user/userSignUp').subscribe(
         data => {
-          this.snackBar.open('Sign up completed successfully. Now verify your Email to Sign In', '', { duration: 5000 });
+          this.snackBar.open('Sign up completed successfully.', '', { duration: 3000 });
+          this.router.navigateByUrl('login')
 
           console.log(' response: ', data);
         },

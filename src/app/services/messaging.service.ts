@@ -11,20 +11,20 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MessagingService {
 
-  messaging;// = firebase.messaging()
-  currentMessage = new BehaviorSubject(null)
+  // messaging = firebase.messaging()
+  // currentMessage = new BehaviorSubject(null)
   constructor() { 
     // if (!firebase.apps.length) {
-      try{
-    firebase.initializeApp({
-      'messagingSenderId': '324312227145'
-    });
+    //   try{
+    // firebase.initializeApp({
+    //   'messagingSenderId': '324312227145'
+    // });
   
     
-    this.messaging = firebase.messaging();
-   }catch(err){
-    console.error('Firebase initialization error', err.stack);
-   }
+  //   this.messaging = firebase.messaging();
+  //  }catch(err){
+  //   console.error('Firebase initialization error', err.stack);
+  //  }
   }
 
 
@@ -38,26 +38,26 @@ export class MessagingService {
   //   })
   // }
 
-  getPermission() {
-      this.messaging.requestPermission()
-      .then(() => {
-        // console.log('Notification permission granted.');
-        return this.messaging.getToken()
-      })
-      .then(token => {
-        console.log(token)
-        //this.updateToken(token)
-      })
-      .catch((err) => {
-        console.log('Unable to get permission to notify.', err);
-      });
-    }
+  // getPermission() {
+  //     this.messaging.requestPermission()
+  //     .then(() => {
+  //       // console.log('Notification permission granted.');
+  //       return this.messaging.getToken()
+  //     })
+  //     .then(token => {
+  //       console.log(token)
+  //       //this.updateToken(token)
+  //     })
+  //     .catch((err) => {
+  //       console.log('Unable to get permission to notify.', err);
+  //     });
+  //   }
 
-    receiveMessage() {
-       this.messaging.onMessage((payload) => {
-        console.log("Message received. ", payload);
-        this.currentMessage.next(payload)
-      });
+    // receiveMessage() {
+    //    this.messaging.onMessage((payload) => {
+    //     console.log("Message received. ", payload);
+    //     this.currentMessage.next(payload)
+    //   });
 
-    }
+    // }
 }

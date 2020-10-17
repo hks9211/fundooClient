@@ -7,7 +7,7 @@ import { UserModel } from '../model/userModel'
   providedIn: 'root'
 })
 export class HttpService {
-  private url = 'http://localhost:3000/';
+  private url = 'http://fundoonotes.incubation.bridgelabz.com/api';
   constructor(
     private http: HttpClient
   ) { }

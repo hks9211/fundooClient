@@ -61,16 +61,17 @@ export class LoginUserComponent implements OnInit {
 
       const newLogin = {
         email: this.email.value,
-        password: this.password.value
+        password: this.password.value,
+        cartId:""
       };
-      this.HttpService.post(newLogin, 'login').subscribe(
+      this.HttpService.post(newLogin, '/user/login').subscribe(
         data => {
           this.snackBar.open('Signed in successfully ', '', { duration: 5000 });
-          console.log(' response: ', data);
-          let response: any = {};
-          response = data;
-          localStorage.setItem('userId', response.message.userId);
-          localStorage.setItem('token',response.tokens);
+          // console.log(' response: ', data);
+          // let response: any = {};
+          // response = data;
+          // localStorage.setItem('userId', response.message.userId);
+          // localStorage.setItem('token',response.tokens);
           
           this.router.navigateByUrl('dashboard');
 

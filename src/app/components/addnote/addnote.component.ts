@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpService } from '../../services/http.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { NoteServiceService } from 'src/app/services/noteSerives/note-service.service';
@@ -22,6 +22,7 @@ export class AddnoteComponent implements OnInit {
   constructor(private noteService: NoteServiceService,
     private router: Router,
     private snackBar: MatSnackBar,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   @Output() childEvent = new EventEmitter<any>();
